@@ -12,12 +12,12 @@ class Property
 {
 
     const HEAT = [
-        0 => 'eletric',
-        1 => 'gaz'
+        0 => 'Eletrique',
+        1 => 'Gaz'
     ];
     const TYPE= [
-        0 => 'flat',
-        1 => 'house'
+        0 => 'Appartement',
+        1 => 'Maison'
     ];
     /**
      * @ORM\Id()

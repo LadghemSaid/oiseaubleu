@@ -29,7 +29,7 @@ class PropertyController extends AbstractController
     }
 
     /**
-     * @Route("/bien/{slug}-{id}" , name="bien.show", requirements={"id"="\d+","slug"="[a-z0-9\-]*"})
+     * @Route("/bien/{slug}-{id}" , name="property.show", requirements={"id"="\d+","slug"="[a-z0-9\-]*"})
      */
     public function show(Property $propertie, string $slug){
         if($propertie->getSlug()!==$slug){

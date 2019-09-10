@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %} {% block title %}Home{% endblock %}
 {% block style_custom %}
+   <style>
     section{
     padding: 100px 0;
     }
@@ -114,6 +115,7 @@
     text-decoration: none;
     color: #fff;
     }
+    </style>
 {% endblock %}
 
 {% block body %}
@@ -147,7 +149,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <a class="btn btn-primary"
-                                       href="{{ path('bien.show',{slug:propertie.slug,id: propertie.id}) }}">Voir</a>
+                                       href="{{ path('property.show',{slug:propertie.slug,id: propertie.id}) }}">Voir</a>
                                 </div>
                                 <div class="col-md-6">
                                     <span class="card-detail-badge surface"><strong>{{ propertie.surface }}</strong> m²</span><br/>
