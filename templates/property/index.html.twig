@@ -1,0 +1,165 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    Hello PropertyController!
+{% endblock %}
+{% block style_custom %}
+    section{
+    padding: 100px 0;
+    }
+    .details-card {
+    background: #ecf0f1;
+    }
+
+    .card-content {
+    background: #ffffff;
+    border: 4px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    }
+
+    .card-img {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0;
+    z-index: 1;
+    }
+
+    .card-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+    }
+
+    .card-img span:first-child {
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    background: #1ABC9C;
+    padding: 6px;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    transform: translate(-50%,-50%);
+    }
+    .card-img span:last-child{
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    background: #1ABC9C;
+    padding: 6px;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    }
+    .card-img span h4{
+    font-size: 12px;
+    margin:0;
+    padding:10px 5px;
+    line-height: 0;
+    }
+    .card-desc {
+    padding: 1.25rem;
+    }
+
+    .card-desc h3 {
+    color: #000000;
+    font-weight: 600;
+    font-size: 1.5em;
+    line-height: 1.3em;
+    margin-top: 0;
+    margin-bottom: 5px;
+    padding: 0;
+    }
+
+    .card-desc p {
+    color: #747373;
+    font-size: 14px;
+    font-weight: 400;
+    font-size: 1em;
+    line-height: 1.5;
+    margin: 0px;
+    margin-bottom: 20px;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+    }
+    .btn-card{
+    background-color: #1ABC9C;
+    color: #fff;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    padding: .84rem 2.14rem;
+    font-size: .81rem;
+    -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    -o-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    margin: 0;
+    border: 0;
+    -webkit-border-radius: .125rem;
+    border-radius: .125rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    white-space: normal;
+    word-wrap: break-word;
+    color: #fff;
+    }
+    .btn-card:hover {
+    background: orange;
+    }
+    a.btn-card {
+    text-decoration: none;
+    color: #fff;
+    }
+
+{% endblock %}
+{% block body %}
+    <div class="mt-md-5 mt-sm-2 mb-md-5 mb-sm-2 text-center">
+        <h1>Vous recherchez un bien ?</h1>
+    </div>
+
+    <div class="container">
+        <div class="row">
+
+
+            {% for propertie in properties %}
+
+                <div class="col-md-4 mb-md-5 md-sm-1">
+                    <div class="card-content">
+                        <div class="card-img">
+                            <span class="card-notify-year">{{ propertie.createdAt| ago }}</span>
+                            <img class="img-fluid" src={{ propertie.image }} alt="AlternateText"/>
+                            <span class="card-detail-badge city">{{ propertie.city }}, {{ propertie.postalCode }}</span>
+                        </div>
+                        <div class="card-desc">
+                            <span><h4>{{ propertie.title }}</h4></span>
+
+
+                            <h6>Descriptions</h6>
+                            <p>  {{ propertie.description|length > 100 ? propertie.description|slice(0, 100) ~ '...' : propertie.description }}</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a class="btn btn-primary"
+                                       href="{{ path('bien.show',{slug:propertie.slug,id: propertie.id}) }}">Voir</a>
+                                </div>
+                                <div class="col-md-6">
+                                    <span class="card-detail-badge surface"><strong>{{ propertie.surface }}</strong> m²</span><br/>
+                                    <span class="card-detail-badge price"><strong>{{ propertie.formatedPrice }}</strong> €</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}
