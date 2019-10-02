@@ -2,7 +2,8 @@
 
 namespace App\Controller;
 
-use App\Repository\PropertyRepository;
+use App\Entity\Article;
+use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -12,17 +13,19 @@ class HomeController extends AbstractController
 
     /**
      * @Route("/", name="home")
-     * @param PropertyRepository $repository
+     * @param ArticleRepository $repository
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function index(PropertyRepository $repository)
+    public function index(ArticleRepository $repository)
     {
-        $properties = $repository->findLatest();
-
+        $articles = $repository->findLatest();
+        $catedories = Article::CATEGORIE;
 
 
         return $this->render('home/index.html.twig', [
-            'properties' => $properties,
+            'articles' => $articles,
+            'categories' => $catedories,
+
         ]);
     }
     

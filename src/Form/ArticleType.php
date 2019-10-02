@@ -2,53 +2,52 @@
 
 namespace App\Form;
 
-use App\Entity\Property;
+use App\Entity\Article;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
-class PropertyType extends AbstractType
+class ArticleType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('title')
             ->add('description')
-            ->add('surface')
-            ->add('rooms')
-            ->add('bedrooms')
-            ->add('floor')
-            ->add('price')
-            ->add('heat', ChoiceType::class, [
-                'choices' => $this->GetChoices('HEAT')
+            ->add('text', CKEditorType::class,[
+                "label" => "Corps de l'article"
             ])
-            ->add('city')
-            ->add('address')
-            ->add('postal_code')
-            ->add('sold')
-            ->add('image')
-            ->add('type', ChoiceType::class, [
-                'choices' => $this->GetChoices('TYPE')
+            ->add('status', ChoiceType::class, [
+                'choices' => $this->GetChoices('STATUS')
             ])
-            ->add('garage');
+            ->add('image', TextType::class,  [
+                "label" => "Image mise en avant"
+            ])
+            ->add('categorie', ChoiceType::class, [
+                'choices' => $this->GetChoices('CATEGORIE')
+            ]);
+
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Property::class,
+            'data_class' => Article::class,
             'translation_domain' => 'forms'
         ]);
     }
 
     public function getChoices($value)
     {
-        if ($value == "HEAT") {
-            $choices = Property::HEAT;
+        if ($value == 'STATUS') {
+            $choices = Article::STATUS;
         } else {
-            $choices = Property::TYPE;
+            $choices = Article::CATEGORIE;
         }
+
 
         $output = [];
         foreach ($choices as $k => $v) {

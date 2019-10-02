@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Administrer les biens{% endblock %}
+{% block title %}Administrer les articles{% endblock %}
 
 {% block style_custom %}
     <style>
@@ -10,10 +10,10 @@
 
 {% block body %}
     <div class="mt-md-5 mt-sm-2 mb-md-5 mb-sm-2 text-center">
-        <h4>Creation d'un bien</h4>
+        <h4>Creation d'un article</h4>
     </div>
 
-    {{   include('admin/property/_form.html.twig',{form: form})  }}
+    {{   include('admin/article/_form.html.twig',{form: form})  }}
 
 
 

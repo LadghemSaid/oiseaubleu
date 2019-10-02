@@ -6,7 +6,11 @@
 parameters:
     locale: fr
 
+
 services:
+
+
+
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
@@ -29,3 +33,4 @@ services:
 framework:
     default_locale: fr
     translator:      { fallback: '%locale%' } # uncomment this line if you see this line commented
+

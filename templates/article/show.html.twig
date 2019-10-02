@@ -1,0 +1,160 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    Voir un bien!
+{% endblock %}
+
+{% block style_custom %}
+    <style>
+        .profil {
+            background: #f9f9f9;
+        }
+
+        .profil .ul-caracteristiques li {
+            width: 25%;
+        }
+
+        .div-cadre-orange {
+            background: #fff;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.125);
+            overflow: hidden;
+            float: left;
+            width: 100%;
+            margin: 15px 0px;
+        }
+
+        .cadre {
+            float: left;
+            width: 100%;
+            position: relative;
+            padding: 25px 30px 30px;
+        }
+
+        .margin-top--22 {
+            margin-top: -22px;
+        }
+
+        .div-cadre-orange h4 {
+            color: #FF9800;
+        }
+
+        .ul-caracteristiques img {
+            width: 20px;
+            padding-right: 5px;
+        }
+
+        .ul-caracteristiques {
+            list-style: none;
+            padding: 0;
+            font-size: 16px;
+        }
+
+        .ul-caracteristiques li {
+            padding: 6px 0;
+            font-size: 15px;
+            display: table;
+            height: 100%;
+            line-height: 21px;
+            float: left;
+            width: 50%;
+            margin-bottom: 5px;
+        }
+
+        .label-custom {
+            position: absolute;
+            font-size: 0.8em;
+            top: 8px;
+        }
+
+        .label-custom.label-price {
+            top: 2px;
+            left: 30%
+        }
+
+        .ul-caracteristiques li {
+            position: relative;
+            display: flex !important;
+            justify-content: center;
+
+        }
+
+    </style>
+{% endblock %}
+{% block body %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="row">
+        <div class="col-md-10">
+            <div class="slider">
+
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div style="    border-radius: 0.25rem;" class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" style="height: 290px" src="{{ article.image }}"
+                                 alt="First slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" style="height: 290px" src="{{ article.image }}"
+                                 alt="Second slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" style="height: 290px" src="{{ article.image }}"
+                                 alt="Third slide">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="div-cadre-orange">
+                <div class="cadre">
+                    <div class="cadre margin-top--22">
+                        <h1>{{ article.title }}</h1>
+                        <h4 class="pb-3" style="float: right;padding: 10px;
+ font-size: 1em;">Temps de lecture : <strong>10min</strong></h4>
+
+                        <p>{{ article.text | raw }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="div-cadre-orange">
+                <div class="cadre">
+                    <h4 class="pb-3">Catégorie</h4>
+                    <ul class="ul-caracteristiques ">
+
+                        <li style="width: 100%">
+                            <div class="badge badge-primary d-inline-flex align-items-center d-flex justify-content-around"
+                                 style="padding: 10px;min-width: 100%;">
+                                <i class="fas fa-thermometer-half mr-md-3 mr-sm-1" style="font-size: 2.5em"></i>
+                                <span class="vertical-align-mid"> {{ categories[article.categorie] }} </span>
+                            </div>
+
+                        </li>
+                        <li style="width: 100%">Auteur</li>
+                        <li>{{ article.createdAt | date('d/m/Y H:i', timezone='Europe/Paris') }}</li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Property;
+use App\Entity\Article;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\QueryBuilder;
 
 /**
- * @method Property|null find($id, $lockMode = null, $lockVersion = null)
- * @method Property|null findOneBy(array $criteria, array $orderBy = null)
- * @method Property[]    findAll()
- * @method Property[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Article|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Article|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Article[]    findAll()
+ * @method Article[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class PropertyRepository extends ServiceEntityRepository
+class ArticleRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Property::class);
+        parent::__construct($registry, Article::class);
     }
 
     /**
-     * @return Property[]
+     * @return Article[]
      */
     public function findAllVisible() : array
     {
@@ -31,7 +31,7 @@ class PropertyRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return Property[]
+     * @return Article[]
      */
     public function findLatest() : array
     {
@@ -46,11 +46,11 @@ class PropertyRepository extends ServiceEntityRepository
      */
     private function findVisibleQuery():QueryBuilder {
         return $this->createQueryBuilder('p')
-            ->where('p.sold = false');
+            ->where('p.status = 0');
 
     }
     // /**
-    //  * @return Property[] Returns an array of Property objects
+    //  * @return Article[] Returns an array of Property objects
     //  */
     /*
     public function findByExampleField($value)
@@ -67,7 +67,7 @@ class PropertyRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Property
+    public function findOneBySomeField($value): ?Article
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.exampleField = :val')
