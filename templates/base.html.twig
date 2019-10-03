@@ -44,7 +44,7 @@
                 <ul class="navbar-nav mr-auto">
 
                     <li class="nav-item {% if current_menu is defined and current_menu == 'articles' %}active{% endif %}">
-                        <a class="nav-link" href="{{path('article.index')}}">Articles <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{path('article.index', {"page":1})}}">Articles <span class="sr-only">(current)</span></a>
                     </li>
 
                     {% if app.user %}
