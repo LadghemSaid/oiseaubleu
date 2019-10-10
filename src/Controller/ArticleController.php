@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Entity\Comment;
+use App\Form\CommentType;
 use App\Repository\ArticleRepository;
+use App\Repository\CommentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -51,20 +54,42 @@ class ArticleController extends AbstractController
 
     /**
      * @Route("/article/{slug}-{id}" , name="article.show", requirements={"id"="\d+","slug"="[a-z0-9\-]*"})
+     * @param Article $article
+     * @param string $slug
+     * @param CommentRepository $commentsRepository
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function show(Article $article, string $slug){
+    public function show(Article $article, string $slug, CommentRepository $commentsRepository){
+
+
         if($article->getSlug()!==$slug){
-        return $this->redirectToRoute('article.show',[
-            'id' => $article->getId(),
-            'slug'=>$article->getSlug()
-        ],301);
+
+            return $this->redirectToRoute('article.show',[
+                'id' => $article->getId(),
+                'slug'=>$article->getSlug()
+
+            ],301);
         }
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment,[
+            'action' => $this->generateUrl('add.comment', array('article'=>$article->getId() )),
+        ]);
+
+
+
+
         $article = $this->repository->find($article);
+        $comments = $commentsRepository->findByArticleField($article);
+        //dd($comments);
         $catedories = Article::CATEGORIE;
+
         return $this->render('article/show.html.twig', [
             'current_menu' => 'articles',
             'article' => $article,
-            'categories' => $catedories
+            'categories' => $catedories,
+            'form' => $form->createView(),
+            'comments' => $comments
+
         ]);
 
     }
