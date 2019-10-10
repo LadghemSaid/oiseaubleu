@@ -36,7 +36,7 @@
     <header>
         <!-- Fixed navbar -->
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="{{path('home')}}">Logo</a>
+            <a class="navbar-brand" href="{{path('index')}}">Logo</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -49,7 +49,7 @@
 
                     {% if app.user %}
                     <li class="nav-item">
-                        <a class="nav-link {% if current_menu is defined and current_menu == 'logout' %}active{% endif %}" href="{{ path('app_logout') }}">Se déconecter</a>
+                        <a class="nav-link {% if current_menu is defined and current_menu == 'logout' %}active{% endif %}" href="{{ path('app_logout') }}">Se déconnecter</a>
                     </li>
                     <li class="nav-item {% if current_menu is defined and current_menu == 'admin' %}active{% endif %}">
                         <a class="nav-link " href="{{ path('admin.articles.index') }}">Admin</a>
