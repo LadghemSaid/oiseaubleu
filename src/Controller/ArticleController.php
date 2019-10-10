@@ -30,7 +30,7 @@ class ArticleController extends AbstractController
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function index($page)
+    public function index($page=1)
     {
         $nbArticlesParPage = 9;
 
@@ -92,5 +92,13 @@ class ArticleController extends AbstractController
 
         ]);
 
+    }
+
+    /**
+     * @Route("/" , name="index")
+     *
+     */
+    public function home(){
+        return $this->index();
     }
 }
