@@ -63,9 +63,15 @@ $article2= $articleRepo->find($article);
         }
         return $this->redirectToRoute('article.show', array('slug'=>$article->getSlug(),'id'=>$article->getId()));
 
-        dd($comment);
+        //dd($comment);
 
     }
 
+    /**
+     * @Route("/comment/edit/{comment}", name="comment_edit")
+     */
+    public function edit(Comment $comment,Request $request){
+        return dd("Welcome to edit function");
+    }
 
 }

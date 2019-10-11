@@ -74,12 +74,22 @@
             -ms-transform: rotate(45deg);
             -o-transform: rotate(45deg);
         }
+        .edit_input{
+
+            border-top: 0;
+            border-right: 0;
+            border-left: 0;
+            width: 100%;
+        }
+        .edit_input:focus{
+            border-bottom-color: orange;
+        }
     </style>
 {% endblock %}
-
+<section class="comments">
 {% for comment in comments  %}
 
-<section class="comments">
+
     <article class="comment">
         <a class="comment-img" href="#non">
             <img src="https://api.adorable.io/avatars/50/{{ comment.user.username }}@adorable.io.png" alt="" width="50" height="50">
@@ -87,8 +97,8 @@
         <div class="comment-body">
             {% if comment.user == app.user %}
                 <ul class="comment-actions">
-                    <li class="edit"><a href="" class="btn btn-primary btn-sm"><i class="fa fa-cog"></i></a></li>
-                    <li class="delete"><a href="{{ path('delete.comment',{'comment' : comment.id}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a></li>
+                    <li class="edit"><a id="{{ comment.id }}" href="#" onclick="edit(event)" class="btn btn-primary btn-sm"><i class="fa fa-cog"></i></a></li>
+                    <li class="delete"><a  href="{{ path('delete.comment',{'comment' : comment.id}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a></li>
                 </ul>
             {% endif %}
             <div class="text">
@@ -98,11 +108,8 @@
         </div>
 
     </article>
-
-
-
-
 {% endfor %}
+</section>
 
 
 {% if app.user %}
@@ -113,3 +120,18 @@
 {% endif %}
 
 
+ {% block javascripts %}
+     <script>
+         function edit(e){
+
+             e.preventDefault();
+             var btn = e.currentTarget;
+
+             //console.log(btn.attributes[0].value);
+
+             btn.offsetParent.nextSibling.nextSibling.innerHTML = "<form action='/comment/edit/"+ btn.attributes[0].value +"' method='post'><input class='edit_input' type='text' value='" + e.target.offsetParent.nextSibling.nextSibling.innerText + "' /></form>";
+
+             btn.style.display="none";
+         }
+     </script>
+ {% endblock %}
