@@ -20,6 +20,7 @@ security:
             guard:
                 authenticators:
                     - App\Security\AppLoginAuthenticator
+
             logout:
                 path: app_logout
 

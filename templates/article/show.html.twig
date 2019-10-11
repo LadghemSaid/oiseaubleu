@@ -160,21 +160,7 @@
             </div>
         </div>
     </div>
-    {% for comment in comments  %}
-        <div class="comment-block">
-            <p>{{ comment.textComment}}</p>
-            <div class="bottom-comment">
-                <div class="comment-date">Aug 24, 2014 @ 2:35 PM</div>
-                <ul class="comment-actions">
-                    <li class="edit">Editer</li>
-                    <li class="delete">Supprimer</li>
-                </ul>
-            </div>
-        </div>
 
-
-    {% endfor %}
-    {{ form(form) }}
-
+    {% include '/article/comments.html.twig' %}
 
 {% endblock %}

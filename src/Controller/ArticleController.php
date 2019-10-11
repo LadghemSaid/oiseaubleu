@@ -36,7 +36,7 @@ class ArticleController extends AbstractController
 
         $articles = $this->repository->findAllPagineEtTrie($page,$nbArticlesParPage);
         $catedories = Article::CATEGORIE;
-
+        //dd($articles);
         $pagination = array(
             'page' => $page,
             'nbPages' => ceil(count($articles)/ $nbArticlesParPage),
@@ -53,13 +53,13 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/article/{slug}-{id}" , name="article.show", requirements={"id"="\d+","slug"="[a-z0-9\-]*"})
+     * @Route("/article/{slug}/{id}" , name="article.show", requirements={"id"="\d+","slug"="[a-z0-9\-]*"})
      * @param Article $article
      * @param string $slug
      * @param CommentRepository $commentsRepository
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function show(Article $article, string $slug, CommentRepository $commentsRepository){
+    public function show(Article $article, string $slug){
 
 
         if($article->getSlug()!==$slug){
@@ -79,7 +79,7 @@ class ArticleController extends AbstractController
 
 
         $article = $this->repository->find($article);
-        $comments = $commentsRepository->findByArticleField($article);
+        $comments = $article->getComments();
         //dd($comments);
         $catedories = Article::CATEGORIE;
 

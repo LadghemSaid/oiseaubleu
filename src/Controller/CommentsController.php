@@ -18,45 +18,52 @@ class CommentsController extends AbstractController
      * @Route("/add/comment/{article}", name="add.comment", methods={"POST"})
      * @param Request $req
      * @param Security $security
-     * @param $article
+     * @param $articleid
+     * @param ArticleRepository $articleRepo
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @throws \Exception
      */
-    public function add(Request $req,Security $security, $article,ArticleRepository $articleRepo)
+    public function add(Request $req, Security $security, $article, ArticleRepository $articleRepo)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $comment = new Comment();
 
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($req);
         if ($form->isSubmitted() && $form->isValid()) {
 
-            // $form->getData() holds the submitted values
-            // but, the original `$task` variable has also been updated
+$article2= $articleRepo->find($article);
             $com = $form->getData();
-            $user = $security->getUser();
-            $com->setUser($user);
-            $com->setArticle($articleRepo->find($article));
-            $com->setCreatedAt(new \DateTime());
-            $com->setApproved(true);
+
+            $com->setUser($security->getUser())
+                ->setArticle($article2)
+                ->setCreatedAt(new \DateTime())
+                ->setApproved(true);
             //dd($com);
             $em =  $this->getDoctrine()->getManager();
             $em->persist($com);
             $em->flush();
-            // ... perform some action, such as saving the task to the database
-            // for example, if Task is a Doctrine entity, save it!
 
-            // $entityManager->persist($task);
-            // $entityManager->flush();
+            return $this->redirectToRoute('article.show', array('slug'=>$article2->getSlug(),'id'=>$article));
 
-            return $this->redirectToRoute('article.index', array('page'=>'1'));
         }
     }
 
     /**
-     * @Route("/delete/comment", name="delete.comment", methods={"DELETE"})
+     * @Route("/delete/comment/{comment}", name="delete.comment", methods={"GET"})
      */
-    public function delete(Request $req)
+    public function delete(Comment $comment, Security $security)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        if($security->getUser() === $comment->getUser()){
+            $article = $comment->getArticle();
+            $em =  $this->getDoctrine()->getManager();
+            $em->remove($comment);
+            $em->flush();
+        }
+        return $this->redirectToRoute('article.show', array('slug'=>$article->getSlug(),'id'=>$article->getId()));
+
+        dd($comment);
 
     }
 
