@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administrer les catégories{% endblock %}
+
+{% block style_custom %}
+    <style>
+
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1>Gérer les catégories</h1>
+    {% for message in app.flashes('success')  %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+
+    <a href="{{ path('admin.categorie.create') }}" class="btn btn-primary float-right">Ajouter une catégorie</a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for categorie in categories %}
+            <tr>
+                <td>{{ categorie.name }}</td>
+                <td>
+                    <a href="{{ path('admin.categorie.edit',{id: categorie.id}) }}" class="btn btn-secondary">Editer</a>
+                    <form action="{{ path('admin.categorie.delete',{id: categorie.id}) }}" method="POST" onsubmit="return confirm('Confirmation de suppression')" style="display: inline-block">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ categorie.id) }}">
+                        <button class="btn btn-danger" >Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

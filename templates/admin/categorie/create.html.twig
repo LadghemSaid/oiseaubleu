@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administrer les articles{% endblock %}
+
+{% block style_custom %}
+    <style>
+
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="mt-md-5 mt-sm-2 mb-md-5 mb-sm-2 text-center">
+        <h4>Creation d'un article</h4>
+    </div>
+
+    {{   include('admin/categorie/_form.html.twig',{form: form})  }}
+
+
+
+
+{% endblock %}

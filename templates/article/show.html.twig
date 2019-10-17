@@ -152,7 +152,9 @@
                             </div>
 
                         </li>
-                        <li style="width: 100%">Auteur</li>
+                        <li style="width: 100%">{% if  article.author.username is defined %}
+                                {{ article.author.username }}
+                            {% endif %}</li>
                         <li>{{ article.createdAt | date('d/m/Y H:i', timezone='Europe/Paris') }}</li>
                     </ul>
 
