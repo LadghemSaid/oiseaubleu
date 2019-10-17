@@ -107,12 +107,29 @@ class Article
      */
     private $comments;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Categorie", mappedBy="articleId")
+     */
+    private $categories;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="articles")
+     */
+    private $author;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Voting", mappedBy="articleId")
+     */
+    private $votings;
+
 
 
     public function __construct()
     {
         $this->created_at = new \DateTime();
         $this->comments = new ArrayCollection();
+        $this->categories = new ArrayCollection();
+        $this->votings = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -251,6 +268,77 @@ class Article
             // set the owning side to null (unless already changed)
             if ($comment->getArticle() === $this) {
                 $comment->setArticle(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Categorie[]
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Categorie $category): self
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+            $category->addArticleId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Categorie $category): self
+    {
+        if ($this->categories->contains($category)) {
+            $this->categories->removeElement($category);
+            $category->removeArticleId($this);
+        }
+
+        return $this;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Voting[]
+     */
+    public function getVotings(): Collection
+    {
+        return $this->votings;
+    }
+
+    public function addVoting(Voting $voting): self
+    {
+        if (!$this->votings->contains($voting)) {
+            $this->votings[] = $voting;
+            $voting->setArticleId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVoting(Voting $voting): self
+    {
+        if ($this->votings->contains($voting)) {
+            $this->votings->removeElement($voting);
+            // set the owning side to null (unless already changed)
+            if ($voting->getArticleId() === $this) {
+                $voting->setArticleId(null);
             }
         }
 

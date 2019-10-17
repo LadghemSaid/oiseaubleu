@@ -128,7 +128,12 @@
                         <h1>{{ article.title }}</h1>
                         <h4 class="pb-3" style="float: right;padding: 10px;
  font-size: 1em;">Temps de lecture : <strong>10min</strong></h4>
+                        {% if app.user %}
+                        {{ dump(app.user.votings) }}
 
+                            <a href="{{ path('voting.article.togglelike' ,{article: article.id}) }}">Like</a>
+                            <a href="{{ path('voting.article.togglelike' ,{article: article.id}) }}">Disike</a>
+                        {% endif %}
                         <p>{{ article.text | raw }}</p>
                     </div>
                 </div>
@@ -152,7 +157,9 @@
                             </div>
 
                         </li>
-                        <li style="width: 100%">Auteur</li>
+                        <li style="width: 100%">{% if  article.author.username is defined %}
+                                {{ article.author.username }}
+                            {% endif %}</li>
                         <li>{{ article.createdAt | date('d/m/Y H:i', timezone='Europe/Paris') }}</li>
                     </ul>
 

@@ -26,7 +26,7 @@ class ArticleRepository extends ServiceEntityRepository
     /**
      * @return Article[]
      */
-    public function findAllVisible() : array
+    public function findAllVisible(): array
     {
         return $this->findVisibleQuery()
             ->getQuery()
@@ -36,7 +36,7 @@ class ArticleRepository extends ServiceEntityRepository
     /**
      * @return Article[]
      */
-    public function findLatest() : array
+    public function findLatest(): array
     {
         return $this->findVisibleQuery()
             ->setMaxresults(3)
@@ -50,12 +50,12 @@ class ArticleRepository extends ServiceEntityRepository
      * @param int $page Le numéro de la page
      * @param int $nbMaxParPage Nombre maximum d'article par page
      *
-     * @throws InvalidArgumentException
+     * @return Paginator
      * @throws NotFoundHttpException
      *
-     * @return Paginator
+     * @throws InvalidArgumentException
      */
-    public function findAllPagineEtTrie($page, $nbMaxParPage)
+    public function findAllPagineEtTrie($page, $nbMaxParPage, $filter, $author)
     {
         if (!is_numeric($page)) {
             throw new InvalidArgumentException(
@@ -73,11 +73,20 @@ class ArticleRepository extends ServiceEntityRepository
             );
         }
 
-        $qb = $this->createQueryBuilder('a')
-            ->where('CURRENT_DATE() <= a.created_at')
-            ->orderBy('a.created_at', 'DESC');
+        $qb = $this->createQueryBuilder('a');
 
-
+        if ($filter != null) {
+            foreach ($filter as $key => $value) {
+                if ($key == "title") {
+                    $qb->where('a.title LIKE :title')
+                        ->setParameter('title', '%' . $value . '%');
+                }
+                if($author != null){
+                    $qb->orWhere('a.author = :id')
+                    ->setParameter('id',$author);
+                }
+            }
+        }
 
         $query = $qb->getQuery();
 
@@ -85,7 +94,7 @@ class ArticleRepository extends ServiceEntityRepository
         $query->setFirstResult($premierResultat)->setMaxResults($nbMaxParPage);
         $paginator = new Paginator($query);
 
-        if ( ($paginator->count() <= $premierResultat) && $page != 1) {
+        if (($paginator->count() <= $premierResultat) && $page != 1) {
             throw new NotFoundHttpException('La page demandée n\'existe pas.'); // page 404, sauf pour la première page
         }
 
@@ -95,7 +104,8 @@ class ArticleRepository extends ServiceEntityRepository
     /**
      * @return QueryBuilder
      */
-    private function findVisibleQuery():QueryBuilder {
+    private function findVisibleQuery(): QueryBuilder
+    {
         return $this->createQueryBuilder('p')
             ->where('p.status = 0');
 

@@ -3,13 +3,13 @@
         <ul class="pagination">
             {% if pagination.page > 1 %}
                 <li>
-                    <a href="{{ path(pagination.nomRoute, pagination.paramsRoute|merge({'page': 1})) }}">
+                    <a href="{{ path(pagination.nomRoute,{'page': 1,'filter': pagination.filter}) }}">
                         <<
                     </a>
                 </li>
                 <li>
                     <a href="{{ path(pagination.nomRoute,
-                        pagination.paramsRoute|merge({'page': pagination.page-1})) }}">
+                        {'page': pagination.page-1,'filter': pagination.filter}) }}">
                         <
                     </a>
                 </li>
@@ -18,7 +18,7 @@
             {# Affichage de toutes les pages entre p-4 et p+4 sauf si < 1 ou > nbPages #}
             {% for p in range(max(pagination.page-4, 1), min(pagination.page+4, pagination.nbPages)) %}
                 <li {% if p == pagination.page %}class="active"{% endif %}>
-                    <a href="{{ path(pagination.nomRoute, pagination.paramsRoute|merge({'page': p})) }}">
+                    <a href="{{ path(pagination.nomRoute, {'page': p,'filter': pagination.filter}) }}">
                         {{ p }}
                     </a>
                 </li>
@@ -26,14 +26,12 @@
 
             {% if pagination.page < pagination.nbPages %}
                 <li>
-                    <a href="{{ path(pagination.nomRoute,
-                        pagination.paramsRoute|merge({'page': pagination.page+1})) }}">
+                    <a href="{{ path(pagination.nomRoute,{'page': pagination.page+1,'filter': pagination.filter}) }}">
                         >
                     </a>
                 </li>
                 <li>
-                    <a href="{{ path(pagination.nomRoute,
-                        pagination.paramsRoute|merge({'page': pagination.nbPages})) }}">
+                    <a href="{{ path(pagination.nomRoute,{'page': pagination.nbPages,'filter': pagination.filter}) }}">
                         >>
                     </a>
                 </li>

@@ -1,7 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1f5b76b1-6c63-4e17-a1e8-90b7ce1d350d" name="Default Changelist" comment="" />
+    <list default="true" id="1f5b76b1-6c63-4e17-a1e8-90b7ce1d350d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Controller/VotingController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Categorie.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Voting.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/CategorieType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/VotingType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/CategorieRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/LikeRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/VotingRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/categorie/_form.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/categorie/create.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/categorie/edit.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/categorie/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/comments/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/voting/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/AdminArticleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/AdminArticleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ArticleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ArticleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CommentsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CommentsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Article.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Comment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20191010205044.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/ArticleRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ArticleRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/article/comments.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/comments.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/article/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/article/pagination.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/pagination.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/article/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,21 +46,6 @@
     <execution>
       <executable />
     </execution>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>font</find>
-      <find>cadreorange</find>
-      <find>Property</find>
-      <find>$this-&gt;container</find>
-      <find>article.</find>
-      <find>article.index</find>
-      <find>front</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>ul-caracteristiques</replace>
-      <replace>Article</replace>
-    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -233,6 +251,7 @@
       <workItem from="1570101601176" duration="11123000" />
       <workItem from="1570740229604" duration="729000" />
       <workItem from="1570798423849" duration="20063000" />
+      <workItem from="1571347185324" duration="5478000" />
     </task>
     <servers />
   </component>

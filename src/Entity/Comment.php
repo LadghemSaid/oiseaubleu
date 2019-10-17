@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -42,6 +44,16 @@ class Comment
      * @ORM\Column(type="boolean")
      */
     private $approved;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Voting", mappedBy="commentId")
+     */
+    private $votings;
+
+    public function __construct()
+    {
+        $this->votings = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -104,6 +116,37 @@ class Comment
     public function setApproved(bool $approved): self
     {
         $this->approved = $approved;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Voting[]
+     */
+    public function getVotings(): Collection
+    {
+        return $this->votings;
+    }
+
+    public function addVoting(Voting $voting): self
+    {
+        if (!$this->votings->contains($voting)) {
+            $this->votings[] = $voting;
+            $voting->setCommentId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVoting(Voting $voting): self
+    {
+        if ($this->votings->contains($voting)) {
+            $this->votings->removeElement($voting);
+            // set the owning side to null (unless already changed)
+            if ($voting->getCommentId() === $this) {
+                $voting->setCommentId(null);
+            }
+        }
 
         return $this;
     }

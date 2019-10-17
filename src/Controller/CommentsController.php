@@ -32,7 +32,7 @@ class CommentsController extends AbstractController
         $form->handleRequest($req);
         if ($form->isSubmitted() && $form->isValid()) {
 
-$article2= $articleRepo->find($article);
+            $article2= $articleRepo->find($article);
             $com = $form->getData();
 
             $com->setUser($security->getUser())

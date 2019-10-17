@@ -95,6 +95,7 @@
             <img src="https://api.adorable.io/avatars/50/{{ comment.user.username }}@adorable.io.png" alt="" width="50" height="50">
         </a>
         <div class="comment-body">
+
             {% if comment.user == app.user %}
                 <ul class="comment-actions">
                     <li class="edit"><a id="{{ comment.id }}" href="#" onclick="edit(event)" class="btn btn-primary btn-sm"><i class="fa fa-cog"></i></a></li>
@@ -113,10 +114,10 @@
 
 
 {% if app.user %}
-    {{ form_start(form) }}
-    {{ form_row(form.textComment) }}
-    {{ form_row(form.submit) }}
-    {{ form_end(form) }}
+    {{ form_start(formComment) }}
+    {{ form_row(formComment.textComment) }}
+    {{ form_row(formComment.submit) }}
+    {{ form_end(formComment) }}
 {% endif %}
 
 
