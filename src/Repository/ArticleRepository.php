@@ -55,7 +55,7 @@ class ArticleRepository extends ServiceEntityRepository
      *
      * @throws InvalidArgumentException
      */
-    public function findAllPagineEtTrie($page, $nbMaxParPage, $filter)
+    public function findAllPagineEtTrie($page, $nbMaxParPage, $filter, $author)
     {
         if (!is_numeric($page)) {
             throw new InvalidArgumentException(
@@ -73,14 +73,17 @@ class ArticleRepository extends ServiceEntityRepository
             );
         }
 
-        $qb = $this->createQueryBuilder('a')
-            ->where('CURRENT_DATE() <= a.created_at');
+        $qb = $this->createQueryBuilder('a');
 
         if ($filter != null) {
             foreach ($filter as $key => $value) {
                 if ($key == "title") {
                     $qb->where('a.title LIKE :title')
                         ->setParameter('title', '%' . $value . '%');
+                }
+                if($author != null){
+                    $qb->orWhere('a.author = :id')
+                    ->setParameter('id',$author);
                 }
             }
         }
