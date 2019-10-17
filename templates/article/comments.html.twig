@@ -85,7 +85,8 @@
             <img src="https://api.adorable.io/avatars/50/{{ comment.user.username }}@adorable.io.png" alt="" width="50" height="50">
         </a>
         <div class="comment-body">
-            {% if comment.user == app.user %}
+
+            {% if comment.user == app.user or app.user.roles[0] == "ROLE_ADMIN" %}
                 <ul class="comment-actions">
                     <li class="edit"><a href="" class="btn btn-primary btn-sm"><i class="fa fa-cog"></i></a></li>
                     <li class="delete"><a href="{{ path('delete.comment',{'comment' : comment.id}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a></li>
