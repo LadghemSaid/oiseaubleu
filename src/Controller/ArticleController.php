@@ -7,6 +7,7 @@ use App\Entity\Comment;
 use App\Form\CommentType;
 use App\Repository\ArticleRepository;
 use App\Repository\CommentRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,14 +16,16 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class ArticleController extends AbstractController
 {
     private $repository;
+    private $repository_user;
     /**
      * @var Request
      */
     private $request;
 
-    public function __construct(ArticleRepository $property_repo)
+    public function __construct(ArticleRepository $property_repo, UserRepository $users)
     {
         $this->repository = $property_repo;
+        $this->repository_user = $users;
         $this->request = Request::createFromGlobals();
     }
 
@@ -53,8 +56,21 @@ class ArticleController extends AbstractController
 
         $currentSearch = json_encode($filter, JSON_UNESCAPED_UNICODE); //On encode les filtres en JSON pour sauvegarder la recherche (pagination)
 
+        $search = $filter['title'];
 
-        $articles = $this->repository->findAllPagineEtTrie($page, $nbArticlesParPage, $filter); //On récupère les articles
+        $author = $this->repository_user->findByLogin($search);
+
+
+        if($author === null || sizeof($author)<1){
+            $author = null;
+        }else{
+            $author = $author[0]->getId();
+        }
+
+
+        $articles = $this->repository->findAllPagineEtTrie($page, $nbArticlesParPage, $filter, $author); //On récupère les articles
+
+
         $catedories = Article::CATEGORIE;
 
         $pagination = array(
