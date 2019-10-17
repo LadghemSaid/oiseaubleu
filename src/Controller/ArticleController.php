@@ -63,7 +63,6 @@ class ArticleController extends AbstractController
             'nomRoute' => 'article.index',
             'filter' => $currentSearch,
         );
-
         return $this->render('article/index.html.twig', [
             'current_menu' => 'articles',
             'articles' => $articles,

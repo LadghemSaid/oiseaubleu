@@ -74,7 +74,7 @@ class ArticleRepository extends ServiceEntityRepository
         }
 
         $qb = $this->createQueryBuilder('a')
-            ->where('CURRENT_DATE() >= a.created_at');
+            ->where('CURRENT_DATE() <= a.created_at');
 
         if ($filter != null) {
             foreach ($filter as $key => $value) {

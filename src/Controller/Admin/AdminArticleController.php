@@ -59,9 +59,13 @@ class AdminArticleController extends AbstractController
 
     /**
      * @Route("/admin/create" , name="admin.article.create")
+     * @param Request $request
+     * @param Article $article
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function create(Request $request,Article $article)
+    public function create(Request $request)
     {
+        $article = new Article();
         $form = $this->createForm(ArticleType::class, $article);
 
         if ($form->handleRequest($request) && $form->isSubmitted() && $form->isValid()) {
