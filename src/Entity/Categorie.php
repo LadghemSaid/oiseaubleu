@@ -29,18 +29,11 @@ class Categorie
     private $articleId;
 
     /**
-     * @var datetime $created
      *
      * @ORM\Column(type="datetime")
      */
-    private $created;
+    private $created_at;
 
-    /**
-     * @var datetime $updated
-     *
-     * @ORM\Column(type="datetime")
-     */
-    private $updated;
 
 
     public function __construct()
@@ -91,35 +84,20 @@ class Categorie
         return $this;
     }
 
-    /**
-     * @return datetime
-     */
-    public function getUpdated(): datetime
-    {
-        return $this->updated;
-    }
 
-    /**
-     * @param datetime $updated
-     */
-    public function setUpdated(datetime $updated): void
-    {
-        $this->updated = $updated;
-    }
 
     /**
      * @return datetime
      */
-    public function getCreated(): datetime
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->created;
+        return $this->created_at;
     }
 
-    /**
-     * @param datetime $created
-     */
-    public function setCreated(datetime $created): void
+    public function setCreatedAt(\DateTimeInterface $created_at): self
     {
-        $this->created = $created;
+        $this->created_at = $created_at;
+
+        return $this;
     }
 }
