@@ -11,21 +11,17 @@ class VotingController extends AbstractController
     /**
      * @Route("/like{article}", name="voting.like")
      */
-    public function likeArticle()
+    public function likeArticle(Article $article)
     {
-        return $this->render('voting/index.html.twig', [
-            'controller_name' => 'VotingController',
-        ]);
+
     }
 
     /**
-     * @Route("/dislike/{id}", name="voting.dislike")
+     * @Route("/dislike/{article}", name="voting.dislike")
      */
-    public function dislikeArticle()
+    public function dislikeArticle(Article $article)
     {
-        return $this->render('voting/index.html.twig', [
-            'controller_name' => 'VotingController',
-        ]);
+
     }
 
 }
