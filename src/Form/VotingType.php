@@ -2,27 +2,28 @@
 
 namespace App\Form;
 
-use App\Entity\Categorie;
+use App\Entity\Voting;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CategorieType extends AbstractType
+class VotingType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name' ,TextType::class,[
-                "label" => "Nom de la catégorie"
-            ])
+            ->add('createdAt')
+            ->add('likeArticle')
+            ->add('dislikeArticle')
+            ->add('userId')
+            ->add('articleId')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Categorie::class,
+            'data_class' => Voting::class,
         ]);
     }
 }

@@ -35,6 +35,37 @@ class AdminArticleController extends AbstractController
     }
 
     /**
+     * @Route("/admin/article/create" , name="admin.article.create")
+     * @param Security $security
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws \Exception
+     */
+    public function createArticle(Request $request,Security $security)
+    {
+        $article = new Article();
+        $form = $this->createForm(ArticleType::class, $article);
+
+        if ($form->handleRequest($request) && $form->isSubmitted() && $form->isValid()) {
+            $this->em->persist($article);
+            $article->setAuthor($security->getUser());
+            $this->em->flush();
+            $this->addFlash("success","Créer avec succés");
+            return $this->redirectToRoute('article.show', [
+                'id' => $article->getId(),
+                'slug' => $article->getSlug()
+            ], 301);
+        }
+
+
+        return $this->render('admin/article/create.html.twig', [
+            'article' => $article,
+            'form' => $form->createView()
+        ]);
+
+    }
+
+    /**
      * @Route("/admin/articles", name="admin.articles.index")
      */
     public function indexArticle()
@@ -84,36 +115,7 @@ class AdminArticleController extends AbstractController
 
     }
 
-    /**
-     * @Route("/admin/article/create" , name="admin.article.create")
-     * @param Security $security
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     * @throws \Exception
-     */
-    public function createArticle(Request $request,Security $security)
-    {
-        $article = new Article();
-        $form = $this->createForm(ArticleType::class, $article);
 
-        if ($form->handleRequest($request) && $form->isSubmitted() && $form->isValid()) {
-            $this->em->persist($article);
-            $article->setAuthor($security->getUser());
-            $this->em->flush();
-            $this->addFlash("success","Créer avec succés");
-            return $this->redirectToRoute('article.show', [
-                'id' => $article->getId(),
-                'slug' => $article->getSlug()
-            ], 301);
-        }
-
-
-        return $this->render('admin/article/create.html.twig', [
-            'article' => $article,
-            'form' => $form->createView()
-        ]);
-
-    }
 
 
 
