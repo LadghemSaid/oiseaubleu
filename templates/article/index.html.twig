@@ -122,6 +122,10 @@
     </style>
 {% endblock %}
 {% block body %}
+    {% import "@msalsas_voting/msalsas_voting_widget.html.twig" as msalsas_voting_widget %}
+    {{ msalsas_voting_widget.shakeItCSS() }}
+    {{ msalsas_voting_widget.shakeItJS() }}
+    {{ msalsas_voting_widget.shakeItModal() }}
     <div class="mt-md-5 mt-sm-2 mb-md-5 mb-sm-2 text-center">
         <h1>Vous recherchez un article ?</h1>
     </div>
@@ -147,13 +151,21 @@
                             <h6>Descriptions</h6>
                             <p>  {{ article.description|length > 100 ? article.description|slice(0, 100) ~ '...' : article.description }}</p>
                             <div class="row">
+
                                 <div class="col-md-6">
                                     <a class="btn btn-primary"
                                        href="{{ path('article.show',{slug:article.slug,id: article.id}) }}">Voir</a>
+
+
+
+
+
                                 </div>
+
+
                                 {% if is_granted('ROLE_ADMIN') %}
                                     {#Administrator#}
-                                    <div class="col-md-6">
+                                    <div class="col-md-2">
                                         <a href="{{ path('admin.article.edit',{id: article.id}) }}" class="btn btn-secondary btn-circle"><i class="fa fa-cog"></i></a>
                                         {# <span class="card-detail-badge surface"><strong>{{ article.surface }}</strong> m²</span><br/>
                                          <span class="card-detail-badge price"><strong>{{ article.formatedPrice }}</strong> €</span>#}
@@ -162,12 +174,19 @@
                                             <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}">
                                             <button class="btn btn-danger btn-circle" ><i class="fa fa-trash"></i></button>
                                         </form>
+
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        {{ msalsas_voting_widget.shakeIt(article.id) }}
                                     </div>
 
                                 {% elseif is_granted('ROLE_USER') %}
                                     {#User#}
                                 {% else %}
-                                    {#Anonymous#}
+                                    <div class="col-md-6">
+                                        {{ msalsas_voting_widget.shakeIt(article.id) }}
+                                    </div>
                                 {% endif %}
 
 

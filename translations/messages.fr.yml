@@ -1,0 +1,24 @@
+msalsas_voting:
+    votes: Likes
+    shake_it: J'aime !
+    shaken: Déja voté
+    clicks: "{0} %count% clicks|{1} %count% click|]1,Inf[ %count% clicks"
+    problem: Je n'aime pas
+    positive_votes: J'aime
+    anonymous_votes: Votes anonyme
+    negative_votes: Je n'aime pas
+    negative_reasons:
+        irrelevant: Non pertinent
+        old: Trop ancien
+        tiredness: Ennuyeux
+        sensationalist: Clickbait
+        spam: Spam
+        hate: Contenu haineux
+    errors:
+        anon_cannot_vote_negative: 'Anonymous user cannot vote negative.'
+        ref_does_not_exist: 'Reference %reference% does not exist.'
+        no_ip_defined_for_anon: 'No IP has been defined for anonymous user.'
+        already_voted: 'You have already voted.'
+        already_clicked: 'You have already clicked.'
+        too_much_anon_votes: 'Too much anonymous votes.'
+        invalid_reason: 'Invalid reason.'

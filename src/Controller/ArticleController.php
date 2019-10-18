@@ -4,12 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Entity\Comment;
-use App\Entity\Voting;
 use App\Form\CommentType;
-use App\Form\VotingType;
 use App\Repository\ArticleRepository;
 use App\Repository\CommentRepository;
 use App\Repository\UserRepository;
+use Msalsas\VotingBundle\Service\Voter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -42,8 +41,9 @@ class ArticleController extends AbstractController
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function index($page = 1, $filter = '{"":}')
+    public function index($page = 1, $filter = '{"":}',Voter $voter)
     {
+
         $req = $this->request;
         $nbArticlesParPage = 9; //Nombre d'articles à afficher sur chaque page
         $filter = json_decode($filter); //On défini le filtre comme un tableau ('nomFiltre'=>valeur)
@@ -84,6 +84,7 @@ class ArticleController extends AbstractController
         return $this->render('article/index.html.twig', [
             'current_menu' => 'articles',
             'articles' => $articles,
+            'votes' =>$voter,
             'pagination' => $pagination,
             'categories' => $catedories,
         ]);
@@ -126,7 +127,6 @@ class ArticleController extends AbstractController
             'article' => $article,
             'categories' => $catedories,
             'formComment' => $formComment->createView(),
-
             'comments' => $comments
 
         ]);
@@ -139,6 +139,6 @@ class ArticleController extends AbstractController
      */
     public function home()
     {
-        return $this->index();
+        return $this->redirectToRoute('article.index');
     }
 }

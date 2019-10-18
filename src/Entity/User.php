@@ -67,10 +67,7 @@ class User implements UserInterface
      */
     private $articles;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Voting", mappedBy="user", orphanRemoval=true)
-     */
-    private $votings;
+
 
 
 
@@ -206,36 +203,7 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|Voting[]
-     */
-    public function getVotings(): Collection
-    {
-        return $this->votings;
-    }
 
-    public function addVoting(Voting $voting): self
-    {
-        if (!$this->votings->contains($voting)) {
-            $this->votings[] = $voting;
-            $voting->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeVoting(Voting $voting): self
-    {
-        if ($this->votings->contains($voting)) {
-            $this->votings->removeElement($voting);
-            // set the owning side to null (unless already changed)
-            if ($voting->getUser() === $this) {
-                $voting->setUser(null);
-            }
-        }
-
-        return $this;
-    }
 
 
 }

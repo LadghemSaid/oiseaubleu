@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fc1ba47d7eb51773e9b83d7a272a86fa",
+    "content-hash": "a901e77012720a57f267ce00950bc2ad",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1640,6 +1640,69 @@
                 "psr-3"
             ],
             "time": "2019-09-06T13:49:17+00:00"
+        },
+        {
+            "name": "msalsas/voting-bundle",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/msalsas/MsalsasVotingBundle.git",
+                "reference": "0b0c208ccb261de755c5664ee76082812b3be35c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/msalsas/MsalsasVotingBundle/zipball/0b0c208ccb261de755c5664ee76082812b3be35c",
+                "reference": "0b0c208ccb261de755c5664ee76082812b3be35c",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/doctrine-bundle": "^1.6.10",
+                "doctrine/orm": "^2.5.11",
+                "php": "^7.1",
+                "symfony/framework-bundle": "^4.0",
+                "symfony/security-bundle": "^4.0",
+                "symfony/translation": "^4.0",
+                "symfony/twig-bundle": "^4.0",
+                "symfony/yaml": "^4.0"
+            },
+            "conflict": {
+                "symfony/symfony": "<4.0"
+            },
+            "require-dev": {
+                "dama/doctrine-test-bundle": "^5.0",
+                "symfony/phpunit-bridge": "^4.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Msalsas\\VotingBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Manolo Salsas",
+                    "email": "manolez@gmail.com"
+                }
+            ],
+            "description": "Symfony bundle for voting/rating",
+            "homepage": "https://github.com/msalsas/MsalsasVotingBundle",
+            "keywords": [
+                "Rating",
+                "voting"
+            ],
+            "time": "2018-07-25T17:14:13+00:00"
         },
         {
             "name": "ocramius/package-versions",

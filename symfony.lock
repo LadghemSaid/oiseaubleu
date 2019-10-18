@@ -138,6 +138,19 @@
     "monolog/monolog": {
         "version": "1.25.1"
     },
+    "msalsas/voting-bundle": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "c347ea89d380c403deadd722ca78008c30408dc6"
+        },
+        "files": [
+            "config/packages/msalsas_voting.yaml",
+            "config/routes/msalsas_voting.yaml"
+        ]
+    },
     "nikic/php-parser": {
         "version": "v4.2.4"
     },
