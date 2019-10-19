@@ -2,70 +2,66 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f5b76b1-6c63-4e17-a1e8-90b7ce1d350d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/.travis.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Controller/VoteController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/DependencyInjection/Configuration.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/DependencyInjection/MsalsasVotingExtension.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Entity/Click.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Entity/ClickRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Entity/ReferenceClicks.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Entity/ReferenceClicksRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Entity/ReferenceVotes.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Entity/ReferenceVotesRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Entity/Vote/AbstractVote.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Entity/VoteNegative.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Entity/VotePositive.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Entity/VoteRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/MsalsasVotingBundle.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/config/doctrine/Click.orm.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/config/doctrine/ReferenceClicks.orm.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/config/doctrine/ReferenceVotes.orm.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/config/doctrine/VoteNegative.orm.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/config/doctrine/VotePositive.orm.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/config/routing/msalsas_voting.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/config/services.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/doc/clicks_or_views.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/doc/configuration_reference.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/doc/index.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/doc/publish.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/doc/screenshot-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/public/css/msalsas_voting_styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/public/js/msalsas_voting_bottomBar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/public/js/msalsas_voting_shakeIt.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/translations/messages.en.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/translations/messages.es.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/views/msalsas_voting_widget.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Service/Clicker.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Service/Voter.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/DependencyInjection/MsalsasVotingExtensionTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Entity/ClickTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Entity/ReferenceClicksTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Entity/ReferenceVotesTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Entity/VoteNegativeTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Entity/VotePositiveTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Mock/AnonymousUserMock.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Mock/ClickMock.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Mock/UserMock.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Mock/VoteNegativeMock.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Mock/VotePositiveMock.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Service/AbstractServiceTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Service/ClickerTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Service/VoterTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/bootstrap.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/composer.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/phpunit.xml.dist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20191019181042.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20191019182157.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Controller/VoteController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/DependencyInjection/Configuration.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/DependencyInjection/MsalsasVotingExtension.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/Click.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/ClickRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/ReferenceClicks.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/ReferenceClicksRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/ReferenceVotes.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/ReferenceVotesRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/Vote/AbstractVote.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/VoteNegative.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/VotePositive.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/VoteRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/MsalsasVotingBundle.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/doctrine/Click.orm.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/doctrine/ReferenceClicks.orm.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/doctrine/ReferenceVotes.orm.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/doctrine/VoteNegative.orm.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/doctrine/VotePositive.orm.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/routing/msalsas_voting.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/services.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/doc/clicks_or_views.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/doc/configuration_reference.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/doc/index.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/doc/publish.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/doc/screenshot-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/public/css/msalsas_voting_styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/public/js/msalsas_voting_bottomBar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/public/js/msalsas_voting_shakeIt.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/translations/messages.en.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/translations/messages.es.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/views/msalsas_voting_widget.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Service/Clicker.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Service/Voter.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Tests/DependencyInjection/MsalsasVotingExtensionTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Tests/Entity/ClickTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Tests/Entity/ReferenceClicksTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Tests/Entity/ReferenceVotesTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Tests/Entity/VoteNegativeTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Tests/Entity/VotePositiveTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Tests/Mock/AnonymousUserMock.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Tests/Mock/ClickMock.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Tests/Mock/UserMock.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Tests/Mock/VoteNegativeMock.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Tests/Mock/VotePositiveMock.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Tests/Service/AbstractServiceTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Tests/Service/ClickerTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Tests/Service/VoterTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Tests/bootstrap.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/msalsas/voting-bundle/phpunit.xml.dist" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes/msalsas_voting.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes/msalsas_voting.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ArticleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ArticleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20191017222626.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/article/comments.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/comments.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/article/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/comments/index.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/voting/index.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -135,11 +131,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+            <state relative-caret-position="440">
+              <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="23" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/composer.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="10" column="42" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -237,6 +242,7 @@
         <option value="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/Vote/AbstractVote.php" />
         <option value="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/ReferenceVotes.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/composer.json" />
       </list>
     </option>
   </component>
@@ -408,6 +414,18 @@
               <item name="SiteOiseauBleu" type="b2602c69:ProjectViewProjectNode" />
               <item name="SiteOiseauBleu" type="462c0819:PsiDirectoryNode" />
               <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="doctrine" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SiteOiseauBleu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SiteOiseauBleu" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="knplabs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SiteOiseauBleu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SiteOiseauBleu" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
               <item name="msalsas" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -491,12 +509,12 @@
       <workItem from="1571386131750" duration="63000" />
       <workItem from="1571386199671" duration="6275000" />
       <workItem from="1571493703645" duration="984000" />
-      <workItem from="1571494714249" duration="10318000" />
+      <workItem from="1571494714249" duration="10564000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24309000" />
+    <option name="totallyTimeSpent" value="24555000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -511,7 +529,7 @@
     <frame x="-4" y="-4" width="2568" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17304625" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17304625" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -524,7 +542,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49960127" visible="true" weight="0.3296617" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49960127" visible="true" weight="0.3296617" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5003987" side_tool="true" weight="0.3296617" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -570,7 +588,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/translations/messages.fr.yml" />
     <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/translations/messages.en.yml" />
     <entry file="file://$PROJECT_DIR$/translations/forms.fr.yaml">
       <provider selected="true" editor-type-id="text-editor">
@@ -871,8 +888,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        <state relative-caret-position="440">
+          <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="23" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="42" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
         </state>
       </provider>
     </entry>
