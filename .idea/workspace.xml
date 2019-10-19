@@ -2,27 +2,70 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f5b76b1-6c63-4e17-a1e8-90b7ce1d350d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/translations/messages.fr.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Controller/VoteController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/DependencyInjection/Configuration.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/DependencyInjection/MsalsasVotingExtension.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Entity/Click.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Entity/ClickRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Entity/ReferenceClicks.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Entity/ReferenceClicksRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Entity/ReferenceVotes.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Entity/ReferenceVotesRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Entity/Vote/AbstractVote.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Entity/VoteNegative.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Entity/VotePositive.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Entity/VoteRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/MsalsasVotingBundle.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/config/doctrine/Click.orm.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/config/doctrine/ReferenceClicks.orm.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/config/doctrine/ReferenceVotes.orm.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/config/doctrine/VoteNegative.orm.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/config/doctrine/VotePositive.orm.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/config/routing/msalsas_voting.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/config/services.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/doc/clicks_or_views.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/doc/configuration_reference.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/doc/index.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/doc/publish.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/doc/screenshot-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/public/css/msalsas_voting_styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/public/js/msalsas_voting_bottomBar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/public/js/msalsas_voting_shakeIt.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/translations/messages.en.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/translations/messages.es.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/views/msalsas_voting_widget.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Service/Clicker.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Service/Voter.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/DependencyInjection/MsalsasVotingExtensionTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Entity/ClickTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Entity/ReferenceClicksTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Entity/ReferenceVotesTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Entity/VoteNegativeTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Entity/VotePositiveTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Mock/AnonymousUserMock.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Mock/ClickMock.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Mock/UserMock.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Mock/VoteNegativeMock.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Mock/VotePositiveMock.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Service/AbstractServiceTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Service/ClickerTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Service/VoterTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/bootstrap.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/phpunit.xml.dist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/translation.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/translation.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes/msalsas_voting.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes/msalsas_voting.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ArticleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ArticleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CommentsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CommentsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/VotingController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Comment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Voting.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/VotingType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/LikeRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/VotingRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20191017222626.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/article/comments.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/comments.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/article/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/article/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/comments/index.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/voting/index.html.twig" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,17 +75,44 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Controller/VoteController.php">
+        <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Service/Voter.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
+            <state relative-caret-position="487">
+              <caret line="561" column="38" selection-start-line="561" selection-start-column="38" selection-end-line="561" selection-end-column="38" />
+              <folding>
+                <element signature="e#268#308#0#PHP" expanded="true" />
+                <element signature="e#826#872#0#PHP" />
+                <element signature="e#897#942#0#PHP" />
+                <element signature="e#970#1001#0#PHP" />
+                <element signature="e#1031#1074#0#PHP" />
+                <element signature="e#1107#1138#0#PHP" />
+                <element signature="e#1179#1210#0#PHP" />
+                <element signature="e#1247#1276#0#PHP" />
+                <element signature="e#1314#1853#0#PHP" />
+                <element signature="e#8229#9155#0#PHP" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/doctrine/ReferenceVotes.orm.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="13" column="112" selection-start-line="12" selection-start-column="7" selection-end-line="13" selection-end-column="112" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/doctrine/VotePositive.orm.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="320">
+              <caret line="16" column="112" selection-start-line="16" selection-start-column="112" selection-end-line="16" selection-end-column="112" />
             </state>
           </provider>
         </entry>
@@ -50,86 +120,53 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/ReferenceVotes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1026">
-              <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+            <state relative-caret-position="525">
+              <caret line="102" column="5" selection-start-line="102" selection-start-column="5" selection-end-line="102" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Entity/Article.php">
+        <entry file="file://$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Mock/UserMock.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-906">
-              <caret line="129" column="5" lean-forward="true" selection-start-line="129" selection-start-column="5" selection-end-line="129" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/ArticleController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1104">
-              <caret line="141" column="52" selection-start-line="141" selection-start-column="52" selection-end-line="141" selection-end-column="52" />
-              <folding>
-                <element signature="e#34#57#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/article/index.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="152" column="45" lean-forward="true" selection-start-line="152" selection-start-column="45" selection-end-line="152" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/article/show.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="88" column="46" lean-forward="true" selection-start-line="85" selection-start-column="2" selection-end-line="88" selection-end-column="46" />
+            <state relative-caret-position="340">
+              <caret line="24" column="29" lean-forward="true" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/article/comments.html.twig">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="870">
-              <caret line="91" column="46" selection-start-line="91" selection-start-column="46" selection-end-line="91" selection-end-column="46" />
+            <state relative-caret-position="160">
+              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/CommentsController.php">
+        <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/Vote/AbstractVote.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" column="39" lean-forward="true" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="39" />
-              <folding>
-                <element signature="e#34#57#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="265">
+              <caret line="89" column="40" selection-start-line="89" selection-start-column="40" selection-end-line="89" selection-end-column="40" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Service/Clicker.php">
+        <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/doctrine/VoteNegative.orm.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-651">
-              <caret line="24" column="6" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
+            <state relative-caret-position="320">
+              <caret line="16" column="112" selection-start-line="16" selection-start-column="112" selection-end-line="16" selection-end-column="112" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Service/Voter.php">
+        <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/doctrine/ReferenceClicks.orm.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="750">
-              <caret line="174" column="31" selection-start-line="174" selection-start-column="20" selection-end-line="174" selection-end-column="31" />
+            <state relative-caret-position="160">
+              <caret line="8" column="60" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="60" />
             </state>
           </provider>
         </entry>
@@ -141,7 +178,24 @@
       <find>vot</find>
       <find>msalsas_voting</find>
       <find>msalsas-voting-a-positive</find>
+      <find>$referenceId</find>
+      <find>'reference'</find>
+      <find>ReferenceVotes</find>
+      <find>$reference</find>
+      <find>getReference</find>
+      <find>preference</find>
+      <find>setReference</find>
+      <find>'referenceArticle'</find>
+      <find>votes</find>
+      <find>0</find>
+      <find>setReferenceC</find>
     </findStrings>
+    <replaceStrings>
+      <replace>'referenceArticle'</replace>
+      <replace>setReferenceArticle</replace>
+      <replace>setReferenceComment</replace>
+      <replace>'referenceComment'</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -156,11 +210,33 @@
         <option value="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/translations/messages.fr.yml" />
         <option value="$PROJECT_DIR$/translations/messages.fr.yml" />
         <option value="$PROJECT_DIR$/vendor/msalsas/voting-bundle/DependencyInjection/Configuration.php" />
-        <option value="$PROJECT_DIR$/src/Controller/ArticleController.php" />
         <option value="$PROJECT_DIR$/templates/article/index.html.twig" />
-        <option value="$PROJECT_DIR$/templates/article/show.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/CommentsController.php" />
+        <option value="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Service/VoterArticle.php" />
+        <option value="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Service/Clicker.php" />
+        <option value="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/Click.php" />
+        <option value="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/ReferenceClicks.php" />
+        <option value="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Service/ClickerComment.php" />
+        <option value="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/doctrine/Click.orm.xml" />
+        <option value="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/doctrine/ReferenceClicks.orm.xml" />
+        <option value="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Controller/VoteControllerComment.php" />
+        <option value="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Service/VoterComment.php" />
+        <option value="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/services.xml" />
+        <option value="$PROJECT_DIR$/src/Controller/ArticleController.php" />
+        <option value="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/routing/msalsas_voting.xml" />
+        <option value="$PROJECT_DIR$/config/routes/msalsas_voting.yaml" />
+        <option value="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/views/msalsas_voting_widget.html.twig" />
+        <option value="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Controller/VoteController.php" />
         <option value="$PROJECT_DIR$/templates/article/comments.html.twig" />
+        <option value="$PROJECT_DIR$/templates/article/show.html.twig" />
+        <option value="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/public/js/msalsas_voting_shakeIt.js" />
+        <option value="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Service/Voter.php" />
+        <option value="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/doctrine/ReferenceVotes.orm.xml" />
+        <option value="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/doctrine/VotePositive.orm.xml" />
+        <option value="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/doctrine/VoteNegative.orm.xml" />
+        <option value="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/Vote/AbstractVote.php" />
+        <option value="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/ReferenceVotes.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -316,205 +392,36 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="oiseaubleu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oiseaubleu" type="462c0819:PsiDirectoryNode" />
+              <item name="SiteOiseauBleu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SiteOiseauBleu" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="oiseaubleu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oiseaubleu" type="462c0819:PsiDirectoryNode" />
-              <item name="bin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oiseaubleu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oiseaubleu" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oiseaubleu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oiseaubleu" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-              <item name="packages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oiseaubleu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oiseaubleu" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oiseaubleu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oiseaubleu" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oiseaubleu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oiseaubleu" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oiseaubleu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oiseaubleu" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
-              <item name="Admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oiseaubleu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oiseaubleu" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Entity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oiseaubleu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oiseaubleu" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Form" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oiseaubleu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oiseaubleu" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Repository" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oiseaubleu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oiseaubleu" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oiseaubleu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oiseaubleu" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="article" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oiseaubleu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oiseaubleu" type="462c0819:PsiDirectoryNode" />
-              <item name="translations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oiseaubleu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oiseaubleu" type="462c0819:PsiDirectoryNode" />
+              <item name="SiteOiseauBleu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SiteOiseauBleu" type="462c0819:PsiDirectoryNode" />
               <item name="vendor" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="oiseaubleu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oiseaubleu" type="462c0819:PsiDirectoryNode" />
+              <item name="SiteOiseauBleu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SiteOiseauBleu" type="462c0819:PsiDirectoryNode" />
               <item name="vendor" type="462c0819:PsiDirectoryNode" />
               <item name="msalsas" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="oiseaubleu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oiseaubleu" type="462c0819:PsiDirectoryNode" />
+              <item name="SiteOiseauBleu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SiteOiseauBleu" type="462c0819:PsiDirectoryNode" />
               <item name="vendor" type="462c0819:PsiDirectoryNode" />
               <item name="msalsas" type="462c0819:PsiDirectoryNode" />
               <item name="voting-bundle" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oiseaubleu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oiseaubleu" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="msalsas" type="462c0819:PsiDirectoryNode" />
-              <item name="voting-bundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oiseaubleu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oiseaubleu" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="msalsas" type="462c0819:PsiDirectoryNode" />
-              <item name="voting-bundle" type="462c0819:PsiDirectoryNode" />
-              <item name="DependencyInjection" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oiseaubleu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oiseaubleu" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="msalsas" type="462c0819:PsiDirectoryNode" />
-              <item name="voting-bundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Entity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oiseaubleu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oiseaubleu" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="msalsas" type="462c0819:PsiDirectoryNode" />
-              <item name="voting-bundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oiseaubleu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oiseaubleu" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="msalsas" type="462c0819:PsiDirectoryNode" />
-              <item name="voting-bundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oiseaubleu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oiseaubleu" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="msalsas" type="462c0819:PsiDirectoryNode" />
-              <item name="voting-bundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-              <item name="doctrine" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oiseaubleu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oiseaubleu" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="msalsas" type="462c0819:PsiDirectoryNode" />
-              <item name="voting-bundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
-              <item name="doc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oiseaubleu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oiseaubleu" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="msalsas" type="462c0819:PsiDirectoryNode" />
-              <item name="voting-bundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oiseaubleu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oiseaubleu" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="msalsas" type="462c0819:PsiDirectoryNode" />
-              <item name="voting-bundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
-              <item name="translations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oiseaubleu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oiseaubleu" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="msalsas" type="462c0819:PsiDirectoryNode" />
-              <item name="voting-bundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oiseaubleu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oiseaubleu" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="msalsas" type="462c0819:PsiDirectoryNode" />
-              <item name="voting-bundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Service" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -529,15 +436,16 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/translations" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\wamp64\www\Symfony\SiteOiseauBleu\src\Bundles" />
+      <recent name="E:\wamp64\www\Symfony\SiteOiseauBleu\vendor\msalsas\voting-bundle\Controller" />
+      <recent name="E:\wamp64\www\Symfony\SiteOiseauBleu\vendor\msalsas\voting-bundle\Service" />
       <recent name="$PROJECT_DIR$/translations" />
       <recent name="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/translations" />
-      <recent name="C:\wamp\www\LPCreaweb\oiseaubleu" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/templates/article" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\wamp64\www\Symfony\SiteAgence\templates\admin\property" />
@@ -582,17 +490,28 @@
       <workItem from="1571347185324" duration="5478000" />
       <workItem from="1571386131750" duration="63000" />
       <workItem from="1571386199671" duration="6275000" />
+      <workItem from="1571493703645" duration="984000" />
+      <workItem from="1571494714249" duration="10318000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6338000" />
+    <option name="totallyTimeSpent" value="24309000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-3" y="-1" width="2566" height="1419" extended-state="6" />
+    <frame x="-4" y="-4" width="2568" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24980111" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17304625" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -601,16 +520,17 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3296617" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32972136" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49960127" visible="true" weight="0.3296617" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5003987" side_tool="true" weight="0.3296617" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Google Cloud Storage" order="4" show_stripe_button="false" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -650,129 +570,8 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Controller/VotingController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Repository/LikeRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/LoginController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes/annotations.yaml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/packages/msalsas_voting.yaml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/bundles.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.yaml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/bootstrap.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/packages/routing.yaml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/packages/security.yaml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/services.yaml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Comment.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-          <folding>
-            <element signature="e#30#78#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="579">
-          <caret line="171" column="21" lean-forward="true" selection-start-line="171" selection-start-column="21" selection-end-line="171" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/doc/clicks_or_views.rst">
-      <provider selected="true" editor-type-id="restructured-text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/doc/index.rst">
-      <provider selected="true" editor-type-id="restructured-text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes/msalsas_voting.yaml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/public/js/msalsas_voting_shakeIt.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/packages/translation.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/translations/messages.es.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="41" lean-forward="true" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/translations/messages.fr.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/views/msalsas_voting_widget.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="26" lean-forward="true" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/translations/messages.en.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="33" lean-forward="true" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/translations/messages.fr.yml" />
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/translations/messages.en.yml" />
     <entry file="file://$PROJECT_DIR$/translations/forms.fr.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -787,96 +586,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/DependencyInjection/Configuration.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="39" column="72" lean-forward="true" selection-start-line="39" selection-start-column="72" selection-end-line="39" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/Click.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/doctrine/Click.orm.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/services.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/.travis.yml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/MsalsasVotingBundle.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/DependencyInjection/MsalsasVotingExtension.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Service/Voter.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="174" column="31" selection-start-line="174" selection-start-column="20" selection-end-line="174" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Service/Clicker.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-651">
-          <caret line="24" column="6" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/ReferenceVotes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1026">
-          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Controller/VoteController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/ArticleController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1104">
-          <caret line="141" column="52" selection-start-line="141" selection-start-column="52" selection-end-line="141" selection-end-column="52" />
-          <folding>
-            <element signature="e#34#57#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/article/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="152" column="45" lean-forward="true" selection-start-line="152" selection-start-column="45" selection-end-line="152" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/.travis.yml" />
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/README.md" />
     <entry file="file://$PROJECT_DIR$/src/Controller/CommentsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
@@ -889,22 +600,279 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/Article.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-906">
-          <caret line="129" column="5" lean-forward="true" selection-start-line="129" selection-start-column="5" selection-end-line="129" selection-end-column="5" />
+        <state relative-caret-position="80">
+          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+          <folding>
+            <element signature="e#30#56#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/article/show.html.twig">
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Service/Clicker.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="88" column="46" lean-forward="true" selection-start-line="85" selection-start-column="2" selection-end-line="88" selection-end-column="46" />
+        <state relative-caret-position="359">
+          <caret line="41" column="7" lean-forward="true" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/Click.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="97" column="5" lean-forward="true" selection-start-line="97" selection-start-column="5" selection-end-line="97" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/ReferenceClicksRepository.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/VoteNegative.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/VoteRepository.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Service/ClickerComment.php" />
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/MsalsasVotingBundle.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Controller/VoteControllerComment.php" />
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Service/VoterComment.php" />
+    <entry file="file://$PROJECT_DIR$/src/Controller/ArticleController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="80" column="42" lean-forward="true" selection-start-line="80" selection-start-column="42" selection-end-line="80" selection-end-column="42" />
+          <folding>
+            <element signature="e#34#57#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/Column.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="35" column="11" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/ClickRepository.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/DependencyInjection/Configuration.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/ReferenceVotesRepository.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/DependencyInjection/MsalsasVotingExtension.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="37" column="29" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/comments/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/VotePositive.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/services.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="45" column="118" lean-forward="true" selection-start-line="45" selection-start-column="118" selection-end-line="45" selection-end-column="118" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/routing/msalsas_voting.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="43" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/services.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/bundles.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/bootstrap.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/views/msalsas_voting_widget.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="37" column="31" lean-forward="true" selection-start-line="37" selection-start-column="31" selection-end-line="37" selection-end-column="31" />
+          <folding>
+            <element signature="e#1500#1521#0#Twig" expanded="true" />
+            <element signature="e#1626#1639#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Controller/VoteController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="78" column="50" lean-forward="true" selection-start-line="78" selection-start-column="50" selection-end-line="78" selection-end-column="50" />
+          <folding>
+            <element signature="e#270#309#0#PHP" expanded="true" />
+            <element signature="e#1156#1850#0#PHP" />
+            <element signature="e#2350#3044#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/article/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="180" column="54" selection-start-line="180" selection-start-column="54" selection-end-line="180" selection-end-column="54" />
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/article/comments.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="91" column="46" selection-start-line="91" selection-start-column="46" selection-end-line="91" selection-end-column="46" />
+        <state>
+          <caret selection-end-line="140" />
+          <folding>
+            <element signature="e#2675#2689#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/article/show.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="321" column="16" selection-start-line="321" selection-start-column="16" selection-end-line="321" selection-end-column="16" />
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="true" />
+            <element signature="e#1729#1776#0#Twig" expanded="true" />
+            <element signature="e#8565#8579#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/public/js/msalsas_voting_shakeIt.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="34" column="53" selection-start-line="34" selection-start-column="53" selection-end-line="34" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/ReferenceClicks.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/packages/msalsas_voting.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes/msalsas_voting.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/doctrine/Click.orm.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/doctrine/ReferenceClicks.orm.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="60" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/doctrine/VoteNegative.orm.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="16" column="112" selection-start-line="16" selection-start-column="112" selection-end-line="16" selection-end-column="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/doctrine/VotePositive.orm.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="16" column="112" selection-start-line="16" selection-start-column="112" selection-end-line="16" selection-end-column="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/doctrine/ReferenceVotes.orm.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="13" column="112" selection-start-line="12" selection-start-column="7" selection-end-line="13" selection-end-column="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/Vote/AbstractVote.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="89" column="40" selection-start-line="89" selection-start-column="40" selection-end-line="89" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Service/Voter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="487">
+          <caret line="561" column="38" selection-start-line="561" selection-start-column="38" selection-end-line="561" selection-end-column="38" />
+          <folding>
+            <element signature="e#268#308#0#PHP" expanded="true" />
+            <element signature="e#826#872#0#PHP" />
+            <element signature="e#897#942#0#PHP" />
+            <element signature="e#970#1001#0#PHP" />
+            <element signature="e#1031#1074#0#PHP" />
+            <element signature="e#1107#1138#0#PHP" />
+            <element signature="e#1179#1210#0#PHP" />
+            <element signature="e#1247#1276#0#PHP" />
+            <element signature="e#1314#1853#0#PHP" />
+            <element signature="e#8229#9155#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/ReferenceVotes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="102" column="5" selection-start-line="102" selection-start-column="5" selection-end-line="102" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Mock/UserMock.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="24" column="29" lean-forward="true" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
         </state>
       </provider>
     </entry>

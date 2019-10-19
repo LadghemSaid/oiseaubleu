@@ -6,3 +6,11 @@ negative_vote:
     path: /vote-negative/{_locale}/{id}
     controller: Msalsas\VotingBundle\Controller\VoteController:voteNegative
     methods: POST
+positive_vote_comment:
+    path: /vote-positive-comment/{_locale}/{id}
+    controller: Msalsas\VotingBundle\Controller\VoteController:votePositiveComment
+    methods: POST
+negative_vote_comment:
+    path: /vote-negative-comment/{_locale}/{id}
+    controller: Msalsas\VotingBundle\Controller\VoteController:voteNegativeComment
+    methods: POST

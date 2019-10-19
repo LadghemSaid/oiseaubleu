@@ -80,6 +80,95 @@
 
         }
 
+
+
+         .comment {
+             overflow: hidden;
+             padding: 0 0 1em;
+             border-bottom: 1px solid #ddd;
+             margin: 0 0 1em;
+             *zoom: 1;
+         }
+
+        .comment-img {
+            float: left;
+            margin-right: 33px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .comment-img img {
+            display: block;
+        }
+
+        .comment-body {
+            overflow: hidden;
+        }
+
+        .comment .text {
+            padding: 10px;
+            border: 1px solid #e5e5e5;
+            border-radius: 5px;
+            background: #fff;
+        }
+
+        .comment .text p:last-child {
+            margin: 0;
+        }
+
+        .comment .attribution {
+            margin: 0.5em 0 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Decoration */
+
+        .comments,
+        .comment {
+            position: relative;
+        }
+
+        .comment:hover {
+            border-color: orange;
+        }
+        .comment-actions{
+            display:flex;
+            position:absolute;
+            top:0;
+            right:0;
+
+        }
+        .comment-actions li{
+            list-style:none;
+        }
+        .comment .text:before {
+            top: 18px;
+            left: 78px;
+            width: 9px;
+            height: 9px;
+            border-width: 0 0 1px 1px;
+            border-style: solid;
+            border-color: #e5e5e5;
+            background: #fff;
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+        }
+        .edit_input{
+
+            border-top: 0;
+            border-right: 0;
+            border-left: 0;
+            width: 100%;
+        }
+        .edit_input:focus{
+            border-bottom-color: orange;
+        }
+
+
+
     </style>
 {% endblock %}
 {% block body %}
@@ -172,6 +261,62 @@
         </div>
     </div>
 
-    {% include '/article/comments.html.twig' %}
+
+
+    <section class="comments">
+        {% for comment in comments  %}
+
+
+            <article class="comment">
+                <a class="comment-img" href="#non">
+                    <img src="https://api.adorable.io/avatars/50/{{ comment.user.username }}@adorable.io.png" alt="" width="50" height="50">
+                </a>
+                <div class="comment-body">
+                    {% set isComment = true %}
+                    {{ msalsas_voting_widget.shakeIt(comment.id,isComment ) }}
+                    {% if comment.user == app.user %}
+                        <ul class="comment-actions">
+                            <li class="edit"><a id="{{ comment.id }}" href="#" onclick="edit(event)" class="btn btn-primary btn-sm"><i class="fa fa-cog"></i></a></li>
+                            <li class="delete"><a  href="{{ path('delete.comment',{'comment' : comment.id}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a></li>
+                        </ul>
+                    {% endif %}
+                    <div class="text">
+                        <p>{{ comment.textComment}}</p>
+                    </div>
+                    <p class="attribution">de <a href="#non">{{ comment.user.username }}</a>, {{ comment.createdAt| ago }}</p>
+                </div>
+
+            </article>
+        {% endfor %}
+    </section>
+
+
+    {% if app.user %}
+        {{ form_start(formComment) }}
+        {{ form_row(formComment.textComment) }}
+        {{ form_row(formComment.submit) }}
+        {{ form_end(formComment) }}
+    {% endif %}
+
+
+
+
 
 {% endblock %}
+
+
+  {% block javascripts %}
+      <script>
+          function edit(e){
+
+              e.preventDefault();
+              var btn = e.currentTarget;
+
+              //console.log(btn.attributes[0].value);
+
+              btn.offsetParent.nextSibling.nextSibling.innerHTML = "<form action='/comment/edit/"+ btn.attributes[0].value +"' method='post'><input class='edit_input' type='text' value='" + e.target.offsetParent.nextSibling.nextSibling.innerText + "' /></form>";
+
+              btn.style.display="none";
+          }
+      </script>
+  {% endblock %}

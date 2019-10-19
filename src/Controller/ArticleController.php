@@ -84,7 +84,6 @@ class ArticleController extends AbstractController
         return $this->render('article/index.html.twig', [
             'current_menu' => 'articles',
             'articles' => $articles,
-            'votes' =>$voter,
             'pagination' => $pagination,
             'categories' => $catedories,
         ]);
