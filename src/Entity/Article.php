@@ -18,11 +18,7 @@ class Article
         0 => 'Published',
         1 => 'Not published'
     ];
-    const CATEGORIE= [
-        0 => 'Sport',
-        1 => 'Culture',
-        2 => 'Cinema',
-    ];
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -62,15 +58,7 @@ class Article
      */
     private $image;
 
-    /**
-     * @ORM\Column(type="integer")
-     * @Assert\Type(
-     *     type="integer",
-     *     message="The value {{ value }} is not a valid {{ type }}."
-     * )
-     *
-     */
-    private $categorie;
+
 
     /**
      * @ORM\Column(type="integer" , nullable=true)
@@ -107,15 +95,18 @@ class Article
      */
     private $comments;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Categorie", mappedBy="articleId")
-     */
-    private $categories;
+
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="articles")
      */
     private $author;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Categorie", inversedBy="articles")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $categorie;
 
 
 
@@ -125,7 +116,6 @@ class Article
     {
         $this->created_at = new \DateTime();
         $this->comments = new ArrayCollection();
-        $this->categories = new ArrayCollection();
 
     }
 
@@ -198,17 +188,6 @@ class Article
         return $this;
     }
 
-    public function getCategorie(): ?int
-    {
-        return $this->categorie;
-    }
-
-    public function setCategorie(int $categorie): self
-    {
-        $this->categorie = $categorie;
-
-        return $this;
-    }
 
     public function getSlug():?string{
        return (new Slugify())
@@ -271,33 +250,6 @@ class Article
         return $this;
     }
 
-    /**
-     * @return Collection|Categorie[]
-     */
-    public function getCategories(): Collection
-    {
-        return $this->categories;
-    }
-
-    public function addCategory(Categorie $category): self
-    {
-        if (!$this->categories->contains($category)) {
-            $this->categories[] = $category;
-            $category->addArticleId($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCategory(Categorie $category): self
-    {
-        if ($this->categories->contains($category)) {
-            $this->categories->removeElement($category);
-            $category->removeArticleId($this);
-        }
-
-        return $this;
-    }
 
     public function getAuthor(): ?User
     {
@@ -311,6 +263,17 @@ class Article
         return $this;
     }
 
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): self
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
 
 
 

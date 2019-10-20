@@ -23,10 +23,6 @@ class Categorie
      */
     private $name;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Article", inversedBy="categories")
-     */
-    private $articleId;
 
     /**
      *
@@ -34,11 +30,17 @@ class Categorie
      */
     private $created_at;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="categorie")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $articles;
+
 
 
     public function __construct()
     {
-        $this->articleId = new ArrayCollection();
+        $this->articles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -58,31 +60,6 @@ class Categorie
         return $this;
     }
 
-    /**
-     * @return Collection|Article[]
-     */
-    public function getArticleId(): Collection
-    {
-        return $this->articleId;
-    }
-
-    public function addArticleId(Article $articleId): self
-    {
-        if (!$this->articleId->contains($articleId)) {
-            $this->articleId[] = $articleId;
-        }
-
-        return $this;
-    }
-
-    public function removeArticleId(Article $articleId): self
-    {
-        if ($this->articleId->contains($articleId)) {
-            $this->articleId->removeElement($articleId);
-        }
-
-        return $this;
-    }
 
 
 
@@ -97,6 +74,37 @@ class Categorie
     public function setCreatedAt(\DateTimeInterface $created_at): self
     {
         $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Article[]
+     */
+    public function getArticles(): Collection
+    {
+        return $this->articles;
+    }
+
+    public function addArticle(Article $article): self
+    {
+        if (!$this->articles->contains($article)) {
+            $this->articles[] = $article;
+            $article->setCategorie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArticle(Article $article): self
+    {
+        if ($this->articles->contains($article)) {
+            $this->articles->removeElement($article);
+            // set the owning side to null (unless already changed)
+            if ($article->getCategorie() === $this) {
+                $article->setCategorie(null);
+            }
+        }
 
         return $this;
     }

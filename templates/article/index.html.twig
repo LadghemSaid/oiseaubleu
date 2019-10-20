@@ -25,8 +25,8 @@
         }
 
         .card-img img {
-            width: 100%;
-            height: auto;
+            width: 400px;
+            height: 250px;
             display: block;
         }
 
@@ -133,16 +133,17 @@
     <div class="container">
         <div class="row">
 
-{% dump(articles) %}
+
             {% for article in articles %}
 
                 <div class="col-md-4 mb-md-5 md-sm-1">
                     <div class="card-content">
+
                         <div class="card-img">
 
                             <span class="card-notify-year">{{ article.createdAt| ago }}</span>
-                            <img class="img-fluid" src={{ article.image }} alt="AlternateText"/>
-                            <span class="card-detail-badge city">{{ categories[article.categorie] }}</span>
+                            <img class="img-fluid lazyload card--small" src="{{ asset("img/lowres.png") }}" data-src={{ article.image }} alt="AlternateText" width="400px" height="250px"/>
+                            <span class="card-detail-badge city">{{ article.categorie.name }}</span>
                         </div>
                         <div class="card-desc">
                             <span><h4>{{ article.title }}</h4></span>

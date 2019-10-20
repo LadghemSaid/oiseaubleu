@@ -73,7 +73,7 @@ class ArticleController extends AbstractController
         $articles = $this->repository->findAllPagineEtTrie($page, $nbArticlesParPage, $filter, $author); //On récupère les articles
 
 
-        $catedories = Article::CATEGORIE;
+        //$catedories = Article::CATEGORIE;
 
         $pagination = array(
             'page' => $page,
@@ -85,7 +85,7 @@ class ArticleController extends AbstractController
             'current_menu' => 'articles',
             'articles' => $articles,
             'pagination' => $pagination,
-            'categories' => $catedories,
+          //  'categories' => $catedories,
         ]);
     }
 
@@ -119,12 +119,12 @@ class ArticleController extends AbstractController
         $article = $this->repository->find($article);
         $comments = $article->getComments();
         //dd($comments);
-        $catedories = Article::CATEGORIE;
+        //$catedories = Article::CATEGORIE;
 
         return $this->render('article/show.html.twig', [
             'current_menu' => 'articles',
             'article' => $article,
-            'categories' => $catedories,
+            //'categories' => $catedories,
             'formComment' => $formComment->createView(),
             'comments' => $comments
 

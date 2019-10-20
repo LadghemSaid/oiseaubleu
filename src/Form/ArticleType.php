@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Article;
+use App\Entity\Categorie;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -26,8 +28,16 @@ class ArticleType extends AbstractType
             ->add('image', TextType::class,  [
                 "label" => "Image mise en avant"
             ])
-            ->add('categorie', ChoiceType::class, [
-                'choices' => $this->GetChoices('CATEGORIE')
+            ->add('categorie', EntityType::class, [
+                // looks for choices from this entity
+                'class' => Categorie::class,
+
+                // uses the User.username property as the visible option string
+                'choice_label' => 'name',
+
+                // used to render a select box, check boxes or radios
+                // 'multiple' => true,
+                // 'expanded' => true,
             ]);
 
     }
@@ -44,8 +54,6 @@ class ArticleType extends AbstractType
     {
         if ($value == 'STATUS') {
             $choices = Article::STATUS;
-        } else {
-            $choices = Article::CATEGORIE;
         }
 
 
