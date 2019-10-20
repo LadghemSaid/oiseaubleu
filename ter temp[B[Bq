@@ -1,0 +1,44 @@
+* [33mbb2c9fa[m[33m ([m[1;36mHEAD -> [m[1;32mtemp[m[33m)[m Mise a jour de la fixtures,Amelioration du systeme de categorie/Ajout du lazy loading des images
+* [33m21c93e7[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m modification du composer.json pour ne plus ajouter le bundle ayant etais modifier
+* [33m0b18b0c[m ajout du bundle vote
+* [33m2906203[m Ajout du voting system
+*   [33mbc03650[m ajout modif portable
+[32m|[m[33m\[m  
+[32m|[m *   [33m01711b8[m Merge branch 'master' of https://github.com/LadghemSaid/oiseaubleu
+[32m|[m [34m|[m[35m\[m  
+[32m|[m [34m|[m *   [33m0ef967b[m Merge branch 'master' of https://github.com/LadghemSaid/oiseaubleu
+[32m|[m [34m|[m [36m|[m[1;31m\[m  
+[32m|[m [34m|[m * [1;31m|[m [33m0a185f5[m Ajout de la possibilité à l'admin de supprimer n'importe quel commentaire (Modération)
+[32m|[m * [1;31m|[m [1;31m|[m [33m186d19e[m minor ifx
+[32m|[m * [1;31m|[m [1;31m|[m [33m9035ac1[m Debut de la feature liking
+[32m|[m [1;31m|[m [1;31m|[m[1;31m/[m  
+[32m|[m [1;31m|[m[1;31m/[m[1;31m|[m   
+[32m|[m * [1;31m|[m   [33ma0ae2c7[m Merge branch 'master' of https://github.com/LadghemSaid/oiseaubleu
+[32m|[m [1;32m|[m[1;31m\[m [1;31m\[m  
+[32m|[m [1;32m|[m [1;31m|[m[1;31m/[m  
+[32m|[m [1;32m|[m * [33m3e30e88[m[33m ([m[1;31morigin/rechercheArticle[m[33m)[m Ajout de la recherche par auteur
+[32m|[m * [1;33m|[m [33m3890474[m Ajout de la fonction categorie
+[32m|[m [1;33m|[m[1;33m/[m  
+[32m|[m * [33mf750974[m Modification bug ckeditor , categorie creation
+[32m|[m * [33mebcfed3[m Ajout d'idea au gitignore
+[32m|[m *   [33m3565452[m recherche par titre
+[32m|[m [1;34m|[m[1;35m\[m  
+[32m|[m [1;34m|[m * [33md8fbf43[m Ajout de la recherche par titre
+* [1;34m|[m [1;35m|[m [33md8b008b[m minorfix
+* [1;34m|[m [1;35m|[m [33m82e43c8[m Ajout de la feature modification de commentaire
+[1;34m|[m[1;34m/[m [1;35m/[m  
+* [1;35m|[m [33m04604f7[m Modification du style des commentaires et ajout de la features suppression de com
+[1;35m|[m[1;35m/[m  
+*   [33m4cecd62[m Ajout du systeme de commentaire
+[1;36m|[m[31m\[m  
+[1;36m|[m * [33mb2b3683[m Changement de la page d'index par page 1 des articles
+[1;36m|[m * [33ma568aee[m ajout au gitignore
+* [31m|[m [33mff9cf5c[m Ajout du systeme de commentaire
+[31m|[m[31m/[m  
+* [33ma580831[m[33m ([m[1;31morigin/pagination[m[33m)[m Ajout de la pagination
+* [33m53b9efc[m change to localhost
+* [33m20f64fb[m newmodif
+* [33m4d03ad4[m modifbd
+* [33maec115e[m q w !wq ;wq :wq
+* [33m631676d[m Improved version
+* [33me2a1108[m First commit

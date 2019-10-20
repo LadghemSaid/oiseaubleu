@@ -50,10 +50,11 @@ class ArticleFixtures extends Fixture
         }
 
         // create 4 Articles Per user and 4 comments Per Article! Bam!
+        $compteur= 0;
         for ($i = 0; $i < sizeof($userArray); $i++) {
             for ($j = 0; $j <= 4; $j++) {
                 $article = new Article();
-                $article->setTitle($faker->catchPhrase() . ' no° ' . $i)
+                $article->setTitle($faker->catchPhrase() . ' no° ' . $compteur++)
                     ->setDescription(implode($faker->paragraphs(2)))
                     ->setText(implode($faker->paragraphs(15)))
                     ->setStatus(0)

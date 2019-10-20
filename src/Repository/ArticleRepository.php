@@ -83,11 +83,12 @@ class ArticleRepository extends ServiceEntityRepository
                 }
                 if($author != null){
                     $qb->orWhere('a.author = :id')
-                    ->setParameter('id',$author);
+                    ->setParameter('id',$author)
+                    ;
                 }
             }
         }
-
+        $qb->orderBy('a.created_at', 'DESC');
         $query = $qb->getQuery();
 
         $premierResultat = ($page - 1) * $nbMaxParPage;

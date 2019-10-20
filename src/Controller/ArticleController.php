@@ -117,7 +117,9 @@ class ArticleController extends AbstractController
 
 
         $article = $this->repository->find($article);
-        $comments = $article->getComments();
+        $comments = $commentsRepository->findBy(
+            array('article' => $article->getId()),
+            array('created_at' => 'DESC'));
         //dd($comments);
         //$catedories = Article::CATEGORIE;
 
