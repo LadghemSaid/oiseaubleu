@@ -1,0 +1,84 @@
+.comment {
+  overflow: hidden;
+  padding: 0 0 1em;
+  border-bottom: 1px solid #ddd;
+  margin: 0 0 1em;
+  *zoom: 1;
+}
+
+.comment-img {
+  float: left;
+  margin-right: 33px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.comment-img img {
+  display: block;
+}
+
+.comment-body {
+  overflow: hidden;
+}
+
+.comment .text {
+  padding: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background: #fff;
+}
+
+.comment .text p:last-child {
+  margin: 0;
+}
+
+.comment .attribution {
+  margin: 0.5em 0 0;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Decoration */
+
+.comments,
+.comment {
+  position: relative;
+}
+
+.comment:hover {
+  border-color: orange;
+}
+.comment-actions{
+  display:flex;
+  position:absolute;
+  top:0;
+  right:0;
+
+}
+.comment-actions li{
+  list-style:none;
+}
+.comment .text:before {
+  top: 18px;
+  left: 78px;
+  width: 9px;
+  height: 9px;
+  border-width: 0 0 1px 1px;
+  border-style: solid;
+  border-color: #e5e5e5;
+  background: #fff;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+}
+.edit_input{
+
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  width: 100%;
+}
+.edit_input:focus{
+  border-bottom-color: orange;
+}

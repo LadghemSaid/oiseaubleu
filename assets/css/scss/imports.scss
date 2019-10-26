@@ -1,17 +1,19 @@
 // Fichier imports.scss
-@import 'helpers/reset'; // en premier, évidemment
+@import 'helpers/reset.scss'; // en premier, évidemment
 @import 'helpers/typo/all.css';
-@import 'mixins/mixins';
-@import 'variables/variables';
+@import 'mixins/mixins.scss';
+@import 'variables/variables.scss';
 
 //components
-@import 'components/buttons/buttons';
-@import 'components/cards/cards';
-@import 'components/header/header';
-@import 'components/footer/footer';
+@import 'components/buttons/buttons.scss';
+@import 'components/cards/cards.scss';
+@import 'components/header/header.scss';
+@import 'components/footer/footer.scss';
+@import 'components/article/article.scss';
+@import 'components/article/article.scss';
 
 //pages
-@import 'pages/article/article';
-@import 'pages/home/home';
-@import 'pages/login/login';
-@import 'pages/register/register';
+@import 'pages/article/article.scss';
+@import 'pages/home/home.scss';
+@import 'pages/login/login.scss';
+@import 'pages/register/register.scss';
