@@ -8,6 +8,7 @@ use App\Form\CommentType;
 use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 
@@ -70,7 +71,17 @@ class CommentsController extends AbstractController
      * @Route("/comment/edit/{comment}", name="comment_edit")
      */
     public function edit(Comment $comment,Request $request){
-        return dd("Welcome to edit function");
+
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+           // dd($form);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $comment->setTextComment($form["textComment"]->getData());
+            $em =  $this->getDoctrine()->getManager();
+            $em->flush();
+
+        }
+        return new Response;
     }
 
 }

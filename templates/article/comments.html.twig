@@ -7,24 +7,23 @@
 <section class="comments">
 {% for comment in comments  %}
 
-
-    <article class="comment">
-        <a class="comment-img" href="#non">
+    <article class="comments__comment">
+        <a class="comment__img" href="#non">
             <img src="https://api.adorable.io/avatars/50/{{ comment.user.username }}@adorable.io.png" alt="" width="50" height="50">
         </a>
-        <div class="comment-body">
+        <div class="comment__body">
             {% set isComment = true %}
             {{ msalsas_voting_widget.shakeIt(comment.id,isComment ) }}
             {% if comment.user == app.user %}
-                <ul class="comment-actions">
-                    <li class="edit"><a id="{{ comment.id }}" href="#" onclick="edit(event)" class="btn btn-primary btn-sm"><i class="fa fa-cog"></i></a></li>
-                    <li class="delete"><a  href="{{ path('delete.comment',{'comment' : comment.id}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a></li>
+                <ul class="comment__actions">
+                    <li class="comment__edit"><a id="{{ comment.id }}" href="#" onclick="edit(event)" class="btn btn-primary btn-sm"><i class="fa fa-cog"></i></a></li>
+                    <li class="comment__delete"><a  href="{{ path('delete.comment',{'comment' : comment.id}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a></li>
                 </ul>
             {% endif %}
-            <div class="text">
+            <div class="comment__text">
                 <p>{{ comment.textComment}}</p>
             </div>
-            <p class="attribution">de <a href="#non">{{ comment.user.username }}</a>, {{ comment.createdAt| ago }}</p>
+            <p class="comment__attribution">de <a href="#non">{{ comment.user.username }}</a>, {{ comment.createdAt| ago }}</p>
         </div>
 
     </article>

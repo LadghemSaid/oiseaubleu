@@ -12,6 +12,7 @@
 {% endblock %}
 {% block body %}
     {% import "@msalsas_voting/msalsas_voting_widget.html.twig" as msalsas_voting_widget %}
+    {% import "@msalsas_voting/msalsas_voting_widget_custom.html.twig" as msalsas_voting_widget_custom %}
     {{ msalsas_voting_widget.shakeItCSS() }}
     {{ msalsas_voting_widget.shakeItJS() }}
     {{ msalsas_voting_widget.shakeItModal() }}
@@ -98,29 +99,42 @@
         </div>
     </div>
 
+    {% if app.user %}
+        {{ form_start(formComment,{'attr': {'class': 'commentForm'}}) }}
+        {{ form_row(formComment.textComment,{'attr': {'class': 'commentForm__textarea'}}) }}
+        {{ form_row(formComment.submit,{'attr': {'class': 'commentForm__submit'}}) }}
+        {{ form_end(formComment) }}
+    {% endif %}
 
 
     <section class="comments">
         {% for comment in comments  %}
 
-
-            <article class="comment">
-                <a class="comment-img" href="#non">
+            <article class="comment" id="commentId-{{ comment.id }}">
+                <a class="comment__img" href="#non">
                     <img src="https://api.adorable.io/avatars/50/{{ comment.user.username }}@adorable.io.png" alt="" width="50" height="50">
                 </a>
-                <div class="comment-body">
-                    {% set isComment = true %}
-                    {{ msalsas_voting_widget.shakeIt(comment.id,isComment ) }}
-                    {% if comment.user == app.user %}
-                        <ul class="comment-actions">
-                            <li class="edit"><a id="{{ comment.id }}" href="#" onclick="edit(event)" class="btn btn-primary btn-sm"><i class="fa fa-cog"></i></a></li>
-                            <li class="delete"><a  href="{{ path('delete.comment',{'comment' : comment.id}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a></li>
-                        </ul>
-                    {% endif %}
-                    <div class="text">
+                <div class="comment__body">
+
+
+
+                    <div class="comment__header">
+                        {% set isComment = true %}
+                        {{ msalsas_voting_widget_custom.shakeIt(comment.id,isComment ) }}
+                        <a href="#non" class="comment__author">{{ comment.user.username }}</a>
+                        <span class="comment__createdat">{{ comment.createdAt| ago }}</span>
+                        {% if comment.user == app.user %}
+                            <ul class="comment__actions">
+                                <li class="comment__edit"><a id="{{ comment.id }}" href="#" onclick="edit(event)" class="btn btn-primary btn-sm"><i class="fa fa-cog"></i></a></li>
+                                <li class="comment__edit--validate"><a id="{{ comment.id }}" href="#" onclick="submitEditComment(event)" class="btn btn-primary btn-sm"><i class="fas fa-check"></i></a></li>
+                                <li class="comment__delete"><a  href="{{ path('delete.comment',{'comment' : comment.id}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a></li>
+                            </ul>
+                        {% endif %}
+                    </div>
+                    <div class="comment__text">
                         <p>{{ comment.textComment}}</p>
                     </div>
-                    <p class="attribution">de <a href="#non">{{ comment.user.username }}</a>, {{ comment.createdAt| ago }}</p>
+
                 </div>
 
             </article>
@@ -128,12 +142,6 @@
     </section>
 
 
-    {% if app.user %}
-        {{ form_start(formComment) }}
-        {{ form_row(formComment.textComment) }}
-        {{ form_row(formComment.submit) }}
-        {{ form_end(formComment) }}
-    {% endif %}
 
 
 
@@ -147,13 +155,42 @@
           function edit(e){
 
               e.preventDefault();
-              var btn = e.currentTarget;
+              let btnEdit = e.currentTarget;
+              let btnSubmit= e.currentTarget.parentElement.nextElementSibling.firstChild;
+              let commentElem = document.getElementById("commentId-"+btnEdit.attributes[0].value).childNodes[3].childNodes[3];
+              //console.log(btnEdit);
 
-              //console.log(btn.attributes[0].value);
 
-              btn.offsetParent.nextSibling.nextSibling.innerHTML = "<form action='/comment/edit/"+ btn.attributes[0].value +"' method='post'><input class='edit_input' type='text' value='" + e.target.offsetParent.nextSibling.nextSibling.innerText + "' /></form>";
+              commentElem.innerHTML = "<form id='editFormCommentId-"+btnEdit.attributes[0].value+"' action='/comment/edit/"+ btnEdit.attributes[0].value +"' method='post'><textarea name='comment[textComment]' class='edit_input' />"+ commentElem.innerText + "</textarea></form>";
 
-              btn.style.display="none";
+              btnSubmit.style.display="block";
+              btnEdit.style.display="none";
           }
+      function submitEditComment(e){
+          e.preventDefault();
+
+
+
+          let btnSubmit = e.currentTarget;
+          let btnEdit= e.currentTarget.parentElement.previousElementSibling.firstChild;
+          let commentElem = document.getElementById("commentId-"+btnEdit.attributes[0].value).childNodes[3].childNodes[3].firstChild;
+         // document.getElementById("editFormCommentId-"+btnEdit.attributes[0].value).submit();
+          //Form submision
+          let form = document.getElementById("editFormCommentId-"+btnEdit.attributes[0].value);
+          //console.log( document.getElementById("editFormCommentId-"+btnEdit.attributes[0].value).innerText);
+          console.log( form.firstChild.value);
+          $.ajax({
+              type: 'POST',
+              url: form.attributes[1].value,
+              data: $('form').serialize(),
+              success: function(response) {
+                 // console.log(response)
+              },
+          });
+          commentElem.innerHTML ="<p>"+form.firstChild.value+"</p>"
+          btnSubmit.style.display="none";
+          btnEdit.style.display="block";
+      }
+
       </script>
   {% endblock %}
