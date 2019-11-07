@@ -24,7 +24,7 @@ file that was distributed with this source code. #}
     <div class="msalsas-voting-widget-wrapper">
         <div class="msalsas-voting-widget">
             <div class="msalsas-voting-shakes{% if published %} published{% endif %}">
-                <a id="msalsas-voting-shakes-{{ id }}" href="javascript:void(0)">{{ votes|default(0) }}</a> {{ 'msalsas_voting.votes'|trans }}
+                <p id="msalsas-voting-shakes-{{ id }}">{{ votes|default(0) }}</p> <i class="fa fa-heart"></i>
             </div>
             <div class="msalsas-voting-shake-it"
                  id="msalsas-voting-a-shake-{{ id }}"
@@ -36,21 +36,23 @@ file that was distributed with this source code. #}
                     {% else %}
                         data-url="{{ path('positive_vote', {id: id, _locale: app.request.locale}) }}">
                     {% endif %}
+
                 {% if not userVote %}
                     <a  href="javascript:void(0)">{{ 'msalsas_voting.shake_it'|trans }}</a>
                 {% elseif userVote.positive %}
-                    <span id="msalsas-voting-a-positive-{{ id }}">{{ 'msalsas_voting.shaken'|trans }}</span>
+                    <span class="liked" id="msalsas-voting-a-positive-{{ id }}">{{ 'msalsas_voting.shaken'|trans }}</span>
                 {% else %}
-                    <span id="msalsas-voting-a-negative-{{ id }}">{{ userVote.reason|trans }}</span>
+                    <span class="dislked" id="msalsas-voting-a-negative-{{ id }}">{{ userVote.reason|trans }}</span>
                 {% endif %}
             </div>
-            <div class="msalsas-voting-clicks{% if published %} published{% endif %}">
+
+          {#  <div class="msalsas-voting-clicks{% if published %} published{% endif %}">
                 {% if clicks %}
                     {{ 'msalsas_voting.clicks'|transchoice(clicks) }}
                 {% else %}
                     &nbsp;
                 {% endif %}
-            </div>
+            </div>#}
         </div>
     </div>
 {% endmacro shakeIt %}

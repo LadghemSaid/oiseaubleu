@@ -1,74 +1,65 @@
-.profil {
-  background: #f9f9f9;
+
+.article{
+  &__titre{
+    font-size: 2rem;
+    margin-bottom:2rem;
+    margin-top: 2rem;
+  }
+  &__image{
+    border-radius: 20%;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
+  }
+  &__cadre{
+
+  }
+
+  &__metaDroite{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 30px;
+    &__createdAt{
+
+    }
+    &__lectureTime{
+    font-size: 1rem;
+    }
+    &__voting{
+      order: -1;
+      margin-bottom: 10px;
+
+    }
+  }
+  &__text{
+
+  }
+
+  &__ulCategories{
+    list-style: none;
+    padding: 0;
+    font-size: 16px;
+    margin-bottom: 20px;
+
+    li{
+      padding: 6px 0;
+      font-size: 15px;
+      height: 100%;
+      line-height: 21px;
+      float: left;
+      width: 50%;
+      margin-bottom: 5px;
+      position: relative;
+      display: flex !important;
+      justify-content: center;
+    }
+
+  }
+  &__metaBas{
+
+    &__author{
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
 }
-
-.profil .ul-caracteristiques li {
-  width: 25%;
-}
-
-.div-cadre-orange {
-  background: #fff;
-  border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  overflow: hidden;
-  float: left;
-  width: 100%;
-  margin: 15px 0px;
-}
-
-.cadre {
-  float: left;
-  width: 100%;
-  position: relative;
-  padding: 25px 30px 30px;
-}
-
-.margin-top--22 {
-  margin-top: -22px;
-}
-
-.div-cadre-orange h4 {
-  color: #FF9800;
-}
-
-.ul-caracteristiques img {
-  width: 20px;
-  padding-right: 5px;
-}
-
-.ul-caracteristiques {
-  list-style: none;
-  padding: 0;
-  font-size: 16px;
-}
-
-.ul-caracteristiques li {
-  padding: 6px 0;
-  font-size: 15px;
-  display: table;
-  height: 100%;
-  line-height: 21px;
-  float: left;
-  width: 50%;
-  margin-bottom: 5px;
-}
-
-.label-custom {
-  position: absolute;
-  font-size: 0.8em;
-  top: 8px;
-}
-
-.label-custom.label-price {
-  top: 2px;
-  left: 30%
-}
-
-.ul-caracteristiques li {
-  position: relative;
-  display: flex !important;
-  justify-content: center;
-
-}
-
-

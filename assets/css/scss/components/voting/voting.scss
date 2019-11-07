@@ -1,0 +1,123 @@
+$dark-gray: #8a8a8a;
+$alert-color:#cc4b37;
+$white:white;
+
+.msalsas-voting-widget-wrapper{
+  all: unset;
+  order: 1;
+  margin-left: auto;
+
+  & .msalsas-voting-widget{
+    all: unset;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-family: 'Open Sans', sans-serif;
+
+    & .msalsas-voting-shakes{
+      all: unset;
+      margin-right: 10px;
+      font-weight: bold;
+      a{
+        all:unset;
+      }
+    }
+
+    & .msalsas-voting-shake-it{
+      all: unset;
+      border: 2px solid $dark-gray;
+      background-color: transparent;
+      text-decoration: none;
+      padding: .5rem;
+      position: relative;
+      vertical-align: middle;
+      text-align: center;
+      display: inline-block;
+      border-radius: 3rem;
+      color: $dark-gray;
+      transition: all ease 0.4s;
+      a{
+        all: unset;
+        border: black;
+
+
+      }
+      span{
+        all:unset;
+      }
+      &:hover {
+        border-color: $alert-color;
+        background-color: transparent;
+        color: $alert-color;
+
+    }
+
+    & .msalsas-voting-clicks{
+      all: unset;
+    }
+  }
+}
+
+
+
+.button-like {
+
+
+  span {
+    margin-left: 0.5rem;
+  }
+
+  .fa,
+  span {
+    transition: all ease 0.4s;
+  }
+
+  &:focus {
+    background-color: transparent;
+
+    .fa,
+    span {
+      color: $dark-gray;
+    }
+  }
+
+
+
+    .fa,
+    span {
+      color: $alert-color;
+    }
+  }
+}
+
+.liked {
+  background-color: $alert-color;
+  border-color: $alert-color;
+
+  .fa,
+  span {
+    color: $white;
+
+  }
+
+  &:focus {
+    background-color: $alert-color;
+
+    .fa,
+    span {
+      color: $white;
+    }
+  }
+
+  &:hover {
+    background-color: $alert-color;
+    border-color: $alert-color;
+
+    .fa,
+    span {
+      color: $white;
+    }
+  }
+}
+
+

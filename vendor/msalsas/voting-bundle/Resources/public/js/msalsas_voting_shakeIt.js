@@ -18,8 +18,13 @@
     });
 
     function shakeIt(evt) {
-        console.log(evt);
-        var shakeItButton = evt.target.parentNode.parentNode;
+        if(evt.target.parentNode.parentNode.dataset.comment){
+            var shakeItButton = evt.target.parentNode.parentNode;
+        }else{
+            var shakeItButton = evt.target.parentNode;
+        }
+        shakeItButton.addClass('liked');
+        //console.log(evt.target.parentNode);
         var id = shakeItButton.dataset.id;
         var url = shakeItButton.dataset.url;
         var isComment = shakeItButton.dataset.comment;
