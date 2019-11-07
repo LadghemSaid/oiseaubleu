@@ -5,22 +5,11 @@
 For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code. #}
 
-{% macro shakeIt(id,isComment) %}
-    {% if isComment %}
-        {% set votes = msalsas_voting_voter.positiveVotesComment(id) %}
-        {% set userVote = msalsas_voting_voter.userVoteComment(id) %}
-        {% set clicks = msalsas_voting_clicker.clicks(id) %}
-        {% set published = msalsas_voting_voter.publishedComment(id) %}
-
-    {% else %}
-        {% set votes = msalsas_voting_voter.positiveVotes(id) %}
-        {% set userVote = msalsas_voting_voter.userVote(id) %}
-        {% set clicks = msalsas_voting_clicker.clicks(id) %}
-        {% set published = msalsas_voting_voter.published(id) %}
-    {% endif %}
-
-
-
+{% macro shakeIt(id) %}
+    {% set votes = msalsas_voting_voter.positiveVotes(id) %}
+    {% set userVote = msalsas_voting_voter.userVote(id) %}
+    {% set clicks = msalsas_voting_clicker.clicks(id) %}
+    {% set published = msalsas_voting_voter.published(id) %}
     <div class="msalsas-voting-widget-wrapper">
         <div class="msalsas-voting-widget">
             <div class="msalsas-voting-shakes{% if published %} published{% endif %}">
@@ -30,14 +19,9 @@ file that was distributed with this source code. #}
                  id="msalsas-voting-a-shake-{{ id }}"
                  data-id="{{ id }}"
                  data-shakentext="{{ 'msalsas_voting.shaken'|trans }}"
-                    {% if isComment %}
-                        data-comment="true"
-                        data-url="{{ path('positive_vote_comment', {id: id, _locale: app.request.locale}) }}">
-                    {% else %}
-                        data-url="{{ path('positive_vote', {id: id, _locale: app.request.locale}) }}">
-                    {% endif %}
+                 data-url="{{ path('positive_vote', {id: id, _locale: app.request.locale}) }}">
                 {% if not userVote %}
-                    <a  href="javascript:void(0)">{{ 'msalsas_voting.shake_it'|trans }}</a>
+                    <a href="javascript:void(0)">{{ 'msalsas_voting.shake_it'|trans }}</a>
                 {% elseif userVote.positive %}
                     <span id="msalsas-voting-a-positive-{{ id }}">{{ 'msalsas_voting.shaken'|trans }}</span>
                 {% else %}

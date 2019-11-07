@@ -13,8 +13,7 @@
                          on-delete="CASCADE" />
         </many-to-one>
 
-        <field name="referenceArticle" column="referenceArticle" type="integer" nullable="true" length="180" />
-        <field name="referenceComment" column="referenceComment" type="integer"  nullable="true" length="180" />
+        <field name="reference" column="reference" type="integer" length="180" />
 
         <field name="userIP" column="user_ip" type="string" length="180" nullable="true" />
     </entity>

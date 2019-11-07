@@ -5,8 +5,7 @@
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
     <entity name="Msalsas\VotingBundle\Entity\ReferenceClicks" table="msalsas_voting_reference_clicks" repository-class="Msalsas\VotingBundle\Entity\ReferenceClicksRepository">
-        <id name="referenceArticle" column="referenceArticle" type="integer" length="180" />
-        <id name="referenceComment" column="referenceComment" type="integer" length="180" />
+        <id name="reference" column="reference" type="integer" length="180" />
 
         <field name="clicks" column="clicks" type="integer" length="180" />
     </entity>

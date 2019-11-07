@@ -7,7 +7,7 @@
 
 (function() {
     document.addEventListener('DOMContentLoaded', function() {
-        var shakeItLink = document.querySelectorAll('.msalsas-voting-shake-it a ');
+        var shakeItLink = document.querySelectorAll('.msalsas-voting-shake-it a');
         for (var i = 0; i < shakeItLink.length; i++) {
             if (shakeItLink[i].addEventListener) {
                 shakeItLink[i].addEventListener('click', shakeIt, false);
@@ -18,12 +18,9 @@
     });
 
     function shakeIt(evt) {
-        console.log(evt);
-        var shakeItButton = evt.target.parentNode.parentNode;
+        var shakeItButton = evt.target.parentNode;
         var id = shakeItButton.dataset.id;
         var url = shakeItButton.dataset.url;
-        var isComment = shakeItButton.dataset.comment;
-        //console.log(isComment);
         var shakenText = shakeItButton.dataset.shakentext;
         var http = new XMLHttpRequest();
         http.open('POST', url, true);
@@ -34,16 +31,8 @@
             if(http.readyState == 4 && http.status == 200) {
                 var shakesElem = document.getElementById('msalsas-voting-shakes-' + id);
                 shakesElem.text = document.createTextNode(http.responseText).wholeText;
-                //console.log( shakesElem.text);
-                if(isComment){
-                    evt.target.classList.remove('far');
-                    evt.target.classList.add('fa');
-                }else{
-                    var buttonElem = document.getElementById('msalsas-voting-a-shake-' + id );
-                    //console.log(buttonElem);
-                    buttonElem.innerHTML = '<span>' + shakenText + '</span>';
-                }
-
+                var buttonElem = document.getElementById('msalsas-voting-a-shake-' + id);
+                buttonElem.innerHTML = '<span>' + shakenText + '</span>';
             } else if(http.readyState == 4 && http.status >= 400) {
                 showModal(http.responseText);
             }
