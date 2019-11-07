@@ -12,12 +12,4 @@
         <requirement key="id">\d+</requirement>
         <default key="_controller">msalsas_voting.controller.vote_negative</default>
     </route>
-    <route id="msalsas_voting.vote_positive_comment" controller="Msalsas\VotingBundle\Controller\VoteController:votePositiveComment" path="/vote-positive-comment/{_locale}/{id}" methods="POST" >
-        <requirement key="id">\d+</requirement>
-        <default key="_controller">msalsas_voting.controller.vote_positive_comment</default>
-    </route>
-    <route id="msalsas_voting.vote_negative_comment" controller="Msalsas\VotingBundle\Controller\VoteController:voteNegativeComment" path="/vote-negative-comment/{_locale}/{id}" methods="POST" >
-        <requirement key="id">\d+</requirement>
-        <default key="_controller">msalsas_voting.controller.vote_negative_comment</default>
-    </route>
 </routes>

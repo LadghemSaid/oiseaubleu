@@ -13,42 +13,36 @@
     {{ msalsas_voting_widget.shakeItJS() }}
     {{ msalsas_voting_widget.shakeItModal() }}
     <div class="mt-md-5 mt-sm-2 mb-md-5 mb-sm-2 text-center">
-
         <h1>Vous recherchez un article ?</h1>
     </div>
 
     <div class="container">
         <div class="row">
 
-
             {% for article in articles %}
 
-                <div class="col-md-4 mb-md-5 md-sm-1">
-                    <div class="card-content">
-
+                <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-3 d-flex align-items-stretch">
+                    <div class="card-content d-flex flex-column">
                         <div class="card-img">
-
                             <span class="card-notify-year">{{ article.createdAt| ago }}</span>
-                            <img class="img-fluid lazyload card--small" src="{{ asset("img/lowres.png") }}" data-src={{ article.image }} alt="AlternateText" width="400px" height="250px"/>
+                            <img class="img-fluid lazyload w-100" src="{{ asset("img/lowres.png") }}" data-src={{ article.image }} alt="AlternateText" width="400px" height="250px"/>
                             <span class="card-detail-badge city">{{ article.categorie.name }}</span>
                         </div>
-                        <div class="card-desc">
+                        <div class="card-desc d-flex flex-column flex-fill">
                             <span><h4>{{ article.title }}</h4></span>
-
-
                             <h6>Descriptions</h6>
                             <p>  {{ article.description|length > 100 ? article.description|slice(0, 100) ~ '...' : article.description }}</p>
-                            <div class="row">
-
-                                <div class="col-md-6">
-                                    <a class="btn btn-primary"
+                            <div class="row flex-fill">
+                                <div class="col-12 d-flex justify-content-center">
+                                    <a class="btn btn-primary d-flex align-items-center"
                                        href="{{ path('article.show',{slug:article.slug,id: article.id}) }}">Voir</a>
                                 </div>
-
-
+                                <div class="col-12 mt-2 d-flex justify-content-center">
+                                    {{ msalsas_voting_widget.shakeIt(article.id) }}
+                                </div>
                                 {% if is_granted('ROLE_ADMIN') %}
                                     {#Administrator#}
-                                    <div class="col-md-2">
+                                    <div class="col-12 mt-2 d-flex flex-fill align-items-end justify-content-between">
                                         <a href="{{ path('admin.article.edit',{id: article.id}) }}" class="btn btn-secondary btn-circle"><i class="fa fa-cog"></i></a>
                                         {# <span class="card-detail-badge surface"><strong>{{ article.surface }}</strong> m²</span><br/>
                                          <span class="card-detail-badge price"><strong>{{ article.formatedPrice }}</strong> €</span>#}
@@ -58,26 +52,14 @@
                                             <button class="btn btn-danger btn-circle" ><i class="fa fa-trash"></i></button>
                                         </form>
                                     </div>
-                                    <div class="col-md-4">
-                                        {{ msalsas_voting_widget.shakeIt(article.id) }}
-                                    </div>
                                 {% elseif is_granted('ROLE_USER') %}
                                     {#User#}
-                                {% else %}
-                                    <div class="col-md-6">
-                                        {{ msalsas_voting_widget.shakeIt(article.id) }}
-                                    </div>
                                 {% endif %}
-
-
                             </div>
                         </div>
                     </div>
                 </div>
-
-
             {% endfor %}
-
         </div>
         {% include 'article/pagination.html.twig' %}
     </div>

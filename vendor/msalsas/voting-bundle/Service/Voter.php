@@ -71,77 +71,69 @@ class Voter
         $this->negativeReasons = $negativeReasons;
     }
 
-
-
-    public function getPositiveVotes($referenceArticleId)
+    public function getPositiveVotes($referenceId)
     {
         /** @var \Msalsas\VotingBundle\Entity\ReferenceVotes|null $referenceVotes */
-        $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('referenceArticle' => $referenceArticleId));
+        $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('reference' => $referenceId));
         if (!$referenceVotes) {
             $referenceVotes = new ReferenceVotes();
-            $referenceVotes->setReferenceArticle($referenceArticleId);
+            $referenceVotes->setReference($referenceId);
         }
 
         return $referenceVotes->getPositiveVotes();
     }
 
-    public function getNegativeVotes($referenceArticleId)
+    public function getNegativeVotes($referenceId)
     {
         /** @var \Msalsas\VotingBundle\Entity\ReferenceVotes|null $referenceVotes */
-        $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('referenceArticle' => $referenceArticleId));
+        $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('reference' => $referenceId));
         if (!$referenceVotes) {
             $referenceVotes = new ReferenceVotes();
-            $referenceVotes->setReferenceArticle($referenceArticleId);
+            $referenceVotes->setReference($referenceId);
         }
 
         return $referenceVotes->getNegativeVotes();
     }
 
-    public function getUserPositiveVotes($referenceArticleId)
+    public function getUserPositiveVotes($referenceId)
     {
         /** @var \Msalsas\VotingBundle\Entity\ReferenceVotes|null $referenceVotes */
-        $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('referenceArticle' => $referenceArticleId));
+        $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('reference' => $referenceId));
         if (!$referenceVotes) {
             $referenceVotes = new ReferenceVotes();
-            $referenceVotes->setReferenceArticle($referenceArticleId);
+            $referenceVotes->setReference($referenceId);
         }
 
         return $referenceVotes->getUserVotes();
     }
 
-    public function getAnonymousVotes($referenceArticleId)
+    public function getAnonymousVotes($referenceId)
     {
         /** @var \Msalsas\VotingBundle\Entity\ReferenceVotes|null $referenceVotes */
-        $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('referenceArticle' => $referenceArticleId));
+        $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('reference' => $referenceId));
         if (!$referenceVotes) {
             $referenceVotes = new ReferenceVotes();
-            $referenceVotes->setReferenceArticle($referenceArticleId);
+            $referenceVotes->setReference($referenceId);
         }
 
         return $referenceVotes->getAnonymousVotes();
     }
 
-    public function votePositive($referenceArticleId)
+    public function votePositive($referenceId)
     {
-        //var_dump($referenceArticleId);
-        //die();
         $user = $this->token->getToken() ? $this->token->getToken()->getUser() : null;
 
-        $this->validateVote($user, $referenceArticleId);
+        $this->validateVote($user, $referenceId);
 
         $user = $user instanceof UserInterface ? $user : null;
-        //var_dump($user);
-        //die();
-        $vote = new VotePositive();
-        //var_dump($vote);
-        $vote->setReferenceArticle($referenceArticleId);
-        $vote->setReferenceComment(null);
-        $vote->setUser($user);
 
+        $vote = new VotePositive();
+        $vote->setReference($referenceId);
+        $vote->setUser($user);
         $vote->setUserIP($this->request ? $this->request->getClientIp() : null);
 
         /** @var \Msalsas\VotingBundle\Entity\ReferenceVotes $referenceVotes */
-        $referenceVotes = $this->addReferenceVote($referenceArticleId, true, !$user);
+        $referenceVotes = $this->addReferenceVote($referenceId, true, !$user);
 
         $this->em->persist($vote);
         $this->em->persist($referenceVotes);
@@ -150,7 +142,7 @@ class Voter
         return $referenceVotes->getPositiveVotes();
     }
 
-    public function voteNegative($referenceArticleId, $reason)
+    public function voteNegative($referenceId, $reason)
     {
         $user = $this->token->getToken() ? $this->token->getToken()->getUser() : null;
 
@@ -158,21 +150,20 @@ class Voter
             throw new AccessDeniedException($this->translator->trans('msalsas_voting.errors.invalid_reason'));
         }
 
-        $this->validateVote($user, $referenceArticleId);
+        $this->validateVote($user, $referenceId);
 
         if (!$user instanceof UserInterface) {
             throw new AccessDeniedException($this->translator->trans('msalsas_voting.errors.anon_cannot_vote_negative'));
         }
 
         $vote = new VoteNegative();
-        $vote->setReferenceArticle($referenceArticleId);
+        $vote->setReference($referenceId);
         $vote->setReason($reason);
         $vote->setUser($user);
-
         $vote->setUserIP($this->request->getClientIp());
 
         /** @var \Msalsas\VotingBundle\Entity\ReferenceVotes $referenceVotes */
-        $referenceVotes = $this->addReferenceVote($referenceArticleId, false, !$user);
+        $referenceVotes = $this->addReferenceVote($referenceId, false, !$user);
 
         $this->em->persist($referenceVotes);
         $this->em->persist($vote);
@@ -181,24 +172,18 @@ class Voter
         return $referenceVotes->getNegativeVotes();
     }
 
-    public function getUserVote($referenceArticleId)
+    public function getUserVote($referenceId)
     {
-
         $user = $this->token->getToken()->getUser();
         $user = $user instanceof UserInterface ? $user : null;
-
         $votePositiveRepository = $this->em->getRepository(VotePositive::class);
         $voteNegativeRepository = $this->em->getRepository(VoteNegative::class);
 
-
-        if ($user && $vote = $votePositiveRepository->findOneBy(array('user' => $user, 'referenceArticle' => $referenceArticleId))) {
-
+        if ($user && $vote = $votePositiveRepository->findOneBy(array('user' => $user, 'reference' => $referenceId))) {
             return $vote;
-        } else if (!$user && $vote = $votePositiveRepository->findOneBy(array('user' => $user, 'referenceArticle' => $referenceArticleId, 'userIP' => $this->request->getClientIp()))) {
-
+        } else if (!$user && $vote = $votePositiveRepository->findOneBy(array('user' => $user, 'reference' => $referenceId, 'userIP' => $this->request->getClientIp()))) {
             return $vote;
-        } else if ($vote = $voteNegativeRepository->findOneBy(array('user' => $user, 'referenceArticle' => $referenceArticleId))) {
-
+        } else if ($vote = $voteNegativeRepository->findOneBy(array('user' => $user, 'reference' => $referenceId))) {
             return $vote;
         }
 
@@ -210,20 +195,20 @@ class Voter
         return $this->negativeReasons;
     }
 
-    public function userCanVoteNegative($referenceArticleId)
+    public function userCanVoteNegative($referenceId)
     {
         $user = $this->token->getToken()->getUser();
         if (!$user instanceof UserInterface) {
             return false;
         }
 
-        return !$this->userHasVoted($user, $referenceArticleId);
+        return !$this->userHasVoted($user, $referenceId);
     }
 
-    public function isPublished($referenceArticleId)
+    public function isPublished($referenceId)
     {
         /** @var \Msalsas\VotingBundle\Entity\ReferenceVotes|null $referenceVotes */
-        $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('referenceArticle' => $referenceArticleId));
+        $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('reference' => $referenceId));
         if (!$referenceVotes) {
             return false;
         }
@@ -231,36 +216,36 @@ class Voter
         return $referenceVotes->isPublished();
     }
 
-    public function setPublished($referenceArticleId)
+    public function setPublished($referenceId)
     {
         /** @var \Msalsas\VotingBundle\Entity\ReferenceVotes|null $referenceVotes */
-        $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('referenceArticle' => $referenceArticleId));
+        $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('reference' => $referenceId));
         if (!$referenceVotes) {
-            throw new \Exception($this->translator->trans('msalsas_voting.errors.ref_does_not_exist', array('%reference%' => $referenceArticleId)));
+            throw new \Exception($this->translator->trans('msalsas_voting.errors.ref_does_not_exist', array('%reference%' => $referenceId)));
         }
 
         $referenceVotes->setPublished(true);
     }
 
-    protected function validateVote($user, $referenceArticleId)
+    protected function validateVote($user, $referenceId)
     {
         if (!$user instanceof UserInterface && (!$this->request || !$this->request->getClientIp())) {
             throw new AccessDeniedException($this->translator->trans('msalsas_voting.errors.no_ip_defined_for_anon'));
         }
 
-        if ($this->userHasVoted($user, $referenceArticleId)) {
+        if ($this->userHasVoted($user, $referenceId)) {
             throw new AccessDeniedException($this->translator->trans('msalsas_voting.errors.already_voted'));
         }
 
         if (!$user instanceof UserInterface) {
-            $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('referenceArticle' => $referenceArticleId));
+            $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('reference' => $referenceId));
             if ($referenceVotes instanceof ReferenceVotes && !$this->anonymousIsAllowed($referenceVotes)) {
                 throw new AccessDeniedException($this->translator->trans('msalsas_voting.errors.too_much_anon_votes'));
             }
         }
     }
 
-    protected function userHasVoted($user, $referenceArticleId)
+    protected function userHasVoted($user, $referenceId)
     {
         $votePositiveRepository = $this->em->getRepository(VotePositive::class);
         $voteNegativeRepository = $this->em->getRepository(VoteNegative::class);
@@ -269,15 +254,14 @@ class Voter
             if ($votePositiveRepository->findOneBy(
                 array(
                     'user' => $user,
-                    'referenceArticle' => $referenceArticleId
+                    'reference' => $referenceId
                 )
             )) {
-
                 return true;
             } else if ($voteNegativeRepository->findOneBy(
                 array(
                     'user' => $user,
-                    'referenceArticle' => $referenceArticleId
+                    'reference' => $referenceId
                 )
             )) {
                 return true;
@@ -287,7 +271,7 @@ class Voter
                 array(
                     'user' => null,
                     'userIP' => $this->request->getClientIp(),
-                    'referenceArticle' => $referenceArticleId
+                    'reference' => $referenceId
                 )
             )) {
                 return true;
@@ -297,19 +281,16 @@ class Voter
         return false;
     }
 
-    protected function addReferenceVote($referenceArticleId, $positive, $anonymous = true)
+    protected function addReferenceVote($referenceId, $positive, $anonymous = true)
     {
         /** @var \Msalsas\VotingBundle\Entity\ReferenceVotes|null $referenceVotes */
-        $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('referenceArticle' => $referenceArticleId));
-
+        $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('reference' => $referenceId));
         if ($referenceVotes) {
             $referenceVotes->addVote($positive, $anonymous);
         } else {
             $referenceVotes = new ReferenceVotes();
-            $referenceVotes->setReferenceArticle($referenceArticleId);
-            $referenceVotes->setReferenceComment(null);
+            $referenceVotes->setReference($referenceId);
             $referenceVotes->addVote($positive, $anonymous);
-
         }
 
         return $referenceVotes;
@@ -331,257 +312,4 @@ class Voter
 
         return false;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-    public function getPositiveVotesComment($referenceCommentId)
-    {
-        /** @var \Msalsas\VotingBundle\Entity\ReferenceVotes|null $referenceVotes */
-        $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('referenceComment' => $referenceCommentId));
-        if (!$referenceVotes) {
-            $referenceVotes = new ReferenceVotes();
-            $referenceVotes->setReferenceComment($referenceCommentId);
-        }
-
-        return $referenceVotes->getPositiveVotes();
-    }
-
-    public function getNegativeVotesComment($referenceCommentId)
-    {
-        /** @var \Msalsas\VotingBundle\Entity\ReferenceVotes|null $referenceVotes */
-        $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('referenceComment' => $referenceCommentId));
-        if (!$referenceVotes) {
-            $referenceVotes = new ReferenceVotes();
-            $referenceVotes->setReferenceComment($referenceCommentId);
-        }
-
-        return $referenceVotes->getNegativeVotesComment();
-    }
-
-    public function getUserPositiveVotesComment($referenceCommentId)
-    {
-        /** @var \Msalsas\VotingBundle\Entity\ReferenceVotes|null $referenceVotes */
-        $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('referenceComment' => $referenceCommentId));
-        if (!$referenceVotes) {
-            $referenceVotes = new ReferenceVotes();
-            $referenceVotes->setReferenceComment($referenceCommentId);
-        }
-
-        return $referenceVotes->getUserVotesComment();
-    }
-
-    public function getAnonymousVotesComment($referenceCommentId)
-    {
-        /** @var \Msalsas\VotingBundle\Entity\ReferenceVotes|null $referenceVotes */
-        $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('referenceComment' => $referenceCommentId));
-        if (!$referenceVotes) {
-            $referenceVotes = new ReferenceVotes();
-            $referenceVotes->setReferenceComment($referenceCommentId);
-        }
-
-        return $referenceVotes->getAnonymousVotes();
-    }
-
-    public function votePositiveComment($referenceCommentId)
-    {
-        $user = $this->token->getToken() ? $this->token->getToken()->getUser() : null;
-
-        $this->validateVoteComment($user, $referenceCommentId);
-
-        $user = $user instanceof UserInterface ? $user : null;
-
-        $vote = new VotePositive();
-        $vote->setReferenceComment($referenceCommentId);
-        $vote->setReferenceArticle(null);
-        $vote->setUser($user);
-        $vote->setUserIP($this->request ? $this->request->getClientIp() : null);
-
-        /** @var \Msalsas\VotingBundle\Entity\ReferenceVotes $referenceVotes */
-        $referenceVotes = $this->addReferenceVoteComment($referenceCommentId, true, !$user);
-
-        $this->em->persist($vote);
-        $this->em->persist($referenceVotes);
-        $this->em->flush();
-
-        return $referenceVotes->getPositiveVotes();
-    }
-
-    public function voteNegativeComment($referenceCommentId, $reason)
-    {
-        $user = $this->token->getToken() ? $this->token->getToken()->getUser() : null;
-
-        if (!$reason || !is_string($reason) || $reason === '0') {
-            throw new AccessDeniedException($this->translator->trans('msalsas_voting.errors.invalid_reason'));
-        }
-
-        $this->validateVoteComment($user, $referenceCommentId);
-
-        if (!$user instanceof UserInterface) {
-            throw new AccessDeniedException($this->translator->trans('msalsas_voting.errors.anon_cannot_vote_negative'));
-        }
-
-        $vote = new VoteNegative();
-        $vote->setReferenceComment($referenceCommentId);
-        $vote->setReason($reason);
-        $vote->setUser($user);
-        $vote->setUserIP($this->request->getClientIp());
-
-        /** @var \Msalsas\VotingBundle\Entity\ReferenceVotes $referenceVotes */
-        $referenceVotes = $this->addReferenceVoteComment($referenceCommentId, false, !$user);
-
-        $this->em->persist($referenceVotes);
-        $this->em->persist($vote);
-        $this->em->flush();
-
-        return $referenceVotes->getNegativeVotes();
-    }
-
-    public function getUserVoteComment($referenceCommentId)
-    {
-        $user = $this->token->getToken()->getUser();
-        $user = $user instanceof UserInterface ? $user : null;
-        $votePositiveRepository = $this->em->getRepository(VotePositive::class);
-        $voteNegativeRepository = $this->em->getRepository(VoteNegative::class);
-
-        if ($user && $vote = $votePositiveRepository->findOneBy(array('user' => $user, 'referenceComment' => $referenceCommentId))) {
-            return $vote;
-        } else if (!$user && $vote = $votePositiveRepository->findOneBy(array('user' => $user, 'referenceComment' => $referenceCommentId, 'userIP' => $this->request->getClientIp()))) {
-            return $vote;
-        } else if ($vote = $voteNegativeRepository->findOneBy(array('user' => $user, 'referenceComment' => $referenceCommentId))) {
-            return $vote;
-        }
-
-        return false;
-    }
-
-
-    public function userCanVoteNegativeComment($referenceCommentId)
-    {
-        $user = $this->token->getToken()->getUser();
-        if (!$user instanceof UserInterface) {
-            return false;
-        }
-
-        return !$this->userHasVotedComment($user, $referenceCommentId);
-    }
-
-    public function isPublishedComment($referenceCommentId)
-    {
-        /** @var \Msalsas\VotingBundle\Entity\ReferenceVotes|null $referenceVotes */
-        $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('referenceComment' => $referenceCommentId));
-        if (!$referenceVotes) {
-            return false;
-        }
-
-        return $referenceVotes->isPublished();
-    }
-
-    public function setPublishedComment($referenceCommentId)
-    {
-        /** @var \Msalsas\VotingBundle\Entity\ReferenceVotes|null $referenceVotes */
-        $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('referenceComment' => $referenceCommentId));
-        if (!$referenceVotes) {
-            throw new \Exception($this->translator->trans('msalsas_voting.errors.ref_does_not_exist', array('%reference%' => $referenceCommentId)));
-        }
-
-        $referenceVotes->setPublished(true);
-    }
-
-    protected function validateVoteComment($user, $referenceCommentId)
-    {
-        if (!$user instanceof UserInterface && (!$this->request || !$this->request->getClientIp())) {
-            throw new AccessDeniedException($this->translator->trans('msalsas_voting.errors.no_ip_defined_for_anon'));
-        }
-
-        if ($this->userHasVotedComment($user, $referenceCommentId)) {
-            throw new AccessDeniedException($this->translator->trans('msalsas_voting.errors.already_voted'));
-        }
-
-        if (!$user instanceof UserInterface) {
-            $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('referenceComment' => $referenceCommentId));
-            if ($referenceVotes instanceof ReferenceVotes && !$this->anonymousIsAllowed($referenceVotes)) {
-                throw new AccessDeniedException($this->translator->trans('msalsas_voting.errors.too_much_anon_votes'));
-            }
-        }
-    }
-
-    protected function userHasVotedComment($user, $referenceCommentId)
-    {
-        $votePositiveRepository = $this->em->getRepository(VotePositive::class);
-        $voteNegativeRepository = $this->em->getRepository(VoteNegative::class);
-
-        if ($user instanceof UserInterface) {
-            if ($votePositiveRepository->findOneBy(
-                array(
-                    'user' => $user,
-                    'referenceComment' => $referenceCommentId
-                )
-            )) {
-                return true;
-            } else if ($voteNegativeRepository->findOneBy(
-                array(
-                    'user' => $user,
-                    'referenceComment' => $referenceCommentId
-                )
-            )) {
-                return true;
-            }
-        } else {
-            if ($votePositiveRepository->findOneBy(
-                array(
-                    'user' => null,
-                    'userIP' => $this->request->getClientIp(),
-                    'referenceComment' => $referenceCommentId
-                )
-            )) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    protected function addReferenceVoteComment($referenceCommentId, $positive, $anonymous = true)
-    {
-        /** @var \Msalsas\VotingBundle\Entity\ReferenceVotes|null $referenceVotes */
-        $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('referenceComment' => $referenceCommentId));
-        if ($referenceVotes) {
-            $referenceVotes->addVote($positive, $anonymous);
-        } else {
-            $referenceVotes = new ReferenceVotes();
-            $referenceVotes->setReferenceComment($referenceCommentId);
-            $referenceVotes->setReferenceArticle(null);
-            $referenceVotes->addVote($positive, $anonymous);
-        }
-
-        return $referenceVotes;
-    }
-
-    protected function anonymousIsAllowedComment(ReferenceVotes $referenceVotes)
-    {
-        $anonVotes = $referenceVotes->getAnonymousVotes();
-        $userVotes = $referenceVotes->getUserVotes();
-
-        if ($anonVotes < $this->anonMinAllowed) {
-            return true;
-        }
-
-        $anonPercent = $anonVotes ? ($anonVotes / ($userVotes + $anonVotes)) * 100 : 0;
-        if ($anonPercent < $this->anonPercentAllowed) {
-            return true;
-        }
-
-        return false;
-    }
-
-
 }

@@ -52,10 +52,10 @@ class Clicker
         $this->translator = $translator;
     }
 
-    public function getClicks($referenceArticleId)
+    public function getClicks($referenceId)
     {
         /** @var ReferenceClicks|null $referenceClicks */
-        $referenceClicks = $this->em->getRepository(ReferenceClicks::class)->findOneBy(array('referenceArticle' => $referenceArticleId));
+        $referenceClicks = $this->em->getRepository(ReferenceClicks::class)->findOneBy(array('reference' => $referenceId));
         if (!$referenceClicks) {
             return 0;
         }
@@ -63,24 +63,24 @@ class Clicker
         return $referenceClicks->getClicks();
     }
 
-    public function addClick($referenceArticleId)
+    public function addClick($referenceId)
     {
         $user = $this->token->getToken()->getUser();
         $user = $user instanceof UserInterface ? $user : null;
 
         try {
-            $this->validateClick($user, $referenceArticleId);
+            $this->validateClick($user, $referenceId);
         } catch (\Exception $e) {
-            return $this->getClicks($referenceArticleId);
+            return $this->getClicks($referenceId);
         }
 
         $click = new Click();
-        $click->setReferenceArticle($referenceArticleId);
+        $click->setReference($referenceId);
         $click->setUser($user);
         $click->setUserIP($this->request->getClientIp());
 
         /** @var \Msalsas\VotingBundle\Entity\ReferenceClicks $referenceClicks */
-        $referenceClicks = $this->addReferenceClick($referenceArticleId);
+        $referenceClicks = $this->addReferenceClick($referenceId);
 
         $this->em->persist($click);
         $this->em->persist($referenceClicks);
@@ -89,18 +89,18 @@ class Clicker
         return $referenceClicks->getClicks();
     }
 
-    private function validateClick($user, $referenceArticleId)
+    private function validateClick($user, $referenceId)
     {
         if (!$user instanceof UserInterface && !$this->request->getClientIp()) {
             throw new AccessDeniedException($this->translator->trans('msalsas_voting.errors.no_ip_defined_for_anon'));
         }
 
-        if ($this->userHasClicked($user, $referenceArticleId)) {
+        if ($this->userHasClicked($user, $referenceId)) {
             throw new AccessDeniedException($this->translator->trans('msalsas_voting.errors.already_clicked'));
         }
     }
 
-    private function userHasClicked($user, $referenceArticleId)
+    private function userHasClicked($user, $referenceId)
     {
         $clickRepository = $this->em->getRepository(Click::class);
 
@@ -108,7 +108,7 @@ class Clicker
             if ($clickRepository->findOneBy(
                 array(
                     'user' => $user,
-                    'referenceArticle' => $referenceArticleId
+                    'reference' => $referenceId
                 )
             )) {
                 return true;
@@ -118,7 +118,7 @@ class Clicker
                 array(
                     'user' => null,
                     'userIP' => $this->request->getClientIp(),
-                    'referenceArticle' => $referenceArticleId
+                    'reference' => $referenceId
                 )
             )) {
                 return true;
@@ -128,15 +128,15 @@ class Clicker
         return false;
     }
 
-    private function addReferenceClick($referenceArticleId)
+    private function addReferenceClick($referenceId)
     {
         /** @var ReferenceClicks|null $referenceClicks */
-        $referenceClicks = $this->em->getRepository(ReferenceClicks::class)->findOneBy(array('referenceArticle' => $referenceArticleId));
+        $referenceClicks = $this->em->getRepository(ReferenceClicks::class)->findOneBy(array('reference' => $referenceId));
         if ($referenceClicks) {
             $referenceClicks->addClick();
         } else {
             $referenceClicks = new ReferenceClicks();
-            $referenceClicks->setReferenceArticle($referenceArticleId);
+            $referenceClicks->setReference($referenceId);
             $referenceClicks->addClick();
         }
 
