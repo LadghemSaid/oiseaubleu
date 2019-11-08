@@ -19,12 +19,18 @@
 
     function shakeIt(evt) {
         if(evt.target.parentNode.parentNode.dataset.comment){
+            //cas Commentaire
             var shakeItButton = evt.target.parentNode.parentNode;
         }else{
+            //cas index et show like
+            heartFa = shakeItButton.previousElementSibling.children[1];
+            heartFa.classList.add("--liked");
+
             var shakeItButton = evt.target.parentNode;
         }
-        //shakeItButton.classList.add('liked');
-        //console.log(evt.target.parentNode);
+        //console.log(evt.target);
+        shakeItButton.classList.add("--liked");
+
         var id = shakeItButton.dataset.id;
         var url = shakeItButton.dataset.url;
         var isComment = shakeItButton.dataset.comment;

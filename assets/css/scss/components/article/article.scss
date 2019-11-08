@@ -1,3 +1,7 @@
+$bg: #f3f8fa;
+$white: #fff;
+$black: #282936;
+
 
 .article{
   &__titre{
@@ -39,18 +43,18 @@
     padding: 0;
     font-size: 16px;
     margin-bottom: 20px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-around;
 
     li{
+
       padding: 6px 0;
-      font-size: 15px;
-      height: 100%;
+      font-size: 1rem;
       line-height: 21px;
-      float: left;
-      width: 50%;
+      width: 20%;
       margin-bottom: 5px;
       position: relative;
-      display: flex !important;
-      justify-content: center;
     }
 
   }
@@ -61,5 +65,91 @@
       align-items: center;
       justify-content: flex-end;
     }
+  }
+  &__buttonBackToArticle{
+    width: 100%;
+    .button{
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+      outline: none;
+      border: 0;
+      vertical-align: middle;
+      text-decoration: none;
+      background: transparent;
+      padding: 0;
+      font-size: inherit;
+      font-family: inherit;
+      &.learn-more {
+       // width: 2rem;
+        width: 100%;
+        height: auto;
+        .circle {
+          @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+          position: relative;
+          margin: 0;
+          width: 3rem;
+          height: 3rem;
+          background: $black;
+          border-radius: 1.625rem;
+          .icon {
+            @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            background: $white;
+            &.arrow {
+              @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+              left: 0.625rem;
+              width: 1.125rem;
+              height: 0.125rem;
+              background: none;
+              &::before {
+                position: absolute;
+                content: '';
+                top: -0.25rem;
+                right: 0.0625rem;
+                width: 0.625rem;
+                height: 0.625rem;
+                border-top: 0.125rem solid #fff;
+                border-right: 0.125rem solid #fff;
+                transform: rotate(45deg);
+              }
+            }
+          }
+        }
+        .button-text {
+          @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          padding: 0.75rem 0;
+          margin: 0 0 0 1.85rem;
+          color: $black;
+          font-weight: 700;
+          line-height: 1.6;
+          text-align: center;
+          text-transform: uppercase;
+        }
+      }
+      &:hover {
+        .circle {
+          width: 100%;
+          .icon {
+            &.arrow {
+              background: $white;
+              transform: translate(1rem, 0);
+            }
+          }
+        }
+        .button-text {
+          color: $white;
+        }
+      }
+    }
+
   }
 }

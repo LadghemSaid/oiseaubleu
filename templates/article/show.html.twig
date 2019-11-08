@@ -39,37 +39,48 @@
 
 
                         <p class="article__text">{{ article.text | raw }}</p>
-
-                        <ul class="article__ulCategories">
-                            <li class="badge badge-pill badge-secondary ">
-                                <span class=""> {{ article.categorie.name }} </span>
-                            </li>
-                        </ul>
-
                         <div class="article__metaBas">
                         <span class="article__metaBas__author">
                         {% if  article.author.username is defined %}
                             {{ article.author.username }}
                         {% endif %}
                         </span>
-                            {{ msalsas_voting_widget.bottomBar( article.id) }}
+                            {#{{ msalsas_voting_widget.bottomBar( article.id) }}#}
                         </div>
+                        <ul class="article__ulCategories">
+                            <li class="badge badge-pill badge-secondary ">
+                                <span class=""> {{ article.categorie.name }} </span>
+                            </li>
+
+                        </ul>
+
+
                     </div>
 
 
         </div>
-        <a href="{{ path('article.index') }}" class="article__buttonBackToArticle">Retournez aux articles</a>
+        <a href="{{ path('article.index') }}" class="article__buttonBackToArticle">
+            <div class="button learn-more">
+                <div class="circle">
+                    <span class="icon arrow"></span>
+                </div>
+                <p class="button-text">Retournez aux articles</p>
+            </div>
+        </a>
     </div>
 
-    {% if app.user %}
-        {{ form_start(formComment,{'attr': {'class': 'commentForm'}}) }}
-        {{ form_row(formComment.textComment,{'attr': {'class': 'commentForm__textarea'}}) }}
-        {{ form_row(formComment.submit,{'attr': {'class': 'commentForm__submit'}}) }}
-        {{ form_end(formComment) }}
-    {% endif %}
+
 
 
     <section class="comments">
+        {% if app.user %}
+            {{ form_start(formComment,{'attr': {'class': 'commentForm'}}) }}
+            {{ form_row(formComment.textComment,{'attr': {'class': 'commentForm__textarea'}}) }}
+            {{ form_row(formComment.submit,{'attr': {'class': 'commentForm__submit'}}) }}
+            {{ form_end(formComment) }}
+        {% else %}
+            <p><button class="comments__notConnected"><a href="{{ path('app_login') }}">Connecter vous pour commenter</a></button></p>
+        {% endif %}
         {% for comment in comments  %}
 
             <article class="comment" id="commentId-{{ comment.id }}">

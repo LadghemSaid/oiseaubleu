@@ -21,37 +21,38 @@ file that was distributed with this source code. #}
 
 
 
-    <div class="msalsas-voting-widget-wrapper">
-        <div class="msalsas-voting-widget">
-            <div class="msalsas-voting-shakes{% if published %} published{% endif %}">
-                <a id="msalsas-voting-shakes-{{ id }}">{{ votes|default(0) }}</a>
+    <div class="msalsas-voting-widget-wrapper--comment">
+            <div class="msalsas-voting-widget">
+                <div class="msalsas-voting-shakes{% if published %} published{% endif %}">
+                    <a id="msalsas-voting-shakes-{{ id }}">{{ votes|default(0) }}</a>
+                </div>
+                <div class="msalsas-voting-shake-it"
+                     id="msalsas-voting-a-shake-{{ id }}"
+                     data-id="{{ id }}"
+                     data-shakentext="{{ 'msalsas_voting.shaken'|trans }}"
+                    <{% if isComment %}
+                        data-comment="true"
+                        data-url="{{ path('positive_vote_comment', {id: id, _locale: app.request.locale}) }}">
+                    {% else %}
+                        data-url="{{ path('positive_vote', {id: id, _locale: app.request.locale}) }}">
+                    {% endif %}
+                    {% if not userVote %}
+                        <a class="msalsas-voting-shake-it-a"  href="javascript:void(0)"><i class="far fa-heart"></i></a>
+                    {% elseif userVote.positive %}
+                        <span class="msalsas-voting-shake-it-a" id="msalsas-voting-a-positive-{{ id }}"><i class="fa fa-heart"></i></span>
+                    {% else %}
+                        <span class="msalsas-voting-shake-it-a" id="msalsas-voting-a-negative-{{ id }}"><i class="fa fa-heart"></i></span>
+                    {% endif %}
+                </div>
+                <div class="msalsas-voting-clicks{% if published %} published{% endif %}">
+                    {% if clicks %}
+                        {{ 'msalsas_voting.clicks'|transchoice(clicks) }}
+                    {% else %}
+                        &nbsp;
+                    {% endif %}
+                </div>
             </div>
-            <div class="msalsas-voting-shake-it"
-                 id="msalsas-voting-a-shake-{{ id }}"
-                 data-id="{{ id }}"
-                 data-shakentext="{{ 'msalsas_voting.shaken'|trans }}"
-                <{% if isComment %}
-                    data-comment="true"
-                    data-url="{{ path('positive_vote_comment', {id: id, _locale: app.request.locale}) }}">
-                {% else %}
-                    data-url="{{ path('positive_vote', {id: id, _locale: app.request.locale}) }}">
-                {% endif %}
-                {% if not userVote %}
-                    <a class="msalsas-voting-shake-it-a"  href="javascript:void(0)"><i class="far fa-heart"></i></a>
-                {% elseif userVote.positive %}
-                    <span class="msalsas-voting-shake-it-a" id="msalsas-voting-a-positive-{{ id }}"><i class="fa fa-heart"></i></span>
-                {% else %}
-                    <span class="msalsas-voting-shake-it-a" id="msalsas-voting-a-negative-{{ id }}"><i class="fa fa-heart"></i></span>
-                {% endif %}
-            </div>
-            <div class="msalsas-voting-clicks{% if published %} published{% endif %}">
-                {% if clicks %}
-                    {{ 'msalsas_voting.clicks'|transchoice(clicks) }}
-                {% else %}
-                    &nbsp;
-                {% endif %}
-            </div>
-        </div>
+        </a>
     </div>
 {% endmacro shakeIt %}
 
