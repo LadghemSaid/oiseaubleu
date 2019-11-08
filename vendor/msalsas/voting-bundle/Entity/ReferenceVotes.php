@@ -12,12 +12,27 @@
 namespace Msalsas\VotingBundle\Entity;
 
 
+use Doctrine\ORM\Mapping as ORM;
+
 class ReferenceVotes
 {
     /**
      * @var integer
      */
-    protected $reference;
+    protected $id;
+
+
+
+    /**
+     * @var integer
+     */
+    protected $referenceArticle;
+
+    /**
+     * @var integer
+     */
+    protected $referenceComment;
+
 
     /**
      * @var integer
@@ -47,17 +62,53 @@ class ReferenceVotes
     /**
      * @return int
      */
-    public function getReference(): int
+    public function getId(): int
     {
-        return $this->reference;
+        return $this->id;
     }
 
     /**
-     * @param int $reference
+     * @param int $id
      */
-    public function setReference(int $reference)
+    public function setId(int $id): void
     {
-        $this->reference = $reference;
+        $this->id = $id;
+    }
+
+
+    /**
+     * @return int
+     */
+    public function getReferenceArticle(): int
+    {
+        return $this->referenceArticle;
+    }
+
+    /**
+     * @param $referenceArticle
+     */
+    public function setReferenceArticle( $referenceArticle)
+    {
+        $this->referenceArticle = $referenceArticle;
+    }
+
+
+
+    /**
+     * @return int
+     */
+    public function getReferenceComment(): int
+    {
+        return $this->referenceComment;
+    }
+
+
+    /**
+     * @param $referenceComment
+     */
+    public function setReferenceComment( $referenceComment)
+    {
+        $this->referenceComment = $referenceComment;
     }
 
     /**

@@ -23,7 +23,7 @@
         }else{
             var shakeItButton = evt.target.parentNode;
         }
-        shakeItButton.addClass('liked');
+        //shakeItButton.classList.add('liked');
         //console.log(evt.target.parentNode);
         var id = shakeItButton.dataset.id;
         var url = shakeItButton.dataset.url;
@@ -38,7 +38,7 @@
         http.onreadystatechange = function() {
             if(http.readyState == 4 && http.status == 200) {
                 var shakesElem = document.getElementById('msalsas-voting-shakes-' + id);
-                shakesElem.text = document.createTextNode(http.responseText).wholeText;
+                shakesElem.innerText = document.createTextNode(http.responseText).wholeText;
                 //console.log( shakesElem.text);
                 if(isComment){
                     evt.target.classList.remove('far');

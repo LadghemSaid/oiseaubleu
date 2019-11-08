@@ -5,9 +5,15 @@
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
     <entity name="Msalsas\VotingBundle\Entity\ReferenceVotes" table="msalsas_voting_reference_votes" repository-class="Msalsas\VotingBundle\Entity\ReferenceVotesRepository">
-        <id name="reference" column="reference" type="integer" length="180" />
 
-        <field name="positiveVotes" column="positiveVotes" type="integer" length="180" />
+        <id name="id" type="integer"><generator strategy="AUTO"/></id>
+
+
+
+        <field name="referenceArticle" column="referenceArticle" type="integer" nullable="true" length="180" />
+        <field name="referenceComment" column="referenceComment" type="integer"  nullable="true" length="180" />
+
+        <field name="positiveVotes" column="positiveVotes" type="integer" length="180"  />
         <field name="negativeVotes" column="negativeVotes" type="integer" length="180" />
         <field name="userVotes" column="userVotes" type="integer" length="180" />
         <field name="anonymousVotes" column="anonymousVotes" type="integer" length="180" />

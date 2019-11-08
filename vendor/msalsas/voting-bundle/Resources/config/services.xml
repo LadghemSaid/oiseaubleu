@@ -21,7 +21,9 @@
             <argument key="$negativeReasons" type="string">%msalsas_voting.negative_reasons%</argument>
         </service>
 
+
         <service id="Msalsas\VotingBundle\Service\Voter" alias="msalsas_voting.voter" />
+
         <!-- End Voter service -->
 
         <!-- Clicker service -->
@@ -39,6 +41,7 @@
         <service id="msalsas_voting.controller" class="Msalsas\VotingBundle\Controller\VoteController" public="true">
             <argument key="$voter" type="service" id="msalsas_voting.voter"/>
         </service>
+
 
         <service id="Msalsas\VotingBundle\Controller\VoteController" alias="msalsas_voting.controller" public="true"/>
         <!-- End Controller -->

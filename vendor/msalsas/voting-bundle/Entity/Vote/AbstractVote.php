@@ -29,7 +29,15 @@ abstract class AbstractVote
     /**
      * @var integer
      */
-    protected $reference;
+    protected $referenceArticle;
+
+    /**
+     * @var integer
+     */
+    protected $referenceComment;
+
+
+
 
     /**
      * @var string
@@ -71,17 +79,34 @@ abstract class AbstractVote
     /**
      * @return int
      */
-    public function getReference(): int
+    public function getReferenceArticle(): int
     {
-        return $this->reference;
+        return $this->referenceArticle;
     }
 
     /**
-     * @param int $reference
+     * @param  $referenceArticle
      */
-    public function setReference(int $reference)
+    public function setReferenceArticle( $referenceArticle)
     {
-        $this->reference = $reference;
+        $this->referenceArticle = $referenceArticle;
+
+    }
+
+    /**
+     * @return int
+     */
+    public function getReferenceComment(): int
+    {
+        return $this->referenceComment;
+    }
+
+    /**
+     * @param  $referenceComment
+     */
+    public function setReferenceComment($referenceComment)
+    {
+        $this->referenceComment = $referenceComment;
     }
 
     /**

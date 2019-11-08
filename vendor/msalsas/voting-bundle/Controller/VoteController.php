@@ -66,4 +66,45 @@ class VoteController extends Controller
 
         return $this->json($votesCount);
     }
+
+
+
+    public function votePositiveComment($id, Request $request)
+    {
+        if (!$request->isXmlHttpRequest()) {
+            throw new AccessDeniedException();
+        }
+
+        try {
+            $votesCount = $this->voter->votePositiveComment($id);
+        } catch (AccessDeniedException $e) {
+            return $this->json($e->getMessage(), 403);
+        } catch (\Exception $e) {
+            return $this->json($e->getMessage(), 403);
+        }
+
+        return $this->json($votesCount);
+    }
+
+    public function voteNegativeComment($id, Request $request)
+    {
+        if (!$request->isXmlHttpRequest()) {
+            throw new AccessDeniedException();
+        }
+
+        $reason = $request->getContent();
+        if (!$reason || !is_string($reason) || !in_array($reason, $this->voter->getNegativeReasons())) {
+            throw new AccessDeniedException();
+        }
+
+        try {
+            $votesCount = $this->voter->voteNegative($id, $reason);
+        } catch (AccessDeniedException $e) {
+            return $this->json($e->getMessage(), 403);
+        } catch (\Exception $e) {
+            return $this->json($e->getMessage(), 403);
+        }
+
+        return $this->json($votesCount);
+    }
 }

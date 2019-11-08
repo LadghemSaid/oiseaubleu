@@ -17,7 +17,12 @@ class ReferenceClicks
     /**
      * @var integer
      */
-    protected $reference;
+    protected $referenceArticle;
+
+    /**
+     * @var integer
+     */
+    protected $referenceComment;
 
     /**
      * @var integer
@@ -27,17 +32,33 @@ class ReferenceClicks
     /**
      * @return int
      */
-    public function getReference(): int
+    public function getReferenceArticle(): int
     {
-        return $this->reference;
+        return $this->referenceArticle;
     }
 
     /**
-     * @param int $reference
+     * @param int $referenceArticle
      */
-    public function setReference(int $reference)
+    public function setReferenceArticle(int $referenceArticle)
     {
-        $this->reference = $reference;
+        $this->referenceArticle = $referenceArticle;
+    }
+
+    /**
+     * @return int
+     */
+    public function getReferenceComment(): int
+    {
+        return $this->referenceComment;
+    }
+
+    /**
+     * @param int $referenceComment
+     */
+    public function setReferenceComment(int $referenceComment)
+    {
+        $this->referenceComment = $referenceComment;
     }
 
     /**
