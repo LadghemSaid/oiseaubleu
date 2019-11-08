@@ -1,5 +1,6 @@
 
     {% if pagination.nbPages > 0 %}
+      <div id='table'>
         <ul class="pagination">
             {% if pagination.page > 1 %}
                 <li>
@@ -37,6 +38,5 @@
                 </li>
             {% endif %}
         </ul>
+      </div>
     {% endif %}
-
-

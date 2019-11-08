@@ -1,0 +1,30 @@
+
+#table{
+  display:table;
+  margin:30px auto;
+  & .pagination{
+
+
+
+    & > li{
+      background-color: #005293;
+
+      border-radius: 5px;
+      display:inline;
+      margin:10px;
+      min-width: 30px;
+      min-height: 30px;
+      display:flex;
+
+      & > a{
+        color:white;
+        margin:0 auto;
+        font-weight: bold;
+        font-size: 20px;
+        justify-content: center;
+      }
+
+    }
+
+  }
+}
