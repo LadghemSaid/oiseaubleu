@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1f5b76b1-6c63-4e17-a1e8-90b7ce1d350d" name="Default Changelist" comment="" />
+    <list default="true" id="1f5b76b1-6c63-4e17-a1e8-90b7ce1d350d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/public/js/msalsas_voting_shakeIt.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/public/js/msalsas_voting_shakeIt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/views/msalsas_voting_widget.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/views/msalsas_voting_widget.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20191024112338.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20191108073314.php" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,17 +25,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/article/show.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="14" column="64" selection-start-line="14" selection-start-column="64" selection-end-line="14" selection-end-column="64" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/views/msalsas_voting_widget_custom.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="76" column="43" lean-forward="true" selection-start-line="76" selection-start-column="43" selection-end-line="76" selection-end-column="43" />
+            <state relative-caret-position="510">
+              <caret line="43" column="74" selection-start-line="43" selection-start-column="74" selection-end-line="43" selection-end-column="74" />
             </state>
           </provider>
         </entry>
@@ -46,8 +43,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/views/msalsas_voting_widget.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="26" column="21" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
+            <state>
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Mock/UserMock.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="24" column="29" lean-forward="true" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
             </state>
           </provider>
         </entry>
@@ -56,7 +71,7 @@
         <entry file="file://$PROJECT_DIR$/translations/messages.fr.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
             </state>
           </provider>
         </entry>
@@ -70,34 +85,7 @@
         <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/public/js/msalsas_voting_shakeIt.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="546">
-              <caret line="79" column="54" lean-forward="true" selection-start-line="79" selection-start-column="54" selection-end-line="79" selection-end-column="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Controller/VoteController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="91" column="46" lean-forward="true" selection-start-line="91" selection-start-column="46" selection-end-line="91" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/views/msalsas_voting_widget.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-165">
-              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/css/scss/imports.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+              <caret line="79" column="54" selection-start-line="79" selection-start-column="54" selection-end-line="79" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -335,7 +323,7 @@
     </navigator>
     <panes>
       <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+        <subPane subId="Scope 'Changed Files'; set:Changed Files; ALL; class com.intellij.packageDependencies.ChangeListScope">
           <expand>
             <path>
               <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
@@ -404,6 +392,11 @@
             <path>
               <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
@@ -416,6 +409,186 @@
               <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="translations" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="vendor" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="vendor" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="msalsas" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="vendor" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="msalsas" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="voting-bundle" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="vendor" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="msalsas" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="voting-bundle" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Resources" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="vendor" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="msalsas" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="voting-bundle" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Resources" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="views" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <subPane subId="Scope 'Problems'; set:Problems; class com.intellij.psi.search.scope.ProblemsScope">
+          <expand>
+            <path>
+              <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="assets" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="assets" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="css" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="assets" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="css" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="scss" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="assets" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="css" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="scss" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="components" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="assets" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="css" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="scss" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="helpers" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="assets" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="css" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="scss" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="pages" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="assets" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="css" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="scss" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="pages" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="article" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="assets" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="css" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="scss" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="pages" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="home" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="article" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="translations" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="vendor" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="vendor" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="msalsas" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="vendor" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="msalsas" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="voting-bundle" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="vendor" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="msalsas" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="voting-bundle" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Resources" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="vendor" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="msalsas" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="voting-bundle" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Resources" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="views" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/public_html/LP_CREAWEB/oiseaubleu" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Bundles" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="oiseaubleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
@@ -468,7 +641,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.google.gct.idea.git.username" value="deathqt1@gmail.com" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Bundles" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -476,11 +649,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Bundles" />
+      <recent name="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/views" />
       <recent name="$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/translations" />
       <recent name="E:\wamp64\www\Symfony\SiteOiseauBleu\public\js" />
       <recent name="E:\wamp64\www\Symfony\SiteOiseauBleu\src\Bundles" />
-      <recent name="E:\wamp64\www\Symfony\SiteOiseauBleu\vendor\msalsas\voting-bundle\Controller" />
-      <recent name="E:\wamp64\www\Symfony\SiteOiseauBleu\vendor\msalsas\voting-bundle\Service" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\wamp64\www\Symfony\SiteOiseauBleu\public\img" />
@@ -530,12 +703,12 @@
       <workItem from="1571494714249" duration="10564000" />
       <workItem from="1571915823062" duration="2107000" />
       <workItem from="1573123630393" duration="11160000" />
-      <workItem from="1573197939683" duration="2046000" />
+      <workItem from="1573197939683" duration="2563000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52597000" />
+    <option name="totallyTimeSpent" value="53114000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -550,7 +723,7 @@
     <frame x="-3" y="-1" width="2566" height="1419" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17939539" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17939539" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -562,8 +735,8 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3296617" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49960127" visible="true" weight="0.32972136" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32972136" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49960127" visible="true" weight="0.32972136" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5003987" side_tool="true" weight="0.3296617" />
       <window_info anchor="bottom" id="CSS Styles" order="12" weight="0.3296617" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -610,13 +783,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Entity/ReferenceClicks.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/packages/msalsas_voting.yaml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -695,22 +861,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Mock/UserMock.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="24" column="29" lean-forward="true" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="23" selection-end-column="17" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vendor/knplabs/knp-time-bundle/Knp/Bundle/TimeBundle/KnpTimeBundle.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -908,7 +1060,7 @@
     <entry file="file://$PROJECT_DIR$/translations/messages.fr.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>
@@ -918,42 +1070,59 @@
     <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/public/js/msalsas_voting_shakeIt.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="546">
-          <caret line="79" column="54" lean-forward="true" selection-start-line="79" selection-start-column="54" selection-end-line="79" selection-end-column="54" />
+          <caret line="79" column="54" selection-start-line="79" selection-start-column="54" selection-end-line="79" selection-end-column="54" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Controller/VoteController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
-          <caret line="91" column="46" lean-forward="true" selection-start-line="91" selection-start-column="46" selection-end-line="91" selection-end-column="46" />
+          <caret line="91" column="46" selection-start-line="91" selection-start-column="46" selection-end-line="91" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/article/show.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="43" column="74" selection-start-line="43" selection-start-column="74" selection-end-line="43" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/views/msalsas_voting_widget_custom.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="81" column="29" lean-forward="true" selection-start-line="81" selection-start-column="29" selection-end-line="81" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Resources/views/msalsas_voting_widget.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-165">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/views/dfg">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/views/msalsas_voting_widget.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="26" column="21" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
+        <state>
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/article/show.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Bundles/msalsas/voting-bundle/Tests/Mock/UserMock.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="14" column="64" selection-start-line="14" selection-start-column="64" selection-end-line="14" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/views/msalsas_voting_widget_custom.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="76" column="43" lean-forward="true" selection-start-line="76" selection-start-column="43" selection-end-line="76" selection-end-column="43" />
+        <state relative-caret-position="255">
+          <caret line="24" column="29" lean-forward="true" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
         </state>
       </provider>
     </entry>
