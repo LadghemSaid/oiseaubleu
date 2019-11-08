@@ -24,9 +24,9 @@ file that was distributed with this source code. #}
     <div class="msalsas-voting-widget-wrapper">
         <div class="msalsas-voting-widget">
             <div class="msalsas-voting-shakes{% if published %} published{% endif %}">
-                <p id="msalsas-voting-shakes-{{ id }}">{{ votes|default(0) }}</p> <i class="fa fa-heart"></i>
+                <p id="msalsas-voting-shakes-{{ id }}">{{ votes|default(0) }}</p> <i class="fa fa-heart {% if userVote %} --liked {% endif %}"></i>
             </div>
-            <div class="msalsas-voting-shake-it"
+            <div class="msalsas-voting-shake-it{% if userVote %} --liked {% endif %}"
                  id="msalsas-voting-a-shake-{{ id }}"
                  data-id="{{ id }}"
                  data-shakentext="{{ 'msalsas_voting.shaken'|trans }}"
