@@ -34,10 +34,10 @@ class ArticleType extends AbstractType
 
                 // uses the User.username property as the visible option string
                 'choice_label' => 'name',
-
+                 'multiple' => true,
+                 'expanded' => false,
                 // used to render a select box, check boxes or radios
-                // 'multiple' => true,
-                // 'expanded' => true,
+
             ]);
 
     }

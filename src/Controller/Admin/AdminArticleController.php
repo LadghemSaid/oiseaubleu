@@ -27,10 +27,10 @@ class AdminArticleController extends AbstractController
      */
     private $em;
 
-    public function __construct(ArticleRepository $repo,CategorieRepository $repoCategori, ObjectManager $em)
+    public function __construct(ArticleRepository $repo, CategorieRepository $repoCategorie, ObjectManager $em)
     {
         $this->repoArticle = $repo;
-        $this->repoCategori = $repoCategori;
+        $this->repoCategori = $repoCategorie;
         $this->em = $em;
     }
 

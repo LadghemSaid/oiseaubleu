@@ -33,7 +33,7 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=64, unique=true)
+     * @ORM\Column(type="string", length=64)
      * @Assert\NotBlank()
      */
     private $username;

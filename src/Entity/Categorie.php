@@ -31,7 +31,7 @@ class Categorie
     private $created_at;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="categorie")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Article", mappedBy="categorie")
      * @ORM\JoinColumn(nullable=true)
      */
     private $articles;
@@ -78,6 +78,8 @@ class Categorie
         return $this;
     }
 
+
+
     /**
      * @return Collection|Article[]
      */
@@ -90,7 +92,7 @@ class Categorie
     {
         if (!$this->articles->contains($article)) {
             $this->articles[] = $article;
-            $article->setCategorie($this);
+            $article->addCategorie($this);
         }
 
         return $this;
@@ -100,12 +102,19 @@ class Categorie
     {
         if ($this->articles->contains($article)) {
             $this->articles->removeElement($article);
-            // set the owning side to null (unless already changed)
-            if ($article->getCategorie() === $this) {
-                $article->setCategorie(null);
-            }
+            $article->removeCategorie($this);
         }
 
         return $this;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function __toString():string
+    {
+        //dd('ok');
+        return (string)$this->getName();
     }
 }

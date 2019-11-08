@@ -23,10 +23,10 @@
             var shakeItButton = evt.target.parentNode.parentNode;
         }else{
             //cas index et show like
+            var shakeItButton = evt.target.parentNode;
             heartFa = shakeItButton.previousElementSibling.children[1];
             heartFa.classList.add("--liked");
 
-            var shakeItButton = evt.target.parentNode;
         }
         //console.log(evt.target);
         shakeItButton.classList.add("--liked");
