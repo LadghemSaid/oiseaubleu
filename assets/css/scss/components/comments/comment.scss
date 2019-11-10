@@ -19,7 +19,7 @@
 }
 
 .comment {
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0px 6px 10px rgba(0, 0, 0, 0.22);
   display: flex;
   padding: 15px 40px;
   margin: 10px 0px;
@@ -140,7 +140,7 @@
   }
 
   &:hover {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 20px rgba(0,0,0,0.22);
   }
 
 }

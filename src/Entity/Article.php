@@ -114,7 +114,7 @@ class Article
     {
         $this->created_at = new \DateTime();
         $this->comments = new ArrayCollection();
-       // $this->categorie = new ArrayCollection();
+        $this->categorie = new ArrayCollection();
 
     }
 
