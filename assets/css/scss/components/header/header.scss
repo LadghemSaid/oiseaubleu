@@ -1,26 +1,52 @@
 $darkblue:#005293;
 $lightblue:#C5DAEB;
 $white:#f5f5f5;
+$green:#1ABC9C;
 
 .navbar{
   background-color:$primary-color;
   min-width:100%;
   min-height:80px;
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.50);
+
   & .nav-item{
+    & .nav-link, & .nav-link.active{
+      font-weight:bold;
+    }
+
     & .nav-link.btnleft
       {
-        background-color: $white;
-        border-radius: 5px;
-          color:$darkblue;
+        background-color: $green;
+        border-radius: 50px;
+          color:$white;
           font-weight:bold;
+          padding : 0.5rem 1rem;
+          margin-left: 1rem;
       }
       & .nav-link.btnright
         {
-          background-color: $lightblue;
-          border-radius: 5px;
+          border: 2px solid $white ;
+          border-radius: 50px;
             color:$white;
             font-weight:bold;
+            padding : 0.5rem 1rem;
+              margin-left: 1rem;
 
         }
+      & .form-inline{
+        & .form-control{
+          border-top-left-radius:  20px;
+          border-bottom-left-radius:  20px;
+          border-top-right-radius:  0px;
+          border-bottom-right-radius:  0px;
+          margin-right:0!important;
+        }
+        & .btn{
+          border-top-right-radius:  20px;
+          border-bottom-right-radius:  20px;
+          border-top-left-radius:  0px;
+          border-bottom-left-radius:  0px;
+        }
+      }
     }
-  }
+}

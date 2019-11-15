@@ -29,20 +29,22 @@
             <h1 class="article__titre">{{ article.title }}</h1>
                     <div class="article__cadre">
                         <div class="article__metaDroite">
-
-                            <span class="article__metaDroite__createdAt">{{ article.createdAt | date('d/m/Y', timezone='Europe/Paris') }}</span>
-                            <h4 class="pb-3 article__metaDroite__lectureTime" >Temps de lecture : <strong>10min</strong></h4>
+                          <div class="article__metaDroite__info">
+                            <span class="article__metaDroite__createdAt">Écrit le : <strong>{{ article.createdAt | date('d/m/Y', timezone='Europe/Paris') }}</strong></span>
+                            <span class="article__metaDroite__lectureTime" >Temps de lecture : <strong>10min</strong></span>
+                          </div>
                             <span class="article__metaDroite__voting">
                                 {{ msalsas_voting_widget.shakeIt(article.id) }}
                             </span>
                         </div>
+                        <hr />
 
 
                         <p class="article__text">{{ article.text | raw }}</p>
                         <div class="article__metaBas">
                         <span class="article__metaBas__author">
                         {% if  article.author.username is defined %}
-                            {{ article.author.username }}
+                            <span> Écrit par : <strong>{{ article.author.username }}</strong></span>
                         {% endif %}
                         </span>
                             {#{{ msalsas_voting_widget.bottomBar( article.id) }}#}
