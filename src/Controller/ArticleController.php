@@ -7,6 +7,7 @@ use App\Entity\Comment;
 use App\Form\CommentType;
 use App\Repository\ArticleRepository;
 use App\Repository\CommentRepository;
+use App\Repository\CategorieRepository;
 use App\Repository\UserRepository;
 use Msalsas\VotingBundle\Service\Voter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,10 +24,10 @@ class ArticleController extends AbstractController
      */
     private $request;
 
-    public function __construct(ArticleRepository $property_repo, UserRepository $users)
+    public function __construct(ArticleRepository $article_repo, UserRepository $users_repo)
     {
-        $this->repository = $property_repo;
-        $this->repository_user = $users;
+        $this->repository = $article_repo;
+        $this->repository_user = $users_repo;
         $this->request = Request::createFromGlobals();
     }
 
@@ -134,12 +135,27 @@ class ArticleController extends AbstractController
 
     }
 
+
     /**
      * @Route("/" , name="index")
      *
      */
-    public function home()
+    public function home(CategorieRepository $categorie_repo)
     {
-        return $this->redirectToRoute('article.index');
+
+        $categories = $categorie_repo->findAll();
+        $articlesByCat = [];
+        foreach ($categories as $category){
+            $articlesByCat[$category->getName()] = $this->repository->findTreeLatest($category->getId());
+            //$articlesByCat[$category->getName()] = $categorie_repo->findBy(array('articles' => $category->getId()));
+
+        }
+        //dd($articlesByCat);
+
+
+        return $this->render("home/index.html.twig", [
+            'current_menu' => 'home',
+            'articlesByCat' => $articlesByCat,
+        ]);
     }
 }

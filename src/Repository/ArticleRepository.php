@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Article;
+use App\Entity\Categorie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use InvalidArgumentException;
@@ -42,6 +43,29 @@ class ArticleRepository extends ServiceEntityRepository
             ->setMaxresults(3)
             ->getQuery()
             ->getResult();
+    }
+
+    /**
+     * @return Article[]
+     */
+    public function findTreeLatest($categorieId): array
+    {
+        return $this->findByCategorie($categorieId)
+            ->setMaxresults(6)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findByCategorie($id){
+        $query = $this->createQueryBuilder('a')
+            ->select('a')
+                ->leftJoin('a.categorie', 'c')
+                ->addSelect('c');
+
+        $query = $query->add('where', $query->expr()->in('c', ':c'))
+            ->setParameter('c', $id);
+        return $query;
+
     }
 
     /**
