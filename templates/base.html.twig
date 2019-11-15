@@ -35,6 +35,16 @@
                     <li class="nav-item {% if current_menu is defined and current_menu == 'articles' %}active{% endif %}">
                         <a class="nav-link" href="{{path('article.index', {"page":1})}}">Articles <span class="sr-only">(current)</span></a>
                     </li>
+                </ul>
+
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item">
+                      <form class="form-inline mt-2 mt-md-0" method="post" action="{{ path('article.index') }}">
+                          <input class="form-control mr-sm-2" type="text" name="title" placeholder="Search" aria-label="Search">
+                          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+                      </form>
+                    </li>
 
                     {% if app.user %}
 

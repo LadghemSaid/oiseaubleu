@@ -5,9 +5,16 @@ $black: #282936;
 
 .article{
   &__titre{
+<<<<<<< HEAD
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+=======
     font-size: 4rem;
     margin-bottom:2rem;
+>>>>>>> 420fd0ddd0ad11a1874e9667fcff4d1c9b0cec22
     margin-top: 2rem;
+    text-align: center;
+    font-weight: bold;
   }
   &__image{
     border-radius: 20%;
@@ -17,21 +24,34 @@ $black: #282936;
 
   }
 
-  &__metaHaut{
+  &__metaDroite{
+
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    justify-content: space-between;
 
-    &__lectureTime{
-    font-size: 1rem;
-    }
-    &__droite{
-      order: -1;
-      margin-bottom: 10px;
+    &__info{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      &__createdAt{
+
+      }
+      &__lectureTime{
+      font-size: 1rem!important;
+      padding-bottom:0!important;
+      }
+      &__voting{
+        order: -1;
+        margin-bottom: 10px;
+
+      }
 
     }
+
+
   }
   &__text{
     font-size: 16px;
