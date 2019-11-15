@@ -36,7 +36,7 @@ class Article
      * @ORM\Column(type="text", nullable=true)
      * @Assert\Length(
      *      min = 0,
-     *      max = 100,
+     *      max = 500,
      *      minMessage = "Your first name must be at least {{ limit }} characters long",
      *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
      * )
@@ -83,7 +83,7 @@ class Article
      * @ORM\Column(type="text")
      * @Assert\Length(
      *      min = 1,
-     *      max = 100,
+     *      max = 10000,
      *      minMessage = "Your first name must be at least {{ limit }} characters long",
      *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
      * )
@@ -103,11 +103,9 @@ class Article
     private $author;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Categorie", inversedBy="articles")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToMany(targetEntity="App\Entity\Categorie", inversedBy="articles")
      */
     private $categorie;
-
 
 
 
@@ -116,6 +114,7 @@ class Article
     {
         $this->created_at = new \DateTime();
         $this->comments = new ArrayCollection();
+        $this->categorie = new ArrayCollection();
 
     }
 
@@ -263,16 +262,39 @@ class Article
         return $this;
     }
 
-    public function getCategorie(): ?Categorie
+    /**
+     * @return Collection|Categorie[]
+     */
+    public function getCategorie(): Collection
     {
         return $this->categorie;
     }
 
-    public function setCategorie(?Categorie $categorie): self
+    public function addCategorie(Categorie $categorie): self
     {
-        $this->categorie = $categorie;
+        if (!$this->categorie->contains($categorie)) {
+            $this->categorie[] = $categorie;
+        }
 
         return $this;
+    }
+
+    public function removeCategorie(Categorie $categorie): self
+    {
+        if ($this->categorie->contains($categorie)) {
+            $this->categorie->removeElement($categorie);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString():string
+    {
+        //dd('ok');
+        return (string)$this->categorie->getName;
     }
 
 

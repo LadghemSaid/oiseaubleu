@@ -35,40 +35,50 @@
                           </div>
                             <span class="article__metaDroite__voting">
                                 {{ msalsas_voting_widget.shakeIt(article.id) }}
-                            </span>
+                                </span>
+                            <div class="article__metaHaut__droite">
+                                <h4 class="article__metaHaut__lectureTime" >Temps de lecture : <strong>10min</strong></h4>
+
+                            </div>
+
                         </div>
                         <hr />
 
 
-                        <p class="article__text">{{ article.text | raw }}</p>
+                        <span class="article__text">{{ article.text | raw }}</span>
                         <div class="article__metaBas">
                         <span class="article__metaBas__author">
                         {% if  article.author.username is defined %}
                             <span> Écrit par : <strong>{{ article.author.username }}</strong></span>
                         {% endif %}
                         </span>
+                            <span class="article__metaBas__createdAt">{{ article.createdAt | date('d/m/Y', timezone='Europe/Paris') }}</span>
                             {#{{ msalsas_voting_widget.bottomBar( article.id) }}#}
                         </div>
                         <ul class="article__ulCategories">
-                            <li class="badge badge-pill badge-secondary ">
-                                <span class=""> {{ article.categorie.name }} </span>
-                            </li>
+
+                            {% for categorie in article.categorie %}
+                                <li class="badge badge-pill badge-secondary ">
+                                    <span class=""> {{ categorie.name }} </span>
+                                </li>
+                            {% endfor %}
+
 
                         </ul>
 
 
                     </div>
 
-
-        </div>
-        <a href="{{ path('article.index') }}" class="article__buttonBackToArticle">
-            <div class="button learn-more">
-                <div class="circle">
-                    <span class="icon arrow"></span>
+            <a href="{{ path('article.index') }}" class="article__buttonBackToArticle">
+                <div class="button learn-more">
+                    <div class="circle">
+                        <span class="icon arrow"></span>
+                    </div>
+                    <p class="button-text">Retournez aux articles</p>
                 </div>
-                <p class="button-text">Retournez aux articles</p>
-            </div>
-        </a>
+            </a>
+        </div>
+
     </div>
 
 
@@ -77,8 +87,8 @@
     <section class="comments">
         {% if app.user %}
             {{ form_start(formComment,{'attr': {'class': 'commentForm'}}) }}
-            {{ form_row(formComment.textComment,{'attr': {'class': 'commentForm__textarea'}}) }}
-            {{ form_row(formComment.submit,{'attr': {'class': 'commentForm__submit'}}) }}
+            {{ form_row(formComment.textComment,{'attr': {'class': 'commentForm__textarea'}, 'label' : 'Ecrire un commentaire'}) }}
+            {{ form_row(formComment.submit,{'attr': {'class': 'commentForm__submit'},'label':'Envoyer'}) }}
             {{ form_end(formComment) }}
         {% else %}
             <p><button class="comments__notConnected"><a href="{{ path('app_login') }}">Connecter vous pour commenter</a></button></p>

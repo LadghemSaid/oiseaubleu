@@ -10,7 +10,7 @@
 
 {% block body %}
     <div class="mt-md-5 mt-sm-2 mb-md-5 mb-sm-2 text-center">
-        <h4>Editions de l'article : {{ article.title }}</h4>
+        <h4>Edition de l'article : <strong>{{ article.title }}</strong></h4>
     </div>
 
   {{  include('admin/article/_form.html.twig',{form: form,button:'Editer'})  }}

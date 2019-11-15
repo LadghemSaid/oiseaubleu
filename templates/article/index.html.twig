@@ -20,13 +20,14 @@
         <div class="row">
 
             {% for article in articles %}
-
                 <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-3 d-flex align-items-stretch">
                     <div class="card-content d-flex flex-column">
                         <div class="card-img">
                             <span class="card-notify-year">{{ article.createdAt| ago }}</span>
                             <img class="img-fluid lazyload w-100" src="{{ asset("img/lowres.png") }}" data-src={{ article.image }} alt="AlternateText" width="400px" height="250px"/>
-                            <span class="card-detail-badge city">{{ article.categorie.name }}</span>
+
+                            <span class="card-detail-badge city">{{ article.categorie.first() }}</span>
+
                         </div>
                         <div class="card-desc d-flex flex-column flex-fill">
                             <span><h4>{{ article.title }}</h4></span>
