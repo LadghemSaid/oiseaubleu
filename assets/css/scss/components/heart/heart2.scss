@@ -1,0 +1,235 @@
+/* Colors */
+$color-white: #ffffff;
+$color-black: #000000;
+$color-light-gray: #f2f2f2;
+$color-gray: #a6a6a6;
+$color-red: #ff0000;
+$color-dull-red: #ff7380;
+$color-dark-dull-red: #db5e6a;
+
+/* Breakpoint Definitions */
+
+$breakpoints: (
+        xs: 23.4375em,
+        s: 40.625em,
+        m: 53.125em,
+        l: 68.75em,
+        xl: 90em,
+        xxl: 112.5em
+);
+
+/* Media Query @mixin */
+
+@mixin media-query($media-query) {
+  @each $size, $br in $breakpoints {
+    @if $media-query == $size {
+      @media only screen and (min-width: map-get($breakpoints, $size)) {
+        @content;
+      }
+    }
+  }
+}
+
+/* Animation @mixins */
+
+@mixin draw-spark($spark-size, $duration) {
+  @keyframes spark {
+    25% {
+      opacity: 1;
+      top: -$spark-size / 4;
+    }
+
+    65% {
+      height: $spark-size / 2;
+    }
+
+    100% {
+      height: $spark-size / 50;
+      top: -$spark-size;
+    }
+  }
+  animation: spark $duration ease-out 1;
+}
+
+@mixin like-animation($start-color, $end-color, $duration) {
+  $color-mix: mix($start-color, $end-color, 50%);
+
+  @keyframes like {
+    0% {
+      color: $color-mix;
+      transform: scale(1.2);
+    }
+
+    50% {
+      transform: scale(.8);
+    }
+
+    100% {
+      color: $end-color;
+      transform: scale(1);
+    }
+  }
+  animation: like $duration ease 1;
+}
+
+
+/* Presentation Styles */
+
+
+/* Button Styles & Definitions */
+$base-button-size: 1rem; /* 34/12 */
+
+
+.c-btn {
+  transform: scale(3);
+  position:relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: $base-button-size;
+  flex-shrink: 0;
+  color: $color-white;
+  cursor: pointer;
+
+
+
+  &__number{
+    left: 50%;
+    transform: translate(-50%, 79%);
+    top: 50%;
+    position: absolute;
+    color: #e67070;
+    font-size: 5px;
+    cursor: pointer;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    z-index: 10;
+    padding: 0px 7px;
+    margin: 0;
+    border-radius: 5px;
+    border-bottom: 1px solid;
+    background-color: white;
+    user-select: none;
+
+  }
+  & svg{
+    &:hover{
+      fill:red;
+    }
+    pointer-events: none;
+    & g{
+      & rect{
+        pointer-events: none;
+      }
+      & path{
+        pointer-events: none;
+
+      }
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &--round {
+    border-radius: 50%;
+    width: $base-button-size;
+  }
+
+  &--function {
+    position: relative;
+    color: $color-gray;
+    border-color: $color-light-gray;
+    background: $color-white;
+
+    &:hover, &:active, &:focus {
+      color: $color-black;
+
+    }
+  }
+
+  &--like {
+    width: 2rem; /* 20/12 */
+    height: 2rem;
+    vertical-align: middle;
+    &:hover > svg{
+      color:#e67070!important;
+      transition: all 1s ease-out;
+    }
+    > svg {
+      pointer-events: none;
+      margin-top: 0;
+      width: 0.667rem; /* 8/12 */
+      height: 0.75rem; /* 9/12 */
+
+      &:hover {
+        color: $color-black;
+
+      }
+    }
+
+    @include media-query('s') {
+      width: $base-button-size;
+      height: $base-button-size;
+      border-radius: $base-button-size;
+
+      > svg {
+        pointer-events: none;
+        width: 1.333rem; /* 16/12 */
+        height: auto;
+        vertical-align: middle;
+        color: $color-white;
+        transition: all 1s ease-out;
+      }
+    }
+  }
+
+  &--marked {
+    > svg {
+      pointer-events: none;
+      color: $color-dull-red;
+
+      &:hover {
+        color: $color-dark-dull-red;
+
+      }
+    }
+  }
+
+  &--marked {
+    $spark-size: 1.5rem;
+
+    & > .c-spark {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, 30%);
+      top: 50%;
+      @for $i from 1 through 6 {
+        &:nth-of-type(#{$i}) {
+          transform: rotate(#{360/6 * ($i - 1)}deg);
+        }
+      }
+
+      &--animation::after {
+        opacity: 0;
+        content: '';
+        height: $spark-size / 2;
+        width: $spark-size / 20; /* Turns out, this may need to change at certain sizes */
+        background: $color-dull-red;
+        position: absolute;
+        top: -$spark-size / 4;
+        left: -$spark-size / 50 / 2;
+        will-change: top, height;
+        @include draw-spark($spark-size, .3s);
+      }
+    }
+
+    > svg {
+      pointer-events: none;
+      @include like-animation($color-black, $color-dark-dull-red, .3s);
+    }
+  }
+}

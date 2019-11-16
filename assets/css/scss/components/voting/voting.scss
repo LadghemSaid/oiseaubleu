@@ -38,7 +38,7 @@ $white:white;
     & .msalsas-voting-shake-it {
       all: unset;
       cursor: pointer;
-
+      transform: scale(5);
 
       &.--liked {
 
@@ -48,14 +48,14 @@ $white:white;
         }
       }
 
-      a {
+      & a {
         all: unset;
 
 
 
       }
 
-      span {
+      & span {
         all: unset;
       }
 

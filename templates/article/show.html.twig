@@ -25,7 +25,24 @@
     <div class="row mt-5 article">
         <div class="col-md-12">
 
-            <img class="d-block w-100 lazyload  article__image" src="{{ asset("img/lowres.png") }}" data-src={{ article.image }} alt="AlternateText" height="auto"/>
+            <img class="d-block w-100 lazyload  article__image masked" src="{{ asset("img/lowres.png") }}" data-src={{ article.image }} alt="AlternateText" height="auto"/>
+
+
+
+            <svg>
+                <!-- THE mask -->
+                <mask id="mask" maskContentUnits="objectBoundingBox">
+                    <!-- using an img, but this img is black/transparent so we filter it to make it white -->
+                    <image xlink:href="http://iamvdo.me/conf/2012/kiwiparty/img/masque2.png" width="1" height="1" preserveAspectRatio="none" filter="url(#filter)"/>
+                </mask>
+
+                <!-- the filter to make the image white -->
+                <filter id="filter">
+                    <feFlood flood-color="white" />
+                    <feComposite in2="SourceAlpha" operator="in" />
+                </filter>
+            </svg>
+
             <h1 class="article__titre">{{ article.title }}</h1>
                     <div class="article__cadre">
                         <div class="article__metaDroite">
@@ -137,6 +154,31 @@
 
   {% block javascripts %}
       <script>
+
+
+          likes = document.getElementsByClassName('c-btn');
+          for (var i = 0; i < likes.length; i++) {
+              likes[i].addEventListener('click', function(e){
+
+
+
+                  let likeButton =e.currentTarget;
+
+                  let sparks = e.srcElement.querySelectorAll('.c-spark')
+
+                  if(likeButton.classList.contains('c-btn--marked')){
+                      //console.log('marked');
+
+                  }else{
+                      likeButton.classList.add('c-btn--marked');
+                      for (let i = 0; i < sparks.length; i++) {
+                          sparks[i].classList.add('c-spark--animation');
+                      }
+                  }
+
+              })
+          }
+
           function edit(e){
 
               e.preventDefault();

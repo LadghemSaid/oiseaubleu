@@ -43,10 +43,10 @@
                                         <div slot="likes">
                                             {{ msalsas_voting_widget.shakeIt(article.id) }}
                                         </div>
-                                        <h1 slot="header">Canyons
+                                        <h1 slot="header">{{ article.title }}
 
                                         </h1>
-                                        <p slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                        <p slot="content">{{ article.description|length > 100 ? article.description|slice(0, 100) ~ '...' : article.description }}</p>
                                         <span slot="post-module__timestamp">
                                             <i class="fas fa-clock"></i>
                                             <p>{{ article.createdAt| ago }}</p>
@@ -54,6 +54,22 @@
                                         <span slot="post-module__comments">
                                             <i class="fa fa-comments"></i>
                                             <p> 39 comments</p>
+                                            {% if is_granted('ROLE_ADMIN') %}
+                                                   {#Administrator#}
+
+                                                    <div class="col-12 mt-2 d-flex flex-fill align-items-end justify-content-between">
+                                                        <a href="{{ path('admin.article.edit',{id: article.id}) }}" class="btn btn-secondary btn-circle"><i class="fa fa-cog"></i></a>
+                                                         <span class="card-detail-badge surface"><strong>{{ article.surface }}</strong> m²</span><br/>
+                                                         <span class="card-detail-badge price"><strong>{{ article.formatedPrice }}</strong> €</span>
+                                                        <form action="{{ path('admin.article.delete',{id: article.id}) }}" method="POST" onsubmit="return confirm('Confirmation de suppression')" style="display: inline-block">
+                                                            <input type="hidden" name="_method" value="DELETE">
+                                                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}">
+                                                            <button class="btn btn-danger btn-circle" ><i class="fa fa-trash"></i></button>
+                                                        </form>
+                                                    </div>
+                                                {% elseif is_granted('ROLE_USER') %}
+                                                    {#User#}
+                                                {% endif %}
                                         </span>
                                     </card>
 
@@ -165,27 +181,30 @@
     <script>
 
 
+
+
         $(document).ready(function(){
 
-            let getRandomInt = (min, max) => {
+         /*   let getRandomInt = (min, max) => {
                 min = Math.ceil(min);
                 max = Math.floor(max);
                 return Math.floor(Math.random() * (max - min + 1)) + min;
             };
 
-            let mainHeart = anime();
-            let secondHeart = anime();
 
-            let path1 = anime.path('.line1');
-            let path2 = anime.path('.line2');
-            let path3 = anime.path('.line3');
-            let path4 = anime.path('.line4');
-            let path5 = anime.path('.line5');
-            let path6 = anime.path('.line6');
-            let path7 = anime.path('.line7');
+
 
             let floatingHearts = (e) => {
+                let path1 = anime.path('.line1');
+                let path2 = anime.path('.line2');
+                let path3 = anime.path('.line3');
+                let path4 = anime.path('.line4');
+                let path5 = anime.path('.line5');
+                let path6 = anime.path('.line6');
+                let path7 = anime.path('.line7');
+
                 $( e ).children( '.heart' ).show();
+                //console.log($( e ).children( '.heart' ));
 
                 anime({ targets: '.heart1', translateX: path1('x'), translateY: path1('y'), scale: { value: [1, 0], delay: getRandomInt(400, 600), duration: getRandomInt(1000, 2000) }, easing: 'easeInOutCubic', duration: 2000 });
                 anime({ targets: '.heart2', translateX: path2('x'), translateY: path2('y'), scale: { value: [1, 0], delay: getRandomInt(400, 600), duration: getRandomInt(1000, 2000) }, easing: 'easeInOutCubic', duration: 2000 });
@@ -198,20 +217,23 @@
 
             $('body').on('click', '.like', (e) => {
                 let $this = $(e.currentTarget);
+                let mainHeart = anime();
+                let secondHeart = anime();
+
                 //console.log(e.currentTarget);
                 if ($this.hasClass('active')) {
-                  /*  secondHeart.pause();
+                  /!*  secondHeart.pause();
                     mainHeart.pause();
                     $this.toggleClass('active');
 
                     mainHeart = anime({ targets: '.like .main', scale: 1, duration: 1, delay: 0 });
-                    anime({ targets: '.like .second', scale: 0, easing: 'linear', duration: 150 });*/
+                    anime({ targets: '.like .second', scale: 0, easing: 'linear', duration: 150 });*!/
                 } else {
                     secondHeart.pause();
                     mainHeart.pause();
                     $this.toggleClass('active');
-                    console.log($( $this ).children( 'svg' )[0].childNodes[0]);
-                    console.log($( $this ).children( 'svg' )[0].childNodes[2]);
+                    //console.log($( $this ).children( 'svg' )[0].childNodes[0]);
+                    //console.log($( $this ).children( 'svg' )[0].childNodes[2]);
 
 
                     anime({
@@ -226,9 +248,39 @@
                     });
 
                     floatingHearts($this);
-                   console.log($this)
+                    console.log($this)
                 }
             });
+*/
+
+
+
+
+            likes = document.getElementsByClassName('c-btn');
+            for (var i = 0; i < likes.length; i++) {
+                likes[i].addEventListener('click', function(e){
+
+
+
+                    let likeButton =e.currentTarget;
+
+                    let sparks = e.srcElement.querySelectorAll('.c-spark')
+
+                    if(likeButton.classList.contains('c-btn--marked')){
+                        //console.log('marked');
+
+                    }else{
+                        likeButton.classList.add('c-btn--marked');
+                        for (let i = 0; i < sparks.length; i++) {
+                            sparks[i].classList.add('c-spark--animation');
+                        }
+                    }
+
+                })
+            }
+
+
+
 
 
 

@@ -1,5 +1,3 @@
-
-
 {% extends 'base.html.twig' %}
 {% block title %}
     Accueil
@@ -20,50 +18,126 @@
 
     <div class="container">
         <div class="row">
-            {% for article in articles %}
-                <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-3 d-flex align-items-stretch">
-                    <div class="card-content d-flex flex-column">
-                        <div class="card-img">
-                            <span class="card-notify-year">{{ article.createdAt| ago }}</span>
-                            <img class="img-fluid lazyload w-100" src="{{ asset("img/lowres.png") }}" data-src={{ article.image }} alt="AlternateText" width="400px" height="250px"/>
+            <div class="container_cards app  col-md-12">
+                {% for article in articles %}
+                    {# <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-3 d-flex align-items-stretch">
+                         <div class="card-content d-flex flex-column">
+                             <div class="card-img">
+                                 <span class="card-notify-year">{{ article.createdAt| ago }}</span>
+                                 <img class="img-fluid lazyload w-100" src="{{ asset("img/lowres.png") }}" data-src={{ article.image }} alt="AlternateText" width="400px" height="250px"/>
 
-                            <span class="card-detail-badge city">{{ article.categorie.first() }}</span>
 
+
+                             </div>
+                             <div class="card-desc d-flex flex-column flex-fill">
+                                 <span><h4>{{ article.title }}</h4></span>
+                                 <h6>Descriptions</h6>
+                                 <p>  {{ article.description|length > 100 ? article.description|slice(0, 100) ~ '...' : article.description }}</p>
+                                 <div class="row flex-fill">
+                                     <div class="col-12 d-flex justify-content-center">
+                                         <a class="btn btn-primary d-flex align-items-center"
+                                            href="{{ path('article.show',{slug:article.slug,id: article.id}) }}">Voir</a>
+                                     </div>
+                                     <div class="col-12 mt-2 d-flex justify-content-center">
+                                         {{ msalsas_voting_widget.shakeIt(article.id) }}
+                                     </div>
+                                     {% if is_granted('ROLE_ADMIN') %}
+                                         #}{#Administrator#}{#
+                                         <div class="col-12 mt-2 d-flex flex-fill align-items-end justify-content-between">
+                                             <a href="{{ path('admin.article.edit',{id: article.id}) }}" class="btn btn-secondary btn-circle"><i class="fa fa-cog"></i></a>
+                                             #}{# <span class="card-detail-badge surface"><strong>{{ article.surface }}</strong> m²</span><br/>
+                                              <span class="card-detail-badge price"><strong>{{ article.formatedPrice }}</strong> €</span>#}{#
+                                             <form action="{{ path('admin.article.delete',{id: article.id}) }}" method="POST" onsubmit="return confirm('Confirmation de suppression')" style="display: inline-block">
+                                                 <input type="hidden" name="_method" value="DELETE">
+                                                 <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}">
+                                                 <button class="btn btn-danger btn-circle" ><i class="fa fa-trash"></i></button>
+                                             </form>
+                                         </div>
+                                     {% elseif is_granted('ROLE_USER') %}
+                                         #}{#User#}{#
+                                     {% endif %}
+                                 </div>
+                             </div>
+                         </div>
+                     </div>#}
+
+
+                    <card data-image="{{ article.image }}"
+                          data-article="{{ path('article.show',{slug:article.slug,id: article.id}) }}">
+                        <div slot="likes">
+                            {{ msalsas_voting_widget.shakeIt(article.id) }}
                         </div>
-                        <div class="card-desc d-flex flex-column flex-fill">
-                            <span><h4>{{ article.title }}</h4></span>
-                            <h6>Descriptions</h6>
-                            <p>  {{ article.description|length > 100 ? article.description|slice(0, 100) ~ '...' : article.description }}</p>
-                            <div class="row flex-fill">
-                                <div class="col-12 d-flex justify-content-center">
-                                    <a class="btn btn-primary d-flex align-items-center"
-                                       href="{{ path('article.show',{slug:article.slug,id: article.id}) }}">Voir</a>
-                                </div>
-                                <div class="col-12 mt-2 d-flex justify-content-center">
-                                    {{ msalsas_voting_widget.shakeIt(article.id) }}
-                                </div>
-                                {% if is_granted('ROLE_ADMIN') %}
-                                    {#Administrator#}
-                                    <div class="col-12 mt-2 d-flex flex-fill align-items-end justify-content-between">
-                                        <a href="{{ path('admin.article.edit',{id: article.id}) }}" class="btn btn-secondary btn-circle"><i class="fa fa-cog"></i></a>
-                                        {# <span class="card-detail-badge surface"><strong>{{ article.surface }}</strong> m²</span><br/>
-                                         <span class="card-detail-badge price"><strong>{{ article.formatedPrice }}</strong> €</span>#}
-                                        <form action="{{ path('admin.article.delete',{id: article.id}) }}" method="POST" onsubmit="return confirm('Confirmation de suppression')" style="display: inline-block">
-                                            <input type="hidden" name="_method" value="DELETE">
-                                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}">
-                                            <button class="btn btn-danger btn-circle" ><i class="fa fa-trash"></i></button>
-                                        </form>
-                                    </div>
-                                {% elseif is_granted('ROLE_USER') %}
-                                    {#User#}
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
+                        <h1 slot="header">
+                            {{ article.title }}
+                            <span class="header__category">{{ article.categorie.first() }}</span>
+                        </h1>
+                        <p slot="content">{{ article.description|length > 100 ? article.description|slice(0, 100) ~ '...' : article.description }}</p>
+                        <span slot="post-module__timestamp">
+                                            <i class="fas fa-clock"></i>
+                                            <p>{{ article.createdAt| ago }}</p>
+                                        </span>
+                        <span slot="post-module__comments">
+                                            <i class="fa fa-comments"></i>
+                                            <p> 39 comments</p>
+                                            {% if is_granted('ROLE_ADMIN') %}
+                                                {#Administrator#}
+
+                                                <div class="col-12 mt-2 d-flex flex-fill align-items-end justify-content-between">
+                                                        <a href="{{ path('admin.article.edit',{id: article.id}) }}"
+                                                           class="btn btn-secondary btn-circle"><i
+                                                                    class="fa fa-cog"></i></a>
+                                                         <span class="card-detail-badge surface"><strong>{{ article.surface }}</strong> m²</span><br/>
+                                                         <span class="card-detail-badge price"><strong>{{ article.formatedPrice }}</strong> €</span>
+                                                        <form action="{{ path('admin.article.delete',{id: article.id}) }}"
+                                                              method="POST"
+                                                              onsubmit="return confirm('Confirmation de suppression')"
+                                                              style="display: inline-block">
+                                                            <input type="hidden" name="_method" value="DELETE">
+                                                            <input type="hidden" name="_token"
+                                                                   value="{{ csrf_token('delete' ~ article.id) }}">
+                                                            <button class="btn btn-danger btn-circle"><i
+                                                                        class="fa fa-trash"></i></button>
+                                                        </form>
+                                                    </div>
+                                            {% elseif is_granted('ROLE_USER') %}
+                                                {#User#}
+                                            {% endif %}
+                                        </span>
+                    </card>
+
+                {% endfor %}
+            </div>
+            {% include "/article/pagination.html.twig" %}
         </div>
 
 
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+
+        likes = document.getElementsByClassName('c-btn');
+        for (var i = 0; i < likes.length; i++) {
+            likes[i].addEventListener('click', function(e){
+
+
+
+                let likeButton =e.currentTarget;
+
+                let sparks = e.srcElement.querySelectorAll('.c-spark')
+
+                if(likeButton.classList.contains('c-btn--marked')){
+                    //console.log('marked');
+
+                }else{
+                    likeButton.classList.add('c-btn--marked');
+                    for (let i = 0; i < sparks.length; i++) {
+                        sparks[i].classList.add('c-spark--animation');
+                    }
+                }
+
+            })
+        }
+    </script>
 {% endblock %}
