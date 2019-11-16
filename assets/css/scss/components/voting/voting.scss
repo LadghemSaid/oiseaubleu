@@ -38,33 +38,19 @@ $white:white;
     & .msalsas-voting-shake-it {
       all: unset;
       cursor: pointer;
-      border: 2px solid $dark-gray;
-      background-color: transparent;
-      text-decoration: none;
-      padding: .5rem;
-      position: relative;
-      vertical-align: middle;
-      text-align: center;
-      display: inline-block;
-      border-radius: 3rem;
-      color: $dark-gray;
-      transition: all ease 0.4s;
+
 
       &.--liked {
-        background-color: $alert-color;
-        border-color: $alert-color;
-        color: $white;
-        cursor: default;
+
 
         &:hover {
-          background-color: $alert-color;
-          color: $white;
+
         }
       }
 
       a {
         all: unset;
-        border: black;
+
 
 
       }
@@ -74,9 +60,7 @@ $white:white;
       }
 
       &:hover {
-        border-color: $alert-color;
-        background-color: transparent;
-        color: $alert-color;
+
 
       }
 

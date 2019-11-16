@@ -15,123 +15,223 @@
     {{ msalsas_voting_widget.shakeItCSS() }}
     {{ msalsas_voting_widget.shakeItJS() }}
     {{ msalsas_voting_widget.shakeItModal() }}
+
+
+
+
+
     <div class="mt-md-5 mt-sm-2 mb-md-5 mb-sm-2 text-center">
         <h1>L'article à la une </h1>
     </div>
-
-
-
+    <div class="container__post-module " >
         {% for key in articlesByCat|keys %}
             {% if articlesByCat[key] | length == 0 %}
 
             {% else %}
-                <div class="row">
+                <div class="row ">
                     <div class="headings col-md-12">
                         <h2 class="title">{{ key }}</h2>
                         <span class="hr"></span>
                         <a href="#" class="btn btn-primary btn-lg">Voir tout</a>
                     </div>
 
-                    <div class="slick_cat col-md-12">
-                        {% for article in articlesByCat[key] %}
-                            <div class="column">
-                                <div class="demo-title">Normal</div>
-                                <!-- Post-->
-                                <div class="post-module">
-                                    <!-- Thumbnail-->
-                                    <div class="thumbnail">
-                                        <div class="date">
-                                            <div class="day">27</div>
-                                            <div class="month">Mar</div>
-                                        </div><img class="lazyload" src="{{ asset("img/lowres.png") }}" data-src={{ article.image }} alt="AlternateText" /></div>
-                                    <!-- Post Content-->
-                                    <div class="post-content">
-                                        <div class="category">{{ article.categorie.first() }}</div>
-                                        <h1 class="title">{{ article.title }}</h1>
-                                        <h2 class="sub_title">The city that never sleeps.</h2>
-                                        <p class="description">N{{ article.description|length > 100 ? article.description|slice(0, 100) ~ '...' : article.description }}</p>
-                                        <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-"></i> {{ article.createdAt| ago }}</span><span class="comments"><i class="fa fa-comments"></i><a href="#"> 39 comments</a></span></div>
-                                        <div class="row flex-fill">
-                                            <div class="col-12 d-flex justify-content-center">
-                                                <a class="btn btn-primary d-flex align-items-center"
-                                                   href="{{ path('article.show',{slug:article.slug,id: article.id}) }}">Voir</a>
-                                            </div>
-                                            <div class="col-12 mt-2 d-flex justify-content-center">
+                        <div  class="slick_cat col-md-12  container_cards app">
+
+                            {% for article in articlesByCat[key] %}
+
+                                    <card  data-image="{{ article.image }}" data-article ="{{ path('article.show',{slug:article.slug,id: article.id}) }}">
+                                        <div slot="likes">
+                                            {{ msalsas_voting_widget.shakeIt(article.id) }}
+                                        </div>
+                                        <h1 slot="header">Canyons
+
+                                        </h1>
+                                        <p slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                        <span slot="post-module__timestamp">
+                                            <i class="fas fa-clock"></i>
+                                            <p>{{ article.createdAt| ago }}</p>
+                                        </span>
+                                        <span slot="post-module__comments">
+                                            <i class="fa fa-comments"></i>
+                                            <p> 39 comments</p>
+                                        </span>
+                                    </card>
+
+
+                              {#  <div class="column">
+                                    <!-- Post-->
+                                    <div class="post-module">
+                                        <!-- Thumbnail-->
+                                        <div class="thumbnail">
+                                            <div class="date">
                                                 {{ msalsas_voting_widget.shakeIt(article.id) }}
                                             </div>
-                                            {% if is_granted('ROLE_ADMIN') %}
-                                                {#Administrator#}
-                                                <div class="col-12 mt-2 d-flex flex-fill align-items-end justify-content-between">
-                                                    <a href="{{ path('admin.article.edit',{id: article.id}) }}" class="btn btn-secondary btn-circle"><i class="fa fa-cog"></i></a>
-                                                    {# <span class="card-detail-badge surface"><strong>{{ article.surface }}</strong> m²</span><br/>
-                                                     <span class="card-detail-badge price"><strong>{{ article.formatedPrice }}</strong> €</span>#}
-                                                    <form action="{{ path('admin.article.delete',{id: article.id}) }}" method="POST" onsubmit="return confirm('Confirmation de suppression')" style="display: inline-block">
-                                                        <input type="hidden" name="_method" value="DELETE">
-                                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}">
-                                                        <button class="btn btn-danger btn-circle" ><i class="fa fa-trash"></i></button>
-                                                    </form>
-                                                </div>
-                                            {% elseif is_granted('ROLE_USER') %}
-                                                {#User#}
-                                            {% endif %}
+
+                                            <a class="btn btn-primary custom" href="{{ path('article.show',{slug:article.slug,id: article.id}) }}">Voir</a>
+
+                                            <img class="lazyload" src="{{ asset("img/lowres.png") }}" data-src={{ article.image }} alt="AlternateText" />
+                                        </div>
+                                        <!-- Post Content-->
+                                        <div class="post-content">
+                                            <div class="category">{{ article.categorie.first() }}</div>
+                                            <h1 class="title">{{ article.title }}</h1>
+                                            #}{#<h2 class="sub_title">The city that never sleeps.</h2>#}{#
+                                            <p class="description">N{{ article.description|length > 100 ? article.description|slice(0, 100) ~ '...' : article.description }}</p>
+                                            <div class="post-meta">
+                                                <span class="post-module__timestamp"><i class="fa fa-clock-"></i> {{ article.createdAt| ago }}</span>
+                                                <span class="post-module__comments"><i class="fa fa-comments"></i><a href="#"> 39 comments</a></span></div>
+                                            <div class="row flex-fill">
+
+
+
+                                                {% if is_granted('ROLE_ADMIN') %}
+                                                    #}{#Administrator#}{#
+                                                    <div class="col-12 mt-2 d-flex flex-fill align-items-end justify-content-between">
+                                                        <a href="{{ path('admin.article.edit',{id: article.id}) }}" class="btn btn-secondary btn-circle"><i class="fa fa-cog"></i></a>
+                                                        #}{# <span class="card-detail-badge surface"><strong>{{ article.surface }}</strong> m²</span><br/>
+                                                         <span class="card-detail-badge price"><strong>{{ article.formatedPrice }}</strong> €</span>#}{#
+                                                        <form action="{{ path('admin.article.delete',{id: article.id}) }}" method="POST" onsubmit="return confirm('Confirmation de suppression')" style="display: inline-block">
+                                                            <input type="hidden" name="_method" value="DELETE">
+                                                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}">
+                                                            <button class="btn btn-danger btn-circle" ><i class="fa fa-trash"></i></button>
+                                                        </form>
+                                                    </div>
+                                                {% elseif is_granted('ROLE_USER') %}
+                                                    #}{#User#}{#
+                                                {% endif %}
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </div>#}
 
-                           {# <div class="">
-                                <div class="card-content d-flex flex-column">
-                                    <div class="card-img">
-                                        <span class="card-notify-year">{{ article.createdAt| ago }}</span>
-                                        <img class="img-fluid lazyload w-100" src="{{ asset("img/lowres.png") }}" data-src={{ article.image }} alt="AlternateText" width="400px" height="250px"/>
+                               {# <div class="">
+                                    <div class="card-content d-flex flex-column">
+                                        <div class="card-img">
+                                            <span class="card-notify-year">{{ article.createdAt| ago }}</span>
+                                            <img class="img-fluid lazyload w-100" src="{{ asset("img/lowres.png") }}" data-src={{ article.image }} alt="AlternateText" width="400px" height="250px"/>
 
-                                        <span class="card-detail-badge city">{{ article.categorie.first() }}</span>
+                                            <span class="card-detail-badge city">{{ article.categorie.first() }}</span>
 
-                                    </div>
-                                    <div class="card-desc d-flex flex-column flex-fill">
-                                        <span><h4>{{ article.title }}</h4></span>
-                                        <h6>Descriptions</h6>
-                                        <p>  {{ article.description|length > 100 ? article.description|slice(0, 100) ~ '...' : article.description }}</p>
-                                        <div class="row flex-fill">
-                                            <div class="col-12 d-flex justify-content-center">
-                                                <a class="btn btn-primary d-flex align-items-center"
-                                                   href="{{ path('article.show',{slug:article.slug,id: article.id}) }}">Voir</a>
-                                            </div>
-                                            <div class="col-12 mt-2 d-flex justify-content-center">
-                                                {{ msalsas_voting_widget.shakeIt(article.id) }}
-                                            </div>
-                                            {% if is_granted('ROLE_ADMIN') %}
-                                                #}{#Administrator#}{#
-                                                <div class="col-12 mt-2 d-flex flex-fill align-items-end justify-content-between">
-                                                    <a href="{{ path('admin.article.edit',{id: article.id}) }}" class="btn btn-secondary btn-circle"><i class="fa fa-cog"></i></a>
-                                                    #}{# <span class="card-detail-badge surface"><strong>{{ article.surface }}</strong> m²</span><br/>
-                                                     <span class="card-detail-badge price"><strong>{{ article.formatedPrice }}</strong> €</span>#}{#
-                                                    <form action="{{ path('admin.article.delete',{id: article.id}) }}" method="POST" onsubmit="return confirm('Confirmation de suppression')" style="display: inline-block">
-                                                        <input type="hidden" name="_method" value="DELETE">
-                                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}">
-                                                        <button class="btn btn-danger btn-circle" ><i class="fa fa-trash"></i></button>
-                                                    </form>
+                                        </div>
+                                        <div class="card-desc d-flex flex-column flex-fill">
+                                            <span><h4>{{ article.title }}</h4></span>
+                                            <h6>Descriptions</h6>
+                                            <p>  {{ article.description|length > 100 ? article.description|slice(0, 100) ~ '...' : article.description }}</p>
+                                            <div class="row flex-fill">
+                                                <div class="col-12 d-flex justify-content-center">
+                                                    <a class="btn btn-primary d-flex align-items-center"
+                                                       href="{{ path('article.show',{slug:article.slug,id: article.id}) }}">Voir</a>
                                                 </div>
-                                            {% elseif is_granted('ROLE_USER') %}
-                                                #}{#User#}{#
-                                            {% endif %}
+                                                <div class="col-12 mt-2 d-flex justify-content-center">
+                                                    {{ msalsas_voting_widget.shakeIt(article.id) }}
+                                                </div>
+                                                {% if is_granted('ROLE_ADMIN') %}
+                                                    #}{#Administrator#}{#
+                                                    <div class="col-12 mt-2 d-flex flex-fill align-items-end justify-content-between">
+                                                        <a href="{{ path('admin.article.edit',{id: article.id}) }}" class="btn btn-secondary btn-circle"><i class="fa fa-cog"></i></a>
+                                                        #}{# <span class="card-detail-badge surface"><strong>{{ article.surface }}</strong> m²</span><br/>
+                                                         <span class="card-detail-badge price"><strong>{{ article.formatedPrice }}</strong> €</span>#}{#
+                                                        <form action="{{ path('admin.article.delete',{id: article.id}) }}" method="POST" onsubmit="return confirm('Confirmation de suppression')" style="display: inline-block">
+                                                            <input type="hidden" name="_method" value="DELETE">
+                                                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}">
+                                                            <button class="btn btn-danger btn-circle" ><i class="fa fa-trash"></i></button>
+                                                        </form>
+                                                    </div>
+                                                {% elseif is_granted('ROLE_USER') %}
+                                                    #}{#User#}{#
+                                                {% endif %}
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>#}
-                        {% endfor %}
-                    </div>
+                                </div>#}
+                            {% endfor %}
+
+
+
+                        </div>
                 </div>
+
             {% endif%}
 
 
         {% endfor %}
+    </div>
+
+
 
 {% endblock %}
 
 {% block javascripts %}
     <script>
+
+
         $(document).ready(function(){
+
+            let getRandomInt = (min, max) => {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            };
+
+            let mainHeart = anime();
+            let secondHeart = anime();
+
+            let path1 = anime.path('.line1');
+            let path2 = anime.path('.line2');
+            let path3 = anime.path('.line3');
+            let path4 = anime.path('.line4');
+            let path5 = anime.path('.line5');
+            let path6 = anime.path('.line6');
+            let path7 = anime.path('.line7');
+
+            let floatingHearts = (e) => {
+                $( e ).children( '.heart' ).show();
+
+                anime({ targets: '.heart1', translateX: path1('x'), translateY: path1('y'), scale: { value: [1, 0], delay: getRandomInt(400, 600), duration: getRandomInt(1000, 2000) }, easing: 'easeInOutCubic', duration: 2000 });
+                anime({ targets: '.heart2', translateX: path2('x'), translateY: path2('y'), scale: { value: [1, 0], delay: getRandomInt(400, 600), duration: getRandomInt(1000, 2000) }, easing: 'easeInOutCubic', duration: 2000 });
+                anime({ targets: '.heart3', translateX: path3('x'), translateY: path3('y'), scale: { value: [1, 0], delay: getRandomInt(400, 600), duration: getRandomInt(1000, 2000) }, easing: 'easeInOutCubic', duration: 2000 });
+                anime({ targets: '.heart4', translateX: path4('x'), translateY: path4('y'), scale: { value: [1, 0], delay: getRandomInt(400, 600), duration: getRandomInt(1000, 2000) }, easing: 'easeInOutCubic', duration: 2000 });
+                anime({ targets: '.heart5', translateX: path5('x'), translateY: path5('y'), scale: { value: [1, 0], delay: getRandomInt(400, 600), duration: getRandomInt(1000, 2000) }, easing: 'easeInOutCubic', duration: 2000 });
+                anime({ targets: '.heart6', translateX: path6('x'), translateY: path6('y'), scale: { value: [1, 0], delay: getRandomInt(400, 600), duration: getRandomInt(1000, 2000) }, easing: 'easeInOutCubic', duration: 2000 });
+                anime({ targets: '.heart7', translateX: path7('x'), translateY: path7('y'), scale: { value: [1, 0], delay: getRandomInt(400, 600), duration: getRandomInt(1000, 2000) }, easing: 'easeInOutCubic', duration: 2000 });
+            };
+
+            $('body').on('click', '.like', (e) => {
+                let $this = $(e.currentTarget);
+                //console.log(e.currentTarget);
+                if ($this.hasClass('active')) {
+                  /*  secondHeart.pause();
+                    mainHeart.pause();
+                    $this.toggleClass('active');
+
+                    mainHeart = anime({ targets: '.like .main', scale: 1, duration: 1, delay: 0 });
+                    anime({ targets: '.like .second', scale: 0, easing: 'linear', duration: 150 });*/
+                } else {
+                    secondHeart.pause();
+                    mainHeart.pause();
+                    $this.toggleClass('active');
+                    console.log($( $this ).children( 'svg' )[0].childNodes[0]);
+                    console.log($( $this ).children( 'svg' )[0].childNodes[2]);
+
+
+                    anime({
+                        targets: $( $this ).children( 'svg' )[0].childNodes[2],
+                        scale: 0,
+                        easeing: 'linear',
+                        duration: 0,
+                        complete: () => {
+                            secondHeart = anime({ targets: $( $this ).children( 'svg' )[0].childNodes[2], scale: 1 });
+                            mainHeart = anime({ targets:$( $this ).children( 'svg' )[0].childNodes[0], scale: 0, duration: 1, delay: 300 });
+                        }
+                    });
+
+                    floatingHearts($this);
+                   console.log($this)
+                }
+            });
+
+
+
             $('.slick_cat').slick({
                 dots: true,
                 infinite: true,
