@@ -44,8 +44,8 @@ h1+p, p+p {
   & .likes{
     position: absolute;
     z-index: 5;
-    left: 20px;
-    top: 10px;
+    left: -10px;
+    top: 8px;
   }
   &:hover {
     .card-info {

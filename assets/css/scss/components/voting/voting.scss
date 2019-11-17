@@ -5,7 +5,7 @@ $white:white;
 .msalsas-voting-widget-wrapper {
   all: unset;
   order: 1;
-  margin-left: auto;
+  margin-left: 30px;
 
 
   & .msalsas-voting-widget {
@@ -38,7 +38,7 @@ $white:white;
     & .msalsas-voting-shake-it {
       all: unset;
       cursor: pointer;
-      transform: scale(5);
+      transform: scale(4);
 
       &.--liked {
 

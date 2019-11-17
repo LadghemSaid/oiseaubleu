@@ -53,10 +53,7 @@
                             <span class="article__metaDroite__voting">
                                 {{ msalsas_voting_widget.shakeIt(article.id) }}
                                 </span>
-                            <div class="article__metaHaut__droite">
-                                <h4 class="article__metaHaut__lectureTime" >Temps de lecture : <strong>10min</strong></h4>
 
-                            </div>
 
                         </div>
                         <hr />
@@ -122,7 +119,7 @@
 
                     <div class="comment__header">
                         {% set isComment = true %}
-                        {{ msalsas_voting_widget_custom.shakeIt(comment.id,isComment ) }}
+
                         <a href="#non" class="comment__author">{{ comment.user.username }}</a>
                         <span class="comment__createdat">{{ comment.createdAt| ago }}</span>
                         {% if comment.user == app.user %}
@@ -132,6 +129,7 @@
                                 <li class="comment__delete"><a  href="{{ path('delete.comment',{'comment' : comment.id}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a></li>
                             </ul>
                         {% endif %}
+                        {{ msalsas_voting_widget_custom.shakeIt(comment.id,isComment ) }}
                     </div>
                     <div class="comment__text">
                         <p>{{ comment.textComment}}</p>

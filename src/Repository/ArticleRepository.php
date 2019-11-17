@@ -51,6 +51,7 @@ class ArticleRepository extends ServiceEntityRepository
     public function findTreeLatest($categorieId): array
     {
         return $this->findByCategorie($categorieId)
+
             ->setMaxresults(6)
             ->getQuery()
             ->getResult();
@@ -59,10 +60,15 @@ class ArticleRepository extends ServiceEntityRepository
     public function findByCategorie($id){
         $query = $this->createQueryBuilder('a')
             ->select('a')
-                ->leftJoin('a.categorie', 'c')
-                ->addSelect('c');
+            ->leftJoin('a.categorie', 'c')
+            ->addSelect('c')
 
-        $query = $query->add('where', $query->expr()->in('c', ':c'))
+
+        ;
+
+        $query = $query
+            ->add('where', $query->expr()->in('c', ':c'))
+            ->andWhere('a.status = 0')
             ->setParameter('c', $id);
         return $query;
 
