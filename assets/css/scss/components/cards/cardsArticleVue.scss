@@ -95,6 +95,12 @@ h1+p, p+p {
   //        inset #333 0 0 0 5px,
   //        inset rgba(white, 0.5) 0 0 0 6px;
   transition: 1s $returnEasing;
+  & .module__admin{
+    position: absolute;
+    z-index: 15;
+    top: 10px;
+    right: 10px;
+  }
 }
 
 .card-bg {
@@ -102,7 +108,7 @@ h1+p, p+p {
   position: absolute;
   top: -20px; left: -10px;
   width: 120%;
-  height: 100%;
+  height: 106%;
   padding: 20px;
   background-repeat: no-repeat;
   background-position: center;
@@ -115,7 +121,9 @@ h1+p, p+p {
 
 .card-info {
   pointer-events:none;
-  background-color:black;
+  //background-color:black;
+  //background: linear-gradient(to bottom, #ff4b2b00, #d7103d);
+  background: linear-gradient(to bottom, #ff4b2b00, #5f10d7);
   padding: 20px;
   position: absolute;
   bottom: 0;
@@ -123,12 +131,15 @@ h1+p, p+p {
   transform: translateY(40%);
   transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
   & .header{
+
     &__category{
       color: white;
       position: absolute;
-      right: -20px;
-      top: -49px;
-      background-color: black;
+      right: 50%;
+      font-size: 1rem;
+      top: -29px;
+      transform: translateX(50%);
+      background: linear-gradient(to bottom, #ff4b2b00, #d7103d91);
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       padding: 5px 20px;
@@ -161,6 +172,7 @@ h1+p, p+p {
   & .post-meta{
     display: flex;
     justify-content: space-evenly;
+    font-size: .8rem;
     & .post-module__timestamp{
       & span{
         display: flex;
@@ -171,6 +183,7 @@ h1+p, p+p {
       }
     }
     & .post-module__comments{
+
       & span{
         display: flex;
         align-items: baseline;
@@ -184,9 +197,32 @@ h1+p, p+p {
 }
 
 .card-info h1 {
-  background-color:black;
+  background: linear-gradient(to top, #ff4b2b00, #d7103d91);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  text-align: center;
+  padding: 5px 20px;
   font-family: "Playfair Display", serif;
   font-size: 20px;
   font-weight: 700;
   text-shadow: rgba(black, 0.5) 0 10px 10px;
+}
+.slick-next {
+  right: 33px!important;
+  &:before{
+    color:#005293 !important;
+    font-size: 50px!important;
+  }
+}
+.slick-prev {
+  left: 0!important;
+  &:before{
+    color:#005293 !important;
+    font-size: 50px!important;
+
+  }
+}
+
+.slick-dots{
+  width: 85% !important;
 }

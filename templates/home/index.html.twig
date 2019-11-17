@@ -32,7 +32,7 @@
                     <div class="headings col-md-12">
                         <h2 class="title">{{ key }}</h2>
                         <span class="hr"></span>
-                        <a href="#" class="btn btn-primary btn-lg">Voir tout</a>
+                        <a href="#" class="btn btn-primary btn-lg">Voir plus</a>
                     </div>
 
                         <div  class="slick_cat col-md-12  container_cards app">
@@ -43,7 +43,34 @@
                                         <div slot="likes">
                                             {{ msalsas_voting_widget.shakeIt(article.id) }}
                                         </div>
-                                        <h1 slot="header">{{ article.title }}
+                                        <div slot="admin">
+                                            {% if is_granted('ROLE_ADMIN') %}
+                                                {#Administrator#}
+
+                                                <div class="module__admin">
+                                                    <a href="{{ path('admin.article.edit',{id: article.id}) }}"
+                                                       class="btn btn-secondary btn-circle">
+                                                        <i class="fa fa-cog"></i>
+                                                    </a>
+
+                                                    <form action="{{ path('admin.article.delete',{id: article.id}) }}"
+                                                          method="POST"
+                                                          onsubmit="return confirm('Confirmation de suppression')"
+                                                          style="display: inline-block">
+                                                        <input type="hidden" name="_method" value="DELETE">
+                                                        <input type="hidden" name="_token"
+                                                               value="{{ csrf_token('delete' ~ article.id) }}">
+                                                        <button class="btn btn-danger btn-circle">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            {% elseif is_granted('ROLE_USER') %}
+                                                {#User#}
+                                            {% endif %}
+                                        </div>
+                                        <h1 slot="header">
+                                            {{ article.title }}
 
                                         </h1>
                                         <p slot="content">{{ article.description|length > 100 ? article.description|slice(0, 100) ~ '...' : article.description }}</p>
@@ -53,23 +80,8 @@
                                         </span>
                                         <span slot="post-module__comments">
                                             <i class="fa fa-comments"></i>
-                                            <p> 39 comments</p>
-                                            {% if is_granted('ROLE_ADMIN') %}
-                                                   {#Administrator#}
+                                             <p> {{ article.comments | length }} comments</p>
 
-                                                    <div class="col-12 mt-2 d-flex flex-fill align-items-end justify-content-between">
-                                                        <a href="{{ path('admin.article.edit',{id: article.id}) }}" class="btn btn-secondary btn-circle"><i class="fa fa-cog"></i></a>
-                                                         <span class="card-detail-badge surface"><strong>{{ article.surface }}</strong> m²</span><br/>
-                                                         <span class="card-detail-badge price"><strong>{{ article.formatedPrice }}</strong> €</span>
-                                                        <form action="{{ path('admin.article.delete',{id: article.id}) }}" method="POST" onsubmit="return confirm('Confirmation de suppression')" style="display: inline-block">
-                                                            <input type="hidden" name="_method" value="DELETE">
-                                                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}">
-                                                            <button class="btn btn-danger btn-circle" ><i class="fa fa-trash"></i></button>
-                                                        </form>
-                                                    </div>
-                                                {% elseif is_granted('ROLE_USER') %}
-                                                    {#User#}
-                                                {% endif %}
                                         </span>
                                     </card>
 
@@ -276,7 +288,7 @@
                         }
                     }
 
-                })
+                },true)
             }
 
 
@@ -288,6 +300,8 @@
                 dots: true,
                 infinite: true,
                 speed: 300,
+                arrows: true,
+                draggable:false,
                 slidesToShow: 3,
                 slidesToScroll: 3,
                 responsive: [
@@ -309,10 +323,7 @@
                     },
                     {
                         breakpoint: 570,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1
-                        }
+                        settings: "unslick"
                     }
                     // You can unslick at a given breakpoint now by adding:
                     // settings: "unslick"

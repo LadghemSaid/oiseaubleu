@@ -7,12 +7,13 @@
 
 //components
 @import 'components/buttons/buttons.scss';
-//@import 'components/cards/cards.scss';
-//@import 'components/cards/cardsArticle.scss';
+//@import 'components/cards/cards(deprecated).scss';
+//@import 'components/cards/cardsArticle(deprecated).scss';
 @import 'components/cards/cardsArticleVue.scss';
-//@import 'components/heart/heart.scss';
-@import 'components/voting/voting.scss';
+//@import 'components/heart/heart(deprecated).scss';
 @import 'components/heart/heart2.scss';
+@import 'components/404/404.scss';
+@import 'components/voting/voting.scss';
 @import 'components/header/header.scss';
 @import 'components/footer/footer.scss';
 @import 'components/article/article.scss';
@@ -20,7 +21,7 @@
 
 
 
-//@import 'components/pagination/pagination.scss';
+@import 'components/pagination/pagination.scss';
 
 //pages
 @import 'pages/article/article.scss';

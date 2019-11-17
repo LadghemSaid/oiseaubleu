@@ -10,7 +10,7 @@
         var shakeItLink = document.querySelectorAll('.c-btn.c-btn--like, .msalsas-voting-shake-it-a ');
         for (var i = 0; i < shakeItLink.length; i++) {
             if (shakeItLink[i].addEventListener) {
-                shakeItLink[i].addEventListener('click', shakeIt, false);
+                shakeItLink[i].addEventListener('click', shakeIt, { passive: true });
             } else {
                 shakeItLink[i].attachEvent('onclick', shakeIt);
             }
@@ -19,7 +19,7 @@
 
 
     function shakeIt(evt) {
-        console.log(evt.target.parentNode.parentNode);
+        //console.log(evt.target.parentNode.parentNode);
         //console.log(evt.target.parentNode.parentNode.parentNode);
         //if(evt.target.parentNode.dataset.comment){
         if(evt.target.tagName == "I"){

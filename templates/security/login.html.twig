@@ -3,40 +3,164 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
-
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
-
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail" class="sr-only">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
-
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
-
     {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
+    <form method="post">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
 
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
+        {% if app.user %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+        {% endif %}
+
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label for="inputEmail" class="sr-only">Email</label>
+        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}"
+        >
+
+        #}
+    {#
+            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+            See https://symfony.com/doc/current/security/remember_me.html
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" name="_remember_me"> Remember me
+                </label>
+            </div>
+        #}{#
+
+
+        <button class="btn btn-lg btn-primary" type="submit">
+            Sign in
+        </button>
+    </form>
     #}
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
-</form>
+
+
+
+    <div class="containerFormLogin" id="containerFormLogin">
+        <div class="form-container sign-up-container">
+            {#  <form method="post" name="registrationForm">
+                <h1>Create Account</h1>
+                <span>or use your email for registration</span>
+              {{ form_start(registrationForm) }}
+                {{ form_row(registrationForm.email,{'label_attr': {'class': 'sr-only'}}) }}
+                {{ form_row(registrationForm.username,{'label_attr': {'class': 'sr-only'}}) }}
+                {{ form_row(registrationForm.plainPassword,{'label_attr': {'class': 'sr-only'}}) }}
+                {{ form_row(registrationForm.agreeTerms,{'label_attr': {'class': 'sr-only'}}) }}
+
+                <button for="registrationForm" type="submit" >Register</button>
+                {{ form_end(registrationForm) }}#}
+
+            <form method="post" action="{{ path('app_register') }}" name="registrationForm">
+                <h1>Créer un compte</h1>
+                <span>Un email c'est tout ce qu'il faut !</span>
+                    <label class="sr-only required" for="registration_form_email">Email</label>
+                    <input type="email" id="registration_form_email" name="registration_form[email]" placeholder="Email" required="required" class="form-control">
+
+                    <label class="sr-only required" for="registration_form_username">Nom d'utilisateur</label>
+                    <input type="text" id="registration_form_username"  name="registration_form[username]" placeholder="Nom d'uilisateur" required="required" class="form-control">
+
+                    <label for="registration_form_plainPassword_first" class="required sr-only">Mot de passe</label>
+                    <input type="password" id="registration_form_plainPassword_first" name="registration_form[plainPassword][first]" placeholder="Mot de passe" required="required" class="form-control">
+
+                    <label for="registration_form_plainPassword_second" class="required sr-only">Mot de passe</label>
+                    <input type="password" id="registration_form_plainPassword_second" name="registration_form[plainPassword][second]" placeholder="Confirmation du mot de passe" required="required"  class="form-control">
+
+                    <div class="form-check">
+                        <input type="checkbox" id="registration_form_agreeTerms"  name="registration_form[agreeTerms]" required="required" class="form-check-input register-checkbox" value="1">
+                        <label class=" form-check-label required " for="registration_form_agreeTerms">
+                            <a href="#">Accepter nos conditions d'utilisation*</a>
+                        </label>
+                    </div>
+
+
+                <button for="registrationForm" type="submit">S'inscrire</button>
+                <input type="hidden" id="registration_form__token" name="registration_form[_token]"
+                       value="{{ csrf_token('register') }}">
+
+
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form method="post">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                {% if app.user %}
+                    <div class="mb-3">
+                        Vous étes connecté en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
+                    </div>
+                {% endif %}
+                <h1>Se connecter</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>Ou se connecter avec votre comptre Oieaubleu</span>
+                <label for="inputEmail" class="sr-only">Email</label>
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control"
+                       placeholder="Email" required autofocus>
+                <label for="inputPassword" class="sr-only">Mot de passe</label>
+                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password"
+                       required>
+                <div class="checkbox mb-3">
+                    <label class=" form-check-label  " for="_remember_me">
+                        Se souvenir de moi
+                    </label>
+                    <input type="checkbox" class="register-checkbox" name="_remember_me">
+                </div>
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}"
+                >
+                <a href="#" class="forgot-password">Mot de passe oublié ?</a>
+                <button>Se connecter</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>On se connait ?</h1>
+                    <p>Je pense vous avoir dans mes petit papier !</p>
+                    <button class="ghost" id="signIn">Se connecter</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Bienvenue, </h1>
+                    <p>Dites m'en plus sur vous et je vous promet une aventure formidable !</p>
+                    <p class="small_info">Pour tester rapidement l'application utiliser :
+                        <br/>
+                        email:<strong>test@test.fr</strong>
+                        <br/>
+                        mot de passe:<strong>testtest</strong>
+                    </p>
+
+
+                    <button class="ghost" id="signUp">S'inscrire</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const container = document.getElementById('containerFormLogin');
+
+        signUpButton.addEventListener('click', () => container.classList.add('right-panel-active'));
+
+        signInButton.addEventListener('click', () => container.classList.remove('right-panel-active'));
+    </script>
 {% endblock %}

@@ -37,6 +37,9 @@ console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
         <div class="likes"  @onmouseover="showLike" @onmouseout="hideLike" :style="[likesTransform]">
          <slot name="likes"></slot>
         </div>
+          <div>
+         <slot name="admin"></slot>
+        </div>
        <a :href="dataArticle" class="btn__seeMore"></a>
         <div class="card-bg lazyload" :style="[cardBgTransform, cardBgImage]">
        
@@ -118,6 +121,7 @@ console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
 
             },
             handleMouseMove(e) {
+
                 //console.log(e.pageY/100);
 
                 /*    var objLeft = e.target.offsetWidth;
@@ -128,13 +132,10 @@ console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
 
                     console.log("Left:" + (e.layerX-objCenterX) + ", Top:" + (e.layerY-objCenterY));*/
                 var rect = e.target.getBoundingClientRect();
-                var x = e.clientX - rect.left; //x position within the element.
-                var y = e.clientY - rect.top;  //y position within the element.
-
                 //this.mouseX = e.pageX - this.$refs.card.offsetLeft - this.width/2;
                 //this.mouseY = e.pageY - this.$refs.card.offsetTop - this.height/2;
-                this.mouseX = x - this.width/2;
-                this.mouseY = y  - this.height/2;
+                this.mouseX = e.clientX - rect.left - this.width/2;
+                this.mouseY = e.clientY - rect.top  - this.height/2;
             },
             handleMouseEnter() {
                 clearTimeout(this.mouseLeaveDelay);

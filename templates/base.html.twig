@@ -65,7 +65,7 @@
                         <a class="nav-link btnleft{% if current_menu is defined and current_menu == 'login' %}active{% endif %}" href="{{ path('app_login') }}">Se connecter</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  btnright {% if current_menu is defined and current_menu == 'register' %}active{% endif %}  " href="{{ path('app_register') }}">S'inscrire</a>
+                        <a class="nav-link  btnright {% if current_menu is defined and current_menu == 'register' %}active{% endif %}  " href="{{ path('app_login') }}">S'inscrire</a>
                     </li>
                     {%  endif  %}
 
@@ -91,13 +91,13 @@
     </main>
 
 
+    <script type="text/javascript" src="https://unpkg.com/default-passive-events"></script>
     <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('js/popper.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset("js/lazysizes.min.js") }}" ></script>
     <script type="text/javascript" src="{{ asset("js/slick.min.js") }}" ></script>
     <script type="text/javascript" src="{{ asset("js/vue.min.js") }}" ></script>
-
 
     {{ encore_entry_script_tags('app') }}
 

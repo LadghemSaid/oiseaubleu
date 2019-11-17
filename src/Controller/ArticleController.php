@@ -11,9 +11,11 @@ use App\Repository\CategorieRepository;
 use App\Repository\UserRepository;
 use Msalsas\VotingBundle\Service\Voter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Cache\Adapter\AdapterInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Contracts\Cache\CacheInterface;
 
 class ArticleController extends AbstractController
 {
@@ -140,22 +142,30 @@ class ArticleController extends AbstractController
      * @Route("/" , name="index")
      *
      */
-    public function home(CategorieRepository $categorie_repo)
+    public function home(CategorieRepository $categorie_repo )
     {
 
-        $categories = $categorie_repo->findAll();
-        $articlesByCat = [];
-        foreach ($categories as $category){
-            $articlesByCat[$category->getName()] = $this->repository->findTreeLatest($category->getId());
-            //$articlesByCat[$category->getName()] = $categorie_repo->findBy(array('articles' => $category->getId()));
 
-        }
+
+            $categories = $categorie_repo->findAll();
+            $articlesByCatCached = [];
+            foreach ($categories as $category){
+                $articlesByCatCached[$category->getName()] = $this->repository->findTreeLatest($category->getId());
+                //$articlesByCat[$category->getName()] = $categorie_repo->findBy(array('articles' => $category->getId()));
+
+            }
+
+           // dd($articlesByCatCached->get('articlesByCategorie'));
+
+        //echo $articlesByCat; // 'foobar'
+
+
         //dd($articlesByCat);
 
 
         return $this->render("home/index.html.twig", [
             'current_menu' => 'home',
-            'articlesByCat' => $articlesByCat,
+            'articlesByCat' => $articlesByCatCached,
         ]);
     }
 }

@@ -25,13 +25,19 @@ $black: #282936;
   }
 
   &__metaDroite{
-
+    position: relative;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
     margin-bottom: 20px;
     justify-content: space-between;
-
+    &__voting{
+      order: -1;
+      margin-bottom: 10px;
+      position: absolute;
+      top: -170px;
+      right: 140px;
+    }
     &__info{
       display: flex;
       flex-direction: column;
@@ -43,11 +49,7 @@ $black: #282936;
       font-size: 1rem!important;
       padding-bottom:0!important;
       }
-      &__voting{
-        order: -1;
-        margin-bottom: 10px;
 
-      }
 
     }
 

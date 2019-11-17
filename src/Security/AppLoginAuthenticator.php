@@ -38,12 +38,15 @@ class AppLoginAuthenticator extends AbstractFormLoginAuthenticator
 
     public function supports(Request $request)
     {
-        return 'app_login' === $request->attributes->get('_route')
-            && $request->isMethod('POST');
+
+        //return 'app_login' === $request->request;
+        return 'app_login' === $request->attributes->get('_route') && $request->isMethod('POST') ;
     }
 
     public function getCredentials(Request $request)
     {
+        //dd($request->request->get('registration_form') );
+
         $credentials = [
             'email' => $request->request->get('email'),
             'password' => $request->request->get('password'),
@@ -59,6 +62,7 @@ class AppLoginAuthenticator extends AbstractFormLoginAuthenticator
 
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
+
         $token = new CsrfToken('authenticate', $credentials['csrf_token']);
         if (!$this->csrfTokenManager->isTokenValid($token)) {
             throw new InvalidCsrfTokenException();
@@ -76,6 +80,7 @@ class AppLoginAuthenticator extends AbstractFormLoginAuthenticator
 
     public function checkCredentials($credentials, UserInterface $user)
     {
+
         // Check the user's password or other credentials and return true or false
         // If there are no credentials to check, you can just return true
         return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);

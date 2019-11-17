@@ -15,5 +15,15 @@
         "watch": "encore dev --watch",
         "build": "encore production --progress"
     },
-    "dependencies": {}
+    "dependencies": {
+        "autoprefixer": "^9.7.1",
+        "postcss-loader": "^3.0.0"
+    },
+    "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "Firefox ESR",
+     "not dead"
+    ]
+
 }
