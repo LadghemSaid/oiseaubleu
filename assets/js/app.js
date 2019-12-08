@@ -34,14 +34,14 @@ console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
       <div class="card"
       
         :style="cardStyle">
-        <div class="likes"  @onmouseover="showLike" @onmouseout="hideLike" :style="[likesTransform]">
+        <div class="likes"  :style="[]">
          <slot name="likes"></slot>
         </div>
           <div>
          <slot name="admin"></slot>
         </div>
        <a :href="dataArticle" class="btn__seeMore"></a>
-        <div class="card-bg lazyload" :style="[cardBgTransform, cardBgImage]">
+        <div class="card-bg lazyload" :style="[ cardBgImage]">
        
 </div>
         <div class="card-info">
@@ -71,18 +71,13 @@ console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
             mouseLeaveDelay: null
         }),
         computed: {
-            mousePX() {
-                //console.log("this.width",this.width);
-
-                //console.log(" this.mouseX",this.mouseX);
+          /*  mousePX() {
                 return this.mouseX /this.width;
             },
             mousePY() {
-                //console.log("this.height",this.height);
-                //console.log("this.height",this.mouseY);
-                //console.log(" this.mouseY",this.mouseY);
                 return this.mouseY / this.height;
             },
+            */
             cardStyle() {
                 const rX = this.mousePX * 30;
                 const rY = this.mousePY * -30;
@@ -90,22 +85,24 @@ console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
                     transform: `rotateY(${rX}deg) rotateX(${rY}deg)`
                 };
             },
+/*
             cardBgTransform() {
                 const tX = this.mousePX * -20;
                 const tY = this.mousePY * -20;
                 return {
-                    transform: `translateX(${tX}px) translateY(${tY}px)`
+                  transform: `translateX(${tX}px) translateY(${tY}px)`
                 }
             },
             likesTransform() {
                 const tX = this.mousePX * 5;
                 const tY = this.mousePY * 5;
                 return {
-                    transform: `translateX(${tX}px) translateY(${tY}px)`
+                   transform: `translateX(${tX}px) translateY(${tY}px)`
                 }
             },
+*/
             cardBgImage() {
-                // console.log(this.dataImage,this)
+
                 return {
                     backgroundImage: `url(${this.dataImage})`
                 }
@@ -113,27 +110,9 @@ console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
 
         },
         methods: {
-            showLike(e){
-                console.log('enter');
-            },
-            hideLike(e){
-                console.log('out');
 
-            },
             handleMouseMove(e) {
-
-                //console.log(e.pageY/100);
-
-                /*    var objLeft = e.target.offsetWidth;
-                    var objTop = e.target.offsetHeight;
-
-                    var objCenterX = objLeft / 2;
-                    var objCenterY = objTop / 2;
-
-                    console.log("Left:" + (e.layerX-objCenterX) + ", Top:" + (e.layerY-objCenterY));*/
                 var rect = e.target.getBoundingClientRect();
-                //this.mouseX = e.pageX - this.$refs.card.offsetLeft - this.width/2;
-                //this.mouseY = e.pageY - this.$refs.card.offsetTop - this.height/2;
                 this.mouseX = e.clientX - rect.left - this.width/2;
                 this.mouseY = e.clientY - rect.top  - this.height/2;
             },

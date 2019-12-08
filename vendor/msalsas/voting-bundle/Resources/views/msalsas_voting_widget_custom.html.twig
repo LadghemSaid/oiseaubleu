@@ -9,13 +9,11 @@ file that was distributed with this source code. #}
     {% if isComment %}
         {% set votes = msalsas_voting_voter.positiveVotesComment(id) %}
         {% set userVote = msalsas_voting_voter.userVoteComment(id) %}
-        {% set clicks = msalsas_voting_clicker.clicks(id) %}
         {% set published = msalsas_voting_voter.publishedComment(id) %}
 
     {% else %}
         {% set votes = msalsas_voting_voter.positiveVotes(id) %}
         {% set userVote = msalsas_voting_voter.userVote(id) %}
-        {% set clicks = msalsas_voting_clicker.clicks(id) %}
         {% set published = msalsas_voting_voter.published(id) %}
     {% endif %}
 

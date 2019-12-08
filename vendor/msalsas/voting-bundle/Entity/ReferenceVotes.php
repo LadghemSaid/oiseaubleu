@@ -77,9 +77,9 @@ class ReferenceVotes
 
 
     /**
-     * @return int
+     *
      */
-    public function getReferenceArticle(): int
+    public function getReferenceArticle()
     {
         return $this->referenceArticle;
     }
