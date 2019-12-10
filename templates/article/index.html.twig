@@ -9,10 +9,10 @@
 {% endblock %}
 {% block body %}
 
-    {% import "@msalsas_voting/msalsas_voting_widget.html.twig" as msalsas_voting_widget %}
-    {{ msalsas_voting_widget.shakeItCSS() }}
-    {{ msalsas_voting_widget.shakeItJS() }}
-    {{ msalsas_voting_widget.shakeItModal() }}
+    {% import "@msalsas_voting/msalsas_voting_widget.html.twig" as msalsas %}
+    {{ msalsas.shakeItCSS() }}
+    {{ msalsas.shakeItJS() }}
+    {{ msalsas.shakeItModal() }}
 
 
 
@@ -53,9 +53,11 @@
                             </div>
                         </div>
 
-                        <form class=" mt-2 mt-md-0 box__button__form" method="post" action="{{ path('article.index') }}">
+                        <form class=" mt-2 mt-md-0 box__button__form" method="post"
+                              action="{{ path('article.index') }}">
 
-                            <input class="box__button__input" type="text" name="title" placeholder="Rechercher" aria-label="Search">
+                            <input class="box__button__input" type="text" name="title" placeholder="Rechercher"
+                                   aria-label="Search">
                             <button class="box__button__rechercher" type="submit">Rechercher</button>
                         </form>
                         <a href="{{ path('article.index') }}" target="_blank" class="box__button">Retour</a>
@@ -71,78 +73,40 @@
             </div>
             <div class="container_cards app  col-md-12">
                 {% for article in articles %}
-                    {# <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-3 d-flex align-items-stretch">
-                         <div class="card-content d-flex flex-column">
-                             <div class="card-img">
-                                 <span class="card-notify-year">{{ article.createdAt| ago }}</span>
-                                 <img class="img-fluid lazyload w-100" src="{{ asset("img/lowres.png") }}" data-src={{ article.image }} alt="AlternateText" width="400px" height="250px"/>
 
-
-
-                             </div>
-                             <div class="card-desc d-flex flex-column flex-fill">
-                                 <span><h4>{{ article.title }}</h4></span>
-                                 <h6>Descriptions</h6>
-                                 <p>  {{ article.description|length > 100 ? article.description|slice(0, 100) ~ '...' : article.description }}</p>
-                                 <div class="row flex-fill">
-                                     <div class="col-12 d-flex justify-content-center">
-                                         <a class="btn btn-primary d-flex align-items-center"
-                                            href="{{ path('article.show',{slug:article.slug,id: article.id}) }}">Voir</a>
-                                     </div>
-                                     <div class="col-12 mt-2 d-flex justify-content-center">
-                                         {{ msalsas_voting_widget.shakeIt(article.id) }}
-                                     </div>
-                                     {% if is_granted('ROLE_ADMIN') %}
-                                         #}{#Administrator#}{#
-                                         <div class="col-12 mt-2 d-flex flex-fill align-items-end justify-content-between">
-                                             <a href="{{ path('admin.article.edit',{id: article.id}) }}" class="btn btn-secondary btn-circle"><i class="fa fa-cog"></i></a>
-                                             #}{# <span class="card-detail-badge surface"><strong>{{ article.surface }}</strong> m²</span><br/>
-                                              <span class="card-detail-badge price"><strong>{{ article.formatedPrice }}</strong> €</span>#}{#
-                                             <form action="{{ path('admin.article.delete',{id: article.id}) }}" method="POST" onsubmit="return confirm('Confirmation de suppression')" style="display: inline-block">
-                                                 <input type="hidden" name="_method" value="DELETE">
-                                                 <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}">
-                                                 <button class="btn btn-danger btn-circle" ><i class="fa fa-trash"></i></button>
-                                             </form>
-                                         </div>
-                                     {% elseif is_granted('ROLE_USER') %}
-                                         #}{#User#}{#
-                                     {% endif %}
-                                 </div>
-                             </div>
-                         </div>
-                     </div>#}
 
                     <card data-image="{{ article.image }}"
                           data-article="{{ path('article.show',{slug:article.slug,id: article.id}) }}">
                         <div slot="likes">
-                            {{ msalsas_voting_widget.shakeIt(article.id) }}
+                            {{ msalsas.shakeIt(article.id) }}
                         </div>
-<div slot="admin">
-    {% if is_granted('ROLE_ADMIN') %}
-        {#Administrator#}
+                        <div slot="admin">
+                            {% if is_granted('ROLE_ADMIN') %}
+                                {#Administrator#}
 
-        <div class="module__admin">
-            <a href="{{ path('admin.article.edit',{id: article.id}) }}"
-               class="btn btn-secondary btn-circle">
-                <i class="fa fa-cog"></i>
-            </a>
+                                <div class="module__admin">
+                                    <a href="{{ path('admin.article.edit',{id: article.id}) }}"
+                                       class="btn btn-secondary btn-circle">
+                                        <i class="fa fa-cog"></i>
+                                    </a>
 
-            <form action="{{ path('admin.article.delete',{id: article.id}) }}"
-                  method="POST"
-                  onsubmit="return confirm('Confirmation de suppression')"
-                  style="display: inline-block">
-                <input type="hidden" name="_method" value="DELETE">
-                <input type="hidden" name="_token"
-                       value="{{ csrf_token('delete' ~ article.id) }}">
-                <button class="btn btn-danger btn-circle">
-                    <i class="fa fa-trash"></i>
-                </button>
-            </form>
-        </div>
-    {% elseif is_granted('ROLE_USER') %}
-        {#User#}
-    {% endif %}
-</div>
+                                    <form class="delete-article" id="delete-article-{{ article.id }}"
+                                          action="{{ path('admin.article.delete',{id: article.id}) }}"
+                                          method="POST"
+                                          onsubmit="onDeleteArticle(event)"
+                                          style="display: inline-block">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_token"
+                                               value="{{ csrf_token('delete' ~ article.id) }}">
+                                        <button class="btn btn-danger btn-circle">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            {% elseif is_granted('ROLE_USER') %}
+                                {#User#}
+                            {% endif %}
+                        </div>
                         <h1 slot="header">
                             {{ article.title }}
 
@@ -165,6 +129,7 @@
 
                     </card>
 
+
                 {% endfor %}
                 {% endif %}
 
@@ -181,6 +146,28 @@
 
 {% block javascripts %}
     <script>
+
+
+        function onDeleteArticle(e) {
+            e.preventDefault();
+            if (confirm('Confirmation de suppression')) {
+                console.log(this);
+
+
+                let elem = e.target;
+                while (elem.parentElement !== null) {
+                    if (elem.classList.contains("card-wrap")) {
+                        console.log();
+                        elem.classList.add('removed');
+                        break
+                    }
+                    elem = elem.parentElement;
+                }
+            }
+            ;
+
+        }
+
 
         likes = document.getElementsByClassName('c-btn');
         for (var i = 0; i < likes.length; i++) {
@@ -205,23 +192,21 @@
         }
 
 
-
-
-//js pour la 404
+        //js pour la 404
         var pageX = $(document).width();
         var pageY = $(document).height();
-        var mouseY=0;
-        var mouseX=0;
+        var mouseY = 0;
+        var mouseX = 0;
 
-        $(document).mousemove(function( event ) {
+        $(document).mousemove(function (event) {
             //verticalAxis
             mouseY = event.pageY;
-            yAxis = (pageY/2-mouseY)/pageY*300;
+            yAxis = (pageY / 2 - mouseY) / pageY * 300;
             //horizontalAxis
             mouseX = event.pageX / -pageX;
             xAxis = -mouseX * 100 - 100;
 
-            $('.box__ghost-eyes').css({ 'transform': 'translate('+ xAxis +'%,-'+ yAxis +'%)' });
+            $('.box__ghost-eyes').css({'transform': 'translate(' + xAxis + '%,-' + yAxis + '%)'});
 
             //console.log('X: ' + xAxis);
 
