@@ -31,7 +31,7 @@ class Categorie
     private $created_at;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Article", mappedBy="categorie")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Article", mappedBy="categorie",fetch="EAGER")
      * @ORM\JoinColumn(nullable=true)
      */
     private $articles;

@@ -9,24 +9,59 @@ file that was distributed with this source code. #}
     {% if isComment %}
         {% set votes = msalsas_voting_voter.positiveVotesComment(id) %}
         {% set userVote = msalsas_voting_voter.userVoteComment(id) %}
-        {% set clicks = msalsas_voting_clicker.clicks(id) %}
         {% set published = msalsas_voting_voter.publishedComment(id) %}
 
     {% else %}
         {% set votes = msalsas_voting_voter.positiveVotes(id) %}
         {% set userVote = msalsas_voting_voter.userVote(id) %}
-        {% set clicks = msalsas_voting_clicker.clicks(id) %}
         {% set published = msalsas_voting_voter.published(id) %}
     {% endif %}
 
+{#    <div class="msalsas-voting-widget-wrapper">
+        <div class="msalsas-voting-widget">
+            <div class="msalsas-voting-shakes{% if published %} published{% endif %}">
+                <p id="msalsas-voting-shakes-{{ id }}">{{ votes|default(0) }}</p> <i class="fa fa-heart {% if userVote %} --liked {% endif %}"></i>
 
+
+            </div>
+            <div class="msalsas-voting-shake-it{% if userVote %} --liked {% endif %}"
+                 id="msalsas-voting-a-shake-{{ id }}"
+                 data-id="{{ id }}"
+                 data-shakentext="{{ 'msalsas_voting.shaken'|trans }}"
+                    {% if isComment %}
+                 data-comment="true"
+                 data-url="{{ path('positive_vote_comment', {id: id, _locale: app.request.locale}) }}">
+                {% else %}
+                    data-url="{{ path('positive_vote', {id: id, _locale: app.request.locale}) }}">
+                {% endif %}
+
+
+
+                {% if not userVote %}
+                    <a  href="javascript:void(0)">{{ 'msalsas_voting.shake_it'|trans }}</a>
+                {% elseif userVote.positive %}
+                    <span class="liked" id="msalsas-voting-a-positive-{{ id }}">{{ 'msalsas_voting.shaken'|trans }}</span>
+
+
+                {% else %}
+                    <span class="dislked" id="msalsas-voting-a-negative-{{ id }}">{{ userVote.reason|trans }}</span>
+                {% endif %}
+            </div>
+
+            #}{#  <div class="msalsas-voting-clicks{% if published %} published{% endif %}">
+                  {% if clicks %}
+                      {{ 'msalsas_voting.clicks'|transchoice(clicks) }}
+                  {% else %}
+                      &nbsp;
+                  {% endif %}
+              </div>#}{#
+        </div>
+    </div>#}
 
     <div class="msalsas-voting-widget-wrapper">
         <div class="msalsas-voting-widget">
-            <div class="msalsas-voting-shakes{% if published %} published{% endif %}">
-                <p id="msalsas-voting-shakes-{{ id }}">{{ votes|default(0) }}</p> <i class="fa fa-heart"></i>
-            </div>
-            <div class="msalsas-voting-shake-it"
+
+            <div class="msalsas-voting-shake-it{% if userVote %} --liked {% endif %}"
                  id="msalsas-voting-a-shake-{{ id }}"
                  data-id="{{ id }}"
                  data-shakentext="{{ 'msalsas_voting.shaken'|trans }}"
@@ -37,10 +72,50 @@ file that was distributed with this source code. #}
                         data-url="{{ path('positive_vote', {id: id, _locale: app.request.locale}) }}">
                     {% endif %}
 
+
+
                 {% if not userVote %}
-                    <a  href="javascript:void(0)">{{ 'msalsas_voting.shake_it'|trans }}</a>
+
+                    <span class="c-btn c-btn--like">
+                        <p class="c-btn__number" id="like__number-{{ id }}">{{ votes|default(0) }}</p>
+                        <svg  width="20" height="20" viewBox="0 0 20 20">
+                        <defs>
+                            <rect id="a" rx="10" />
+                        </defs>
+                        <g fill="none" fillRule="evenodd">
+                            <rect width="19.311824" height="19.311824" x=".344088" y=".344088" stroke="#D8D8D8" strokeWidth="1" rx="9.655912" />
+                            <path fill="currentColor"  fillRule="nonzero" d="M10 8.08272067c-1.04933333-1.80066666-4-1.275-4 .98133334 0 1.5536667 1.857 3.1423333 4 5.2693333 2.1433333-2.127 4-3.7156666 4-5.2693333 0-2.264-2.9583333-2.76866663-4-.9813333z" />
+                        </g>
+                    </svg>
+                        <div class="c-spark"></div>
+                        <div class="c-spark"></div>
+                        <div class="c-spark"></div>
+                        <div class="c-spark"></div>
+                        <div class="c-spark"></div>
+                        <div class="c-spark"></div>
+                    </span>
+
+
                 {% elseif userVote.positive %}
-                    <span class="liked" id="msalsas-voting-a-positive-{{ id }}">{{ 'msalsas_voting.shaken'|trans }}</span>
+                    <span class="c-btn c-btn--like c-btn--marked" >
+                        <p class="c-btn__number"  id="like__number-{{ id }}">{{ votes|default(0) }}</p>
+                        <svg  width="20" height="20" viewBox="0 0 20 20">
+                        <defs>
+                            <rect id="a" rx="10" />
+                        </defs>
+                        <g fill="none" fillRule="evenodd">
+                            <rect width="19.311824" height="19.311824" x=".344088" y=".344088" stroke="#D8D8D8" strokeWidth="1" rx="9.655912" />
+                            <path fill="currentColor"  fillRule="nonzero" d="M10 8.08272067c-1.04933333-1.80066666-4-1.275-4 .98133334 0 1.5536667 1.857 3.1423333 4 5.2693333 2.1433333-2.127 4-3.7156666 4-5.2693333 0-2.264-2.9583333-2.76866663-4-.9813333z" />
+                        </g>
+                    </svg>
+                        <div class="c-spark"></div>
+                        <div class="c-spark"></div>
+                        <div class="c-spark"></div>
+                        <div class="c-spark"></div>
+                        <div class="c-spark"></div>
+                        <div class="c-spark"></div>
+                    </span>
+
                 {% else %}
                     <span class="dislked" id="msalsas-voting-a-negative-{{ id }}">{{ userVote.reason|trans }}</span>
                 {% endif %}
@@ -55,6 +130,8 @@ file that was distributed with this source code. #}
             </div>#}
         </div>
     </div>
+
+
 {% endmacro shakeIt %}
 
 {% macro bottomBar(id) %}

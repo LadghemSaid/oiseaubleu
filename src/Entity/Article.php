@@ -91,10 +91,9 @@ class Article
     private $text;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="article", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="article", orphanRemoval=true, fetch="EAGER")
      */
     private $comments;
-
 
 
     /**
@@ -296,7 +295,6 @@ class Article
         //dd('ok');
         return (string)$this->categorie->getName;
     }
-
 
 
 }

@@ -85,22 +85,23 @@ console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
                     transform: `rotateY(${rX}deg) rotateX(${rY}deg)`
                 };
             },
-/*
-            cardBgTransform() {
-                const tX = this.mousePX * -20;
-                const tY = this.mousePY * -20;
-                return {
-                  transform: `translateX(${tX}px) translateY(${tY}px)`
-                }
-            },
-            likesTransform() {
-                const tX = this.mousePX * 5;
-                const tY = this.mousePY * 5;
-                return {
-                   transform: `translateX(${tX}px) translateY(${tY}px)`
-                }
-            },
-*/
+            /*
+                        cardBgTransform() {
+                            const tX = this.mousePX * -20;
+                            const tY = this.mousePY * -20;
+                            return {
+                              transform: `translateX(${tX}px) translateY(${tY}px)`
+                            }
+                        },
+
+                        likesTransform() {
+                            const tX = this.mousePX * 5;
+                            const tY = this.mousePY * 5;
+                            return {
+                               transform: `translateX(${tX}px) translateY(${tY}px)`
+                            }
+                        },
+                        */
             cardBgImage() {
 
                 return {

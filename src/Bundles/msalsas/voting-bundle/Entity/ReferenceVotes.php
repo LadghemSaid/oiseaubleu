@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Msalsas\VotingBundle\Entity;
+namespace Msalsass\VotingBundle\Entity;
 
 
 use Doctrine\ORM\Mapping as ORM;
@@ -77,9 +77,9 @@ class ReferenceVotes
 
 
     /**
-     * @return int
+     *
      */
-    public function getReferenceArticle(): int
+    public function getReferenceArticle()
     {
         return $this->referenceArticle;
     }

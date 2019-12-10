@@ -7,24 +7,35 @@
 
 (function() {
     document.addEventListener('DOMContentLoaded', function() {
-        var shakeItLink = document.querySelectorAll('.msalsas-voting-shake-it a ');
+        var shakeItLink = document.querySelectorAll('.c-btn.c-btn--like, .msalsas-voting-shake-it-a ');
         for (var i = 0; i < shakeItLink.length; i++) {
             if (shakeItLink[i].addEventListener) {
-                shakeItLink[i].addEventListener('click', shakeIt, false);
+                shakeItLink[i].addEventListener('click', shakeIt, { passive: true });
             } else {
                 shakeItLink[i].attachEvent('onclick', shakeIt);
             }
         }
     });
 
+
     function shakeIt(evt) {
-        if(evt.target.parentNode.parentNode.dataset.comment){
+        //console.log(evt.target.parentNode.parentNode);
+        //console.log(evt.target.parentNode.parentNode.parentNode);
+        //if(evt.target.parentNode.dataset.comment){
+        if(evt.target.tagName == "I"){
+            //cas Commentaire
             var shakeItButton = evt.target.parentNode.parentNode;
         }else{
+            //cas index et show like
+           // console.log(evt.target.parentNode);
             var shakeItButton = evt.target.parentNode;
+            //heartFa = shakeItButton.previousElementSibling.children[1];
+            //heartFa.classList.add("--liked");
+
         }
-        shakeItButton.addClass('liked');
-        //console.log(evt.target.parentNode);
+        //console.log(evt.target);
+        shakeItButton.classList.add("--liked");
+
         var id = shakeItButton.dataset.id;
         var url = shakeItButton.dataset.url;
         var isComment = shakeItButton.dataset.comment;
@@ -37,16 +48,21 @@
 
         http.onreadystatechange = function() {
             if(http.readyState == 4 && http.status == 200) {
-                var shakesElem = document.getElementById('msalsas-voting-shakes-' + id);
-                shakesElem.text = document.createTextNode(http.responseText).wholeText;
+
                 //console.log( shakesElem.text);
                 if(isComment){
                     evt.target.classList.remove('far');
                     evt.target.classList.add('fa');
+                    var numberOfLikes = document.getElementById('msalsas-voting-shakes-' + id);
+                    //console.log(numberOfLikes);
+                    numberOfLikes.innerHTML = document.createTextNode(http.responseText).wholeText;
                 }else{
-                    var buttonElem = document.getElementById('msalsas-voting-a-shake-' + id );
+                    var numberOfLikes = document.getElementById('like__number-' + id);
+                    //console.log(numberOfLikes);
+                    numberOfLikes.innerHTML = document.createTextNode(http.responseText).wholeText;
+                   // var buttonElem = document.getElementById('msalsas-voting-a-shake-' + id );
                     //console.log(buttonElem);
-                    buttonElem.innerHTML = '<span>' + shakenText + '</span>';
+                    //buttonElem.innerHTML = '<span>' + + '</span>';
                 }
 
             } else if(http.readyState == 4 && http.status >= 400) {

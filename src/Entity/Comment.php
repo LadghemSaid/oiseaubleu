@@ -30,7 +30,7 @@ class Comment
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Article", inversedBy="comments")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Article", inversedBy="comments", fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $article;

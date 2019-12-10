@@ -11,6 +11,8 @@
 
 namespace Msalsas\VotingBundle\Service;
 
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+use Symfony\Contracts\Cache\ItemInterface;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Msalsas\VotingBundle\Entity\ReferenceVotes;
@@ -22,6 +24,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Translation\TranslatorInterface;
+
 
 class Voter
 {
@@ -75,50 +78,98 @@ class Voter
 
     public function getPositiveVotes($referenceArticleId)
     {
-        /** @var \Msalsas\VotingBundle\Entity\ReferenceVotes|null $referenceVotes */
-        $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('referenceArticle' => $referenceArticleId));
-        if (!$referenceVotes) {
-            $referenceVotes = new ReferenceVotes();
-            $referenceVotes->setReferenceArticle($referenceArticleId);
+        $cache = new FilesystemAdapter();
+        $referenceVotes = $cache->get('likes', function (ItemInterface $item) {
+            $item->expiresAfter(3600);
+            $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findAll();
+            return $referenceVotes;
+        });
+        $voteActive = false;
+        foreach ($referenceVotes as $key => $vote){
+            if($referenceArticleId !== null && $referenceArticleId == $vote->getReferenceArticle()){
+                $voteActive = $vote;
+
+            }
         }
 
-        return $referenceVotes->getPositiveVotes();
+
+
+        /** @var \Msalsas\VotingBundle\Entity\ReferenceVotes|null $referenceVotes */
+        if (!$voteActive) {
+            $voteActive = new ReferenceVotes();
+            $voteActive->setReferenceArticle($referenceArticleId);
+        }
+
+        return $voteActive->getPositiveVotes();
     }
 
     public function getNegativeVotes($referenceArticleId)
     {
-        /** @var \Msalsas\VotingBundle\Entity\ReferenceVotes|null $referenceVotes */
-        $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('referenceArticle' => $referenceArticleId));
-        if (!$referenceVotes) {
-            $referenceVotes = new ReferenceVotes();
-            $referenceVotes->setReferenceArticle($referenceArticleId);
+        $cache = new FilesystemAdapter();
+        $referenceVotes = $cache->get('likes', function (ItemInterface $item) {
+            $item->expiresAfter(3600);
+            $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findAll();
+            return $referenceVotes;
+        });
+        $voteActive = false;
+        foreach ($referenceVotes as $key => $vote){
+            if($referenceArticleId !== null && $referenceArticleId == $vote->getReferenceArticle()){
+                $voteActive = $vote;
+
+            }
         }
 
-        return $referenceVotes->getNegativeVotes();
+        if (!$voteActive) {
+            $voteActive = new ReferenceVotes();
+            $voteActive->setReferenceArticle($referenceArticleId);
+        }
+
+        return $voteActive->getNegativeVotes();
     }
 
     public function getUserPositiveVotes($referenceArticleId)
     {
-        /** @var \Msalsas\VotingBundle\Entity\ReferenceVotes|null $referenceVotes */
-        $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('referenceArticle' => $referenceArticleId));
-        if (!$referenceVotes) {
-            $referenceVotes = new ReferenceVotes();
-            $referenceVotes->setReferenceArticle($referenceArticleId);
+        $cache = new FilesystemAdapter();
+        $referenceVotes = $cache->get('likes', function (ItemInterface $item) {
+            $item->expiresAfter(3600);
+            $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findAll();
+            return $referenceVotes;
+        });
+        $voteActive = false;
+        foreach ($referenceVotes as $key => $vote){
+            if($referenceArticleId !== null && $referenceArticleId == $vote->getReferenceArticle()){
+                $voteActive = $vote;
+
+            }
+        }
+        if (!$voteActive) {
+            $voteActive = new ReferenceVotes();
+            $voteActive->setReferenceArticle($referenceArticleId);
         }
 
-        return $referenceVotes->getUserVotes();
+        return $voteActive->getUserVotes();
     }
 
     public function getAnonymousVotes($referenceArticleId)
     {
-        /** @var \Msalsas\VotingBundle\Entity\ReferenceVotes|null $referenceVotes */
-        $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('referenceArticle' => $referenceArticleId));
-        if (!$referenceVotes) {
-            $referenceVotes = new ReferenceVotes();
-            $referenceVotes->setReferenceArticle($referenceArticleId);
+        $cache = new FilesystemAdapter();
+        $referenceVotes = $cache->get('likes', function (ItemInterface $item) {
+            $item->expiresAfter(3600);
+            $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findAll();
+            return $referenceVotes;
+        });
+        $voteActive = false;
+        foreach ($referenceVotes as $key => $vote){
+            if($referenceArticleId !== null && $referenceArticleId == $vote->getReferenceArticle()){
+                $voteActive = $vote;
+            }
         }
-
-        return $referenceVotes->getAnonymousVotes();
+        dd($referenceVotes);
+        if (!$voteActive) {
+            $voteActive = new ReferenceVotes();
+            $voteActive->setReferenceArticle($referenceArticleId);
+        }
+        return $voteActive->getAnonymousVotes();
     }
 
     public function votePositive($referenceArticleId)
@@ -147,6 +198,14 @@ class Voter
         $this->em->persist($referenceVotes);
         $this->em->flush();
 
+        //Mise a jour du cache apres un like
+        $cache = new FilesystemAdapter();
+        $cache->delete('likes');
+        $cache->delete('votesUserPositiveAnonyme');
+        $cache->delete('votesUserPositive');
+        // $cache->set('likes', function() use($vote){
+        //    array_push($referenceVotes,$vote);
+        //});
         return $referenceVotes->getPositiveVotes();
     }
 
@@ -178,6 +237,10 @@ class Voter
         $this->em->persist($vote);
         $this->em->flush();
 
+        $cache = new FilesystemAdapter();
+        $cache->delete('likes');
+        $cache->delete('voteUserNegative');
+
         return $referenceVotes->getNegativeVotes();
     }
 
@@ -190,19 +253,68 @@ class Voter
         $votePositiveRepository = $this->em->getRepository(VotePositive::class);
         $voteNegativeRepository = $this->em->getRepository(VoteNegative::class);
 
+        $userIp = $this->request->getClientIp();
+        $cache = new FilesystemAdapter();
 
-        if ($user && $vote = $votePositiveRepository->findOneBy(array('user' => $user, 'referenceArticle' => $referenceArticleId))) {
+        $votesUserPositiveAnonyme = $cache->get('votesUserPositiveAnonyme', function (ItemInterface $item) use ($referenceArticleId,$user,$votePositiveRepository,$userIp) {
+            $item->expiresAfter(3600);
+            $votesUserPositiveAnonyme = $votePositiveRepository->findBy(array( 'userIP' => $userIp, 'referenceComment' => null));
+            return $votesUserPositiveAnonyme;
+        });
 
-            return $vote;
-        } else if (!$user && $vote = $votePositiveRepository->findOneBy(array('user' => $user, 'referenceArticle' => $referenceArticleId, 'userIP' => $this->request->getClientIp()))) {
+        $votesUserPositive = $cache->get('votesUserPositive', function (ItemInterface $item) use ($referenceArticleId,$user,$votePositiveRepository) {
+            $item->expiresAfter(3600);
+            $votesUserPositive = $votePositiveRepository->findBy(array('user' => $user));
+            return $votesUserPositive;
+        });
 
-            return $vote;
-        } else if ($vote = $voteNegativeRepository->findOneBy(array('user' => $user, 'referenceArticle' => $referenceArticleId))) {
+        $voteUserNegative = $cache->get('voteUserNegative', function (ItemInterface $item) use ($referenceArticleId,$user,$voteNegativeRepository) {
+            $item->expiresAfter(3600);
+            $voteUserNegative = $voteNegativeRepository->findBy(array('user' => $user));
+            return $voteUserNegative;
+        });
 
-            return $vote;
+        $voteActive_votesUserPositiveAnonyme = false;
+        foreach ($votesUserPositiveAnonyme as $key => $vote){
+            if($referenceArticleId !== null && $referenceArticleId == $vote->getReferenceArticle()){
+                $voteActive_votesUserPositiveAnonyme = $vote;
+
+            }
+        }
+
+        $voteActive_votesUserPositive = false;
+        foreach ($votesUserPositive as $key => $vote){
+            if($referenceArticleId !== null && $referenceArticleId == $vote->getReferenceArticle()){
+                $voteActive_votesUserPositive = $vote;
+
+            }
+        }
+
+        $voteActive_voteUserNegative = false;
+        foreach ($voteUserNegative as $key => $vote){
+            if($referenceArticleId !== null && $referenceArticleId == $vote->getReferenceArticle()){
+                $voteActive_voteUserNegative = $vote;
+
+            }
+        }
+
+        if ($user && $voteActive_votesUserPositive)
+        {
+            return $voteActive_votesUserPositive;
+
+        }
+        else if (!$user && $voteActive_votesUserPositiveAnonyme)
+        {
+            return $voteActive_votesUserPositiveAnonyme;
+
+        }
+        else if ($voteActive_voteUserNegative)
+        {
+            return $voteActive_voteUserNegative;
         }
 
         return false;
+
     }
 
     public function getNegativeReasons()
@@ -244,6 +356,7 @@ class Voter
 
     protected function validateVote($user, $referenceArticleId)
     {
+
         if (!$user instanceof UserInterface && (!$this->request || !$this->request->getClientIp())) {
             throw new AccessDeniedException($this->translator->trans('msalsas_voting.errors.no_ip_defined_for_anon'));
         }
@@ -252,12 +365,12 @@ class Voter
             throw new AccessDeniedException($this->translator->trans('msalsas_voting.errors.already_voted'));
         }
 
-        if (!$user instanceof UserInterface) {
+ /*       if (!$user instanceof UserInterface) {
             $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('referenceArticle' => $referenceArticleId));
             if ($referenceVotes instanceof ReferenceVotes && !$this->anonymousIsAllowed($referenceVotes)) {
                 throw new AccessDeniedException($this->translator->trans('msalsas_voting.errors.too_much_anon_votes'));
             }
-        }
+        }*/
     }
 
     protected function userHasVoted($user, $referenceArticleId)
@@ -265,6 +378,67 @@ class Voter
         $votePositiveRepository = $this->em->getRepository(VotePositive::class);
         $voteNegativeRepository = $this->em->getRepository(VoteNegative::class);
 
+      /*  $cache = new FilesystemAdapter();
+
+        $userIp = $this->request->getClientIp();
+
+        $votesUserPositiveAnonyme = $cache->get('votesUserPositiveAnonyme', function (ItemInterface $item) use ($referenceArticleId,$user,$votePositiveRepository,$userIp) {
+            $item->expiresAfter(3600);
+            $votesUserPositiveAnonyme = $votePositiveRepository->findBy(array('user' => $user, 'userIP' => $userIp, 'referenceComment' => null));
+            return $votesUserPositiveAnonyme;
+        });
+
+        $votesUserPositive = $cache->get('votesUserPositive', function (ItemInterface $item) use ($referenceArticleId,$user,$votePositiveRepository) {
+            $item->expiresAfter(3600);
+            $votesUserPositive = $votePositiveRepository->findBy(array('user' => $user));
+            return $votesUserPositive;
+        });
+
+        $voteUserNegative = $cache->get('voteUserNegative', function (ItemInterface $item) use ($referenceArticleId,$user,$voteNegativeRepository) {
+            $item->expiresAfter(3600);
+            $voteUserNegative = $voteNegativeRepository->findBy(array('user' => $user));
+            return $voteUserNegative;
+        });
+
+
+        $voteActive_votesUserPositiveAnonyme = false;
+        foreach ($votesUserPositiveAnonyme as $key => $vote){
+            if($referenceArticleId !== null && $referenceArticleId == $vote->getReferenceArticle()){
+                $voteActive_votesUserPositiveAnonyme = $vote;
+
+            }
+        }
+
+        $voteActive_votesUserPositive = false;
+        foreach ($votesUserPositive as $key => $vote){
+            if($referenceArticleId !== null && $referenceArticleId == $vote->getReferenceArticle()){
+                $voteActive_votesUserPositive = $vote;
+
+            }
+        }
+
+        $voteActive_voteUserNegative = false;
+        foreach ($voteUserNegative as $key => $vote){
+            if($referenceArticleId !== null && $referenceArticleId == $vote->getReferenceArticle()){
+                $voteActive_voteUserNegative = $vote;
+
+            }
+        }
+
+        if ($user instanceof UserInterface) {
+            if ($voteActive_votesUserPositive) {
+
+                return true;
+            } else if ($voteActive_voteUserNegative) {
+                return true;
+            }
+        } else {
+            if ($voteActive_votesUserPositiveAnonyme) {
+                return true;
+            }
+        }
+
+        return false;*/
         if ($user instanceof UserInterface) {
             if ($votePositiveRepository->findOneBy(
                 array(
@@ -295,24 +469,38 @@ class Voter
         }
 
         return false;
+
     }
 
     protected function addReferenceVote($referenceArticleId, $positive, $anonymous = true)
     {
-        /** @var \Msalsas\VotingBundle\Entity\ReferenceVotes|null $referenceVotes */
-        $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findOneBy(array('referenceArticle' => $referenceArticleId));
+        $cache = new FilesystemAdapter();
+        $referenceVotes = $cache->get('likes', function (ItemInterface $item) {
+            $item->expiresAfter(3600);
+            $referenceVotes = $this->em->getRepository(ReferenceVotes::class)->findAll();
+            return $referenceVotes;
+        });
+        $voteActive = false;
+        foreach ($referenceVotes as $key => $vote){
+            if($referenceArticleId !== null && $referenceArticleId == $vote->getReferenceArticle()){
+                $voteActive = $vote;
 
-        if ($referenceVotes) {
-            $referenceVotes->addVote($positive, $anonymous);
-        } else {
-            $referenceVotes = new ReferenceVotes();
-            $referenceVotes->setReferenceArticle($referenceArticleId);
-            $referenceVotes->setReferenceComment(null);
-            $referenceVotes->addVote($positive, $anonymous);
-
+            }
         }
 
-        return $referenceVotes;
+
+        if ($voteActive) {
+            $voteActive->addVote($positive, $anonymous);
+        } else {
+            $voteActive = new ReferenceVotes();
+            $voteActive->setReferenceArticle($referenceArticleId);
+            $voteActive->setReferenceComment(null);
+            $voteActive->addVote($positive, $anonymous);
+            $cache = new FilesystemAdapter();
+            $cache->delete('likes');
+        }
+
+        return $voteActive;
     }
 
     protected function anonymousIsAllowed(ReferenceVotes $referenceVotes)
