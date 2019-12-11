@@ -17,7 +17,7 @@
             {% if comment.user == app.user %}
                 <ul class="comment__actions">
                     <li class="comment__edit"><a id="{{ comment.id }}" href="#" onclick="edit(event)" class="btn btn-primary btn-sm"><i class="fa fa-cog"></i></a></li>
-                    <li class="comment__delete"><a  href="{{ path('delete.comment',{'comment' : comment.id}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a></li>
+                    <li class="comment__delete"><a  onclick="onDeleteComment(event)" data-delete="{{ path('delete.comment',{'comment' : comment.id}) }}" href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a></li>
                 </ul>
             {% endif %}
             <div class="comment__text">
@@ -41,6 +41,27 @@
 
  {% block javascripts %}
      <script>
+
+         function onDeleteComment(e) {
+             e.preventDefault();
+             console.log(this);
+
+
+                 let elem = e.target;
+                 while (elem.parentElement !== null) {
+                     if (elem.classList.contains("comment")) {
+                         console.log();
+                         elem.classList.add('removed');
+                         break
+                     }
+                     elem = elem.parentElement;
+                 }
+
+             ;
+
+         }
+
+
          function edit(e){
 
              e.preventDefault();

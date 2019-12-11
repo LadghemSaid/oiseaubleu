@@ -50,18 +50,22 @@ class CommentsController extends AbstractController
     }
 
     /**
-     * @Route("/delete/comment/{comment}", name="delete.comment", methods={"GET"})
+     * @Route("/delete/comment/{comment}", name="delete.comment", methods={"DELETE"})
      */
-    public function delete(Comment $comment, Security $security)
+    public function delete(Comment $comment, Security $security,Request $request)
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         if($security->getUser() === $comment->getUser()){
-            $article = $comment->getArticle();
             $em =  $this->getDoctrine()->getManager();
             $em->remove($comment);
             $em->flush();
+            $response = new Response();
+            $response->setStatusCode(200);
+
+            return $response;
         }
-        return $this->redirectToRoute('article.show', array('slug'=>$article->getSlug(),'id'=>$article->getId()));
+
+
 
         //dd($comment);
 

@@ -25,63 +25,64 @@
     <div class="row mt-5 article">
         <div class="col-md-12">
 
-            <img class="d-block w-100 lazyload  article__image masked" src="{{ asset("img/lowres.png") }}" data-src={{ article.image }} alt="AlternateText" height="auto"/>
-
+            <img class="d-block w-100 lazyload  article__image masked" src="{{ asset("img/lowres.png") }}"
+                 data-src={{ article.image }} alt="AlternateText" height="auto"/>
 
 
             <svg>
                 <!-- THE mask -->
                 <mask id="mask" maskContentUnits="objectBoundingBox">
                     <!-- using an img, but this img is black/transparent so we filter it to make it white -->
-                    <image xlink:href="http://iamvdo.me/conf/2012/kiwiparty/img/masque2.png" width="1" height="1" preserveAspectRatio="none" filter="url(#filter)"/>
+                    <image xlink:href="http://iamvdo.me/conf/2012/kiwiparty/img/masque2.png" width="1" height="1"
+                           preserveAspectRatio="none" filter="url(#filter)"/>
                 </mask>
 
                 <!-- the filter to make the image white -->
                 <filter id="filter">
-                    <feFlood flood-color="white" />
-                    <feComposite in2="SourceAlpha" operator="in" />
+                    <feFlood flood-color="white"/>
+                    <feComposite in2="SourceAlpha" operator="in"/>
                 </filter>
             </svg>
 
             <h1 class="article__titre">{{ article.title }}</h1>
-                    <div class="article__cadre">
-                        <div class="article__metaDroite">
-                          <div class="article__metaDroite__info">
-                            <span class="article__metaDroite__createdAt">Écrit le : <strong>{{ article.createdAt | date('d/m/Y', timezone='Europe/Paris') }}</strong></span>
-                            <span class="article__metaDroite__lectureTime" >Temps de lecture : <strong>10min</strong></span>
-                          </div>
-                            <span class="article__metaDroite__voting">
+            <div class="article__cadre">
+                <div class="article__metaDroite">
+                    <div class="article__metaDroite__info">
+                        <span class="article__metaDroite__createdAt">Écrit le : <strong>{{ article.createdAt | date('d/m/Y', timezone='Europe/Paris') }}</strong></span>
+                        <span class="article__metaDroite__lectureTime">Temps de lecture : <strong>10min</strong></span>
+                    </div>
+                    <span class="article__metaDroite__voting">
                                 {{ msalsas_voting_widget.shakeIt(article.id) }}
                                 </span>
 
 
-                        </div>
-                        <hr />
+                </div>
+                <hr/>
 
 
-                        <span class="article__text">{{ article.text | raw }}</span>
-                        <div class="article__metaBas">
+                <span class="article__text">{{ article.text | raw }}</span>
+                <div class="article__metaBas">
                         <span class="article__metaBas__author">
                         {% if  article.author.username is defined %}
                             <span> Écrit par : <strong>{{ article.author.username }}</strong></span>
                         {% endif %}
                         </span>
-                            <span class="article__metaBas__createdAt">{{ article.createdAt | date('d/m/Y', timezone='Europe/Paris') }}</span>
-                            {#{{ msalsas_voting_widget.bottomBar( article.id) }}#}
-                        </div>
-                        <ul class="article__ulCategories">
+                    <span class="article__metaBas__createdAt">{{ article.createdAt | date('d/m/Y', timezone='Europe/Paris') }}</span>
+                    {#{{ msalsas_voting_widget.bottomBar( article.id) }}#}
+                </div>
+                <ul class="article__ulCategories">
 
-                            {% for categorie in article.categorie %}
-                                <li class="badge badge-pill badge-secondary ">
-                                    <span class=""> {{ categorie.name }} </span>
-                                </li>
-                            {% endfor %}
-
-
-                        </ul>
+                    {% for categorie in article.categorie %}
+                        <li class="badge badge-pill badge-secondary ">
+                            <span class=""> {{ categorie.name }} </span>
+                        </li>
+                    {% endfor %}
 
 
-                    </div>
+                </ul>
+
+
+            </div>
 
             <a href="{{ path('article.index') }}" class="article__buttonBackToArticle">
                 <div class="button learn-more">
@@ -105,16 +106,19 @@
             {{ form_row(formComment.submit,{'attr': {'class': 'commentForm__submit'},'label':'Envoyer'}) }}
             {{ form_end(formComment) }}
         {% else %}
-            <p><button class="comments__notConnected"><a href="{{ path('app_login') }}">Connecter vous pour commenter</a></button></p>
+            <p>
+                <button class="comments__notConnected"><a href="{{ path('app_login') }}">Connecter vous pour
+                        commenter</a></button>
+            </p>
         {% endif %}
-        {% for comment in comments  %}
+        {% for comment in comments %}
 
             <article class="comment" id="commentId-{{ comment.id }}">
                 <a class="comment__img" href="#non">
-                    <img src="https://api.adorable.io/avatars/50/{{ comment.user.username }}@adorable.io.png" alt="" width="50" height="50">
+                    <img src="https://api.adorable.io/avatars/50/{{ comment.user.username }}@adorable.io.png" alt=""
+                         width="50" height="50">
                 </a>
                 <div class="comment__body">
-
 
 
                     <div class="comment__header">
@@ -124,15 +128,23 @@
                         <span class="comment__createdat">{{ comment.createdAt| ago }}</span>
                         {% if comment.user == app.user %}
                             <ul class="comment__actions">
-                                <li class="comment__edit"><a id="{{ comment.id }}" href="#" onclick="edit(event)" class="btn btn-primary btn-sm"><i class="fa fa-cog"></i></a></li>
-                                <li class="comment__edit--validate"><a id="{{ comment.id }}" href="#" onclick="submitEditComment(event)" class="btn btn-primary btn-sm"><i class="fas fa-check"></i></a></li>
-                                <li class="comment__delete"><a  href="{{ path('delete.comment',{'comment' : comment.id}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a></li>
+                                <li class="comment__edit"><a id="{{ comment.id }}" href="#" onclick="edit(event)"
+                                                             class="btn btn-primary btn-sm"><i
+                                                class="fa fa-cog"></i></a></li>
+                                <li class="comment__edit--validate"><a id="{{ comment.id }}" href="#"
+                                                                       onclick="submitEditComment(event)"
+                                                                       class="btn btn-primary btn-sm"><i
+                                                class="fas fa-check"></i></a></li>
+                                <li class="comment__delete"><a onclick="onDeleteComment(event)"
+                                                               data-delete="{{ path('delete.comment',{'comment' : comment.id}) }}"
+                                                               href="#" class="btn btn-danger btn-sm"><i
+                                                class="fa fa-trash"></i></a></li>
                             </ul>
                         {% endif %}
                         {{ msalsas_voting_widget_custom.shakeIt(comment.id,isComment ) }}
                     </div>
                     <div class="comment__text">
-                        <p>{{ comment.textComment}}</p>
+                        <p>{{ comment.textComment }}</p>
                     </div>
 
                 </div>
@@ -156,18 +168,17 @@
 
           likes = document.getElementsByClassName('c-btn');
           for (var i = 0; i < likes.length; i++) {
-              likes[i].addEventListener('click', function(e){
+              likes[i].addEventListener('click', function (e) {
 
 
-
-                  let likeButton =e.currentTarget;
+                  let likeButton = e.currentTarget;
 
                   let sparks = e.srcElement.querySelectorAll('.c-spark')
 
-                  if(likeButton.classList.contains('c-btn--marked')){
+                  if (likeButton.classList.contains('c-btn--marked')) {
                       //console.log('marked');
 
-                  }else{
+                  } else {
                       likeButton.classList.add('c-btn--marked');
                       for (let i = 0; i < sparks.length; i++) {
                           sparks[i].classList.add('c-spark--animation');
@@ -177,45 +188,70 @@
               })
           }
 
-          function edit(e){
+
+          function onDeleteComment(e) {
+              e.preventDefault();
+              $.ajax({
+                  url: e.currentTarget.dataset.delete,
+                  type: 'DELETE',
+                  success: function(result,status) {
+                      if (status === "success") {
+                          let elem = e.target;
+                          while (elem.parentElement !== null) {
+                              if (elem.classList.contains("comment")) {
+                                  elem.classList.add('removed');
+                                  break
+                              }
+                              elem = elem.parentElement;
+                          }
+                      }
+                  }
+              })
+
+
+
+          }
+
+
+          function edit(e) {
 
               e.preventDefault();
               let btnEdit = e.currentTarget;
-              let btnSubmit= e.currentTarget.parentElement.nextElementSibling.firstChild;
-              let commentElem = document.getElementById("commentId-"+btnEdit.attributes[0].value).childNodes[3].childNodes[3];
+              let btnSubmit = e.currentTarget.parentElement.nextElementSibling.firstChild;
+              let commentElem = document.getElementById("commentId-" + btnEdit.attributes[0].value).childNodes[3].childNodes[3];
               //console.log(btnEdit);
 
 
-              commentElem.innerHTML = "<form id='editFormCommentId-"+btnEdit.attributes[0].value+"' action='/comment/edit/"+ btnEdit.attributes[0].value +"' method='post'><textarea name='comment[textComment]' class='edit_input' />"+ commentElem.innerText + "</textarea></form>";
+              commentElem.innerHTML = "<form id='editFormCommentId-" + btnEdit.attributes[0].value + "' action='/comment/edit/" + btnEdit.attributes[0].value + "' method='post'><textarea name='comment[textComment]' class='edit_input' />" + commentElem.innerText + "</textarea></form>";
 
-              btnSubmit.style.display="block";
-              btnEdit.style.display="none";
+              btnSubmit.style.display = "block";
+              btnEdit.style.display = "none";
           }
-      function submitEditComment(e){
-          e.preventDefault();
+
+          function submitEditComment(e) {
+              e.preventDefault();
 
 
-
-          let btnSubmit = e.currentTarget;
-          let btnEdit= e.currentTarget.parentElement.previousElementSibling.firstChild;
-          let commentElem = document.getElementById("commentId-"+btnEdit.attributes[0].value).childNodes[3].childNodes[3].firstChild;
-         // document.getElementById("editFormCommentId-"+btnEdit.attributes[0].value).submit();
-          //Form submision
-          let form = document.getElementById("editFormCommentId-"+btnEdit.attributes[0].value);
-          //console.log( document.getElementById("editFormCommentId-"+btnEdit.attributes[0].value).innerText);
-          console.log( form.firstChild.value);
-          $.ajax({
-              type: 'POST',
-              url: form.attributes[1].value,
-              data: $('form').serialize(),
-              success: function(response) {
-                 // console.log(response)
-              },
-          });
-          commentElem.innerHTML ="<p>"+form.firstChild.value+"</p>"
-          btnSubmit.style.display="none";
-          btnEdit.style.display="block";
-      }
+              let btnSubmit = e.currentTarget;
+              let btnEdit = e.currentTarget.parentElement.previousElementSibling.firstChild;
+              let commentElem = document.getElementById("commentId-" + btnEdit.attributes[0].value).childNodes[3].childNodes[3].firstChild;
+              // document.getElementById("editFormCommentId-"+btnEdit.attributes[0].value).submit();
+              //Form submision
+              let form = document.getElementById("editFormCommentId-" + btnEdit.attributes[0].value);
+              //console.log( document.getElementById("editFormCommentId-"+btnEdit.attributes[0].value).innerText);
+              console.log(form.firstChild.value);
+              $.ajax({
+                  type: 'POST',
+                  url: form.attributes[1].value,
+                  data: $('form').serialize(),
+                  success: function (response) {
+                      // console.log(response)
+                  },
+              });
+              commentElem.innerHTML = "<p>" + form.firstChild.value + "</p>"
+              btnSubmit.style.display = "none";
+              btnEdit.style.display = "block";
+          }
 
       </script>
   {% endblock %}
