@@ -61,7 +61,7 @@ class ArticleFixtures extends Fixture
                     ->setAuthor($userArray[$i])
                     ->addCategorie($categorieArray[array_rand($categorieArray)])
                     ->setCreatedAt($date = $faker->dateTimeBetween("-10days","now"))
-                    ->setImage($faker->imageUrl(400,250));
+                    ->setImage($faker->imageUrl(900,900));
                 $manager->persist($article);
 
 

@@ -54,7 +54,7 @@
                                                 <i class="fa fa-cog"></i>
                                             </a>
 
-                                            <form class="delete-article" id="delete-article-{{ article.id }}"
+                                            <form data-delete="{{ path('admin.article.delete',{id: article.id}) }}" class="delete-article" id="delete-article-{{ article.id }}"
                                                   action="{{ path('admin.article.delete',{id: article.id}) }}"
                                                   method="POST"
                                                   onsubmit="onDeleteArticle(event)"
@@ -62,7 +62,7 @@
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <input type="hidden" name="_token"
                                                        value="{{ csrf_token('delete' ~ article.id) }}">
-                                                <button class="btn btn-danger btn-circle">
+                                                <button  class="btn btn-danger btn-circle">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
                                             </form>
@@ -115,14 +115,32 @@
         function onDeleteArticle(e) {
             e.preventDefault();
             if (confirm('Confirmation de suppression')) {
-                console.log(this);
 
 
-                let elem = e.target;
+                let elem = e.currentTarget;
+                console.log(elem.children[1].value);
+                let token =  $('input[name="csrfToken"]').attr('value')
+                $.ajax({
+                    url: elem.dataset.delete,
+                    type: 'DELETE',
+                    data: {'crsf':elem.children[1].value},
+                    success: function(result,status) {
+                        if (status === "success") {
+                            let elem = e.target;
+                            while (elem.parentElement !== null) {
+                                if (elem.classList.contains("comment")) {
+                                    elem.classList.add('removed');
+                                    break
+                                }
+                                elem = elem.parentElement;
+                            }
+                        }
+                    }
+                });
                 while (elem.parentElement !== null) {
                     if (elem.classList.contains("card-wrap")) {
-                        console.log();
                         elem.classList.add('removed');
+
                         break
                     }
                     elem = elem.parentElement;

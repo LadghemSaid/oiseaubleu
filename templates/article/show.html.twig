@@ -22,68 +22,137 @@
         </div>
     {% endfor %}
 
-    <div class="row mt-5 article">
-        <div class="col-md-12">
+    {#
+        <div class="row mt-5 article">
+            <div class="col-md-12">
 
-            <img class="d-block w-100 lazyload  article__image masked" src="{{ asset("img/lowres.png") }}"
-                 data-src={{ article.image }} alt="AlternateText" height="auto"/>
+                <img class="d-block w-100 lazyload  article__image masked" src="{{ asset("img/lowres.png") }}"
+                     data-src={{ article.image }} alt="AlternateText" height="auto"/>
 
 
-            <svg>
-                <!-- THE mask -->
-                <mask id="mask" maskContentUnits="objectBoundingBox">
-                    <!-- using an img, but this img is black/transparent so we filter it to make it white -->
-                    <image xlink:href="http://iamvdo.me/conf/2012/kiwiparty/img/masque2.png" width="1" height="1"
-                           preserveAspectRatio="none" filter="url(#filter)"/>
-                </mask>
+                <svg>
+                    <!-- THE mask -->
+                    <mask id="mask" maskContentUnits="objectBoundingBox">
+                        <!-- using an img, but this img is black/transparent so we filter it to make it white -->
+                        <image xlink:href="http://iamvdo.me/conf/2012/kiwiparty/img/masque2.png" width="1" height="1"
+                               preserveAspectRatio="none" filter="url(#filter)"/>
+                    </mask>
 
-                <!-- the filter to make the image white -->
-                <filter id="filter">
-                    <feFlood flood-color="white"/>
-                    <feComposite in2="SourceAlpha" operator="in"/>
-                </filter>
-            </svg>
+                    <!-- the filter to make the image white -->
+                    <filter id="filter">
+                        <feFlood flood-color="white"/>
+                        <feComposite in2="SourceAlpha" operator="in"/>
+                    </filter>
+                </svg>
 
-            <h1 class="article__titre">{{ article.title }}</h1>
-            <div class="article__cadre">
-                <div class="article__metaDroite">
-                    <div class="article__metaDroite__info">
-                        <span class="article__metaDroite__createdAt">Écrit le : <strong>{{ article.createdAt | date('d/m/Y', timezone='Europe/Paris') }}</strong></span>
-                        <span class="article__metaDroite__lectureTime">Temps de lecture : <strong>10min</strong></span>
+                <h1 class="article__titre">{{ article.title }}</h1>
+                <div class="article__cadre">
+                    <div class="article__metaDroite">
+                        <div class="article__metaDroite__info">
+                            <span class="article__metaDroite__createdAt">Écrit le : <strong>{{ article.createdAt | date('d/m/Y', timezone='Europe/Paris') }}</strong></span>
+                            <span class="article__metaDroite__lectureTime">Temps de lecture : <strong>10min</strong></span>
+                        </div>
+                        <span class="article__metaDroite__voting">
+                                    {{ msalsas_voting_widget.shakeIt(article.id) }}
+                                    </span>
+
+
                     </div>
-                    <span class="article__metaDroite__voting">
-                                {{ msalsas_voting_widget.shakeIt(article.id) }}
-                                </span>
+                    <hr/>
+
+
+                    <span class="article__text">{{ article.text | raw }}</span>
+                    <div class="article__metaBas">
+                            <span class="article__metaBas__author">
+                            {% if  article.author.username is defined %}
+                                <span> Écrit par : <strong>{{ article.author.username }}</strong></span>
+                            {% endif %}
+                            </span>
+                        <span class="article__metaBas__createdAt">{{ article.createdAt | date('d/m/Y', timezone='Europe/Paris') }}</span>
+
+
+                    </div>
+                    <ul class="article__ulCategories">
+
+                        {% for categorie in article.categorie %}
+                            <li class="badge badge-pill badge-secondary ">
+                                <span class=""> {{ categorie.name }} </span>
+                            </li>
+                        {% endfor %}
+
+
+                    </ul>
 
 
                 </div>
-                <hr/>
 
-
-                <span class="article__text">{{ article.text | raw }}</span>
-                <div class="article__metaBas">
-                        <span class="article__metaBas__author">
-                        {% if  article.author.username is defined %}
-                            <span> Écrit par : <strong>{{ article.author.username }}</strong></span>
-                        {% endif %}
-                        </span>
-                    <span class="article__metaBas__createdAt">{{ article.createdAt | date('d/m/Y', timezone='Europe/Paris') }}</span>
-                    {#{{ msalsas_voting_widget.bottomBar( article.id) }}#}
-                </div>
-                <ul class="article__ulCategories">
-
-                    {% for categorie in article.categorie %}
-                        <li class="badge badge-pill badge-secondary ">
-                            <span class=""> {{ categorie.name }} </span>
-                        </li>
-                    {% endfor %}
-
-
-                </ul>
-
-
+                <a href="{{ path('article.index') }}" class="article__buttonBackToArticle">
+                    <div class="button learn-more">
+                        <div class="circle">
+                            <span class="icon arrow"></span>
+                        </div>
+                        <p class="button-text">Retournez aux articles</p>
+                    </div>
+                </a>
             </div>
 
+        </div>
+
+        #}
+
+
+
+    <div id="container" class="container intro-effect-fadeout">
+        <!-- Top Navigation -->
+
+        <header class="header">
+
+            <div class="bg-img">
+                <div class="overlay_black"></div>
+
+                <img src="{{ asset("img/lowres.png") }}" data-src={{ article.image }} class="lazyload" alt="Background Image"/>
+            </div>
+            <div class="title">
+                <h1>{{ article.title }}</h1>
+                <p class="subline">Soutitre ipsum dolres lorem</p>
+
+
+                <p>
+                    {% if  article.author.username is defined %}
+                        de <a href=""><strong>{{ article.author.username }}</strong></a>
+                    {% endif %}
+                    &#8212; <a href=""><strong>{{ article.categorie.first() }}</strong></a>, Mis en ligne le
+                    <strong>{{ article.createdAt | date('d/m/Y', timezone='Europe/Paris') }}</strong></p>
+            </div>
+        </header>
+        <button class="trigger" data-info="Cliquez pour lire l'article"><span>ICI</span></button>
+        <article class="content">
+
+
+            <div>
+                <p>{{ article.text | raw }}</p>
+
+                <p><strong> <a href="#">Partagez cette article</a></strong></p>
+            </div>
+            <span style="display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+    margin-left: -30px;">{{ msalsas_voting_widget.shakeIt(article.id) }}</span>
+
+        </article>
+        <section class="related">
+
+            <ul class="article__ulCategories">
+
+                {% for categorie in article.categorie %}
+                    <li class="badge badge-pill badge-secondary ">
+                        <span class=""> {{ categorie.name }} </span>
+                    </li>
+                {% endfor %}
+
+
+            </ul>
             <a href="{{ path('article.index') }}" class="article__buttonBackToArticle">
                 <div class="button learn-more">
                     <div class="circle">
@@ -92,12 +161,9 @@
                     <p class="button-text">Retournez aux articles</p>
                 </div>
             </a>
-        </div>
 
-    </div>
-
-
-
+        </section>
+    </div><!-- /container -->
 
     <section class="comments">
         {% if app.user %}
@@ -194,7 +260,7 @@
               $.ajax({
                   url: e.currentTarget.dataset.delete,
                   type: 'DELETE',
-                  success: function(result,status) {
+                  success: function (result, status) {
                       if (status === "success") {
                           let elem = e.target;
                           while (elem.parentElement !== null) {
@@ -207,7 +273,6 @@
                       }
                   }
               })
-
 
 
           }
@@ -252,6 +317,235 @@
               btnSubmit.style.display = "none";
               btnEdit.style.display = "block";
           }
+
+      </script>
+      <script>
+          /*!
+ * classie v1.0.1
+ * class helper functions
+ * from bonzo https://github.com/ded/bonzo
+ * MIT license
+ *
+ * classie.has( elem, 'my-class' ) -> true/false
+ * classie.add( elem, 'my-new-class' )
+ * classie.remove( elem, 'my-unwanted-class' )
+ * classie.toggle( elem, 'my-class' )
+ */
+
+          /*jshint browser: true, strict: true, undef: true, unused: true */
+          /*global define: false, module: false */
+
+          (function (window) {
+
+              'use strict';
+
+// class helper functions from bonzo https://github.com/ded/bonzo
+
+              function classReg(className) {
+                  return new RegExp("(^|\\s+)" + className + "(\\s+|$)");
+              }
+
+// classList support for class management
+// altho to be fair, the api sucks because it won't accept multiple classes at once
+              var hasClass, addClass, removeClass;
+
+              if ('classList' in document.documentElement) {
+                  hasClass = function (elem, c) {
+                      return elem.classList.contains(c);
+                  };
+                  addClass = function (elem, c) {
+                      elem.classList.add(c);
+                  };
+                  removeClass = function (elem, c) {
+                      elem.classList.remove(c);
+                  };
+              } else {
+                  hasClass = function (elem, c) {
+                      return classReg(c).test(elem.className);
+                  };
+                  addClass = function (elem, c) {
+                      if (!hasClass(elem, c)) {
+                          elem.className = elem.className + ' ' + c;
+                      }
+                  };
+                  removeClass = function (elem, c) {
+                      elem.className = elem.className.replace(classReg(c), ' ');
+                  };
+              }
+
+              function toggleClass(elem, c) {
+                  var fn = hasClass(elem, c) ? removeClass : addClass;
+                  fn(elem, c);
+              }
+
+              var classie = {
+                  // full names
+                  hasClass: hasClass,
+                  addClass: addClass,
+                  removeClass: removeClass,
+                  toggleClass: toggleClass,
+                  // short names
+                  has: hasClass,
+                  add: addClass,
+                  remove: removeClass,
+                  toggle: toggleClass
+              };
+
+// transport
+              if (typeof define === 'function' && define.amd) {
+                  // AMD
+                  define(classie);
+              } else if (typeof exports === 'object') {
+                  // CommonJS
+                  module.exports = classie;
+              } else {
+                  // browser global
+                  window.classie = classie;
+              }
+
+          })(window);
+
+
+          (function () {
+
+              // detect if IE : from http://stackoverflow.com/a/16657946
+              var ie = (function () {
+                  var undef, rv = -1; // Return value assumes failure.
+                  var ua = window.navigator.userAgent;
+                  var msie = ua.indexOf('MSIE ');
+                  var trident = ua.indexOf('Trident/');
+
+                  if (msie > 0) {
+                      // IE 10 or older => return version number
+                      rv = parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+                  } else if (trident > 0) {
+                      // IE 11 (or newer) => return version number
+                      var rvNum = ua.indexOf('rv:');
+                      rv = parseInt(ua.substring(rvNum + 3, ua.indexOf('.', rvNum)), 10);
+                  }
+
+                  return ((rv > -1) ? rv : undef);
+              }());
+
+
+              // disable/enable scroll (mousewheel and keys) from http://stackoverflow.com/a/4770179
+              // left: 37, up: 38, right: 39, down: 40,
+              // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+              var keys = [32, 37, 38, 39, 40], wheelIter = 0;
+
+              function preventDefault(e) {
+                  e = e || window.event;
+                  if (e.preventDefault)
+                      e.preventDefault();
+                  e.returnValue = false;
+              }
+
+              function keydown(e) {
+                  for (var i = keys.length; i--;) {
+                      if (e.keyCode === keys[i]) {
+                          preventDefault(e);
+                          return;
+                      }
+                  }
+              }
+
+              function touchmove(e) {
+                  preventDefault(e);
+              }
+
+              function wheel(e) {
+                  // for IE
+                  //if( ie ) {
+                  //preventDefault(e);
+                  //}
+              }
+
+              function disable_scroll() {
+                  window.onmousewheel = document.onmousewheel = wheel;
+                  document.onkeydown = keydown;
+                  document.body.ontouchmove = touchmove;
+              }
+
+              function enable_scroll() {
+                  window.onmousewheel = document.onmousewheel = document.onkeydown = document.body.ontouchmove = null;
+              }
+
+              var docElem = window.document.documentElement,
+                  scrollVal,
+                  isRevealed,
+                  noscroll,
+                  isAnimating,
+                  container = document.getElementById('container'),
+                  trigger = container.querySelector('button.trigger');
+
+              function scrollY() {
+                  return window.pageYOffset || docElem.scrollTop;
+              }
+
+              function scrollPage() {
+                  scrollVal = scrollY();
+
+                  if (noscroll && !ie) {
+                      if (scrollVal < 0) return false;
+                      // keep it that way
+                      window.scrollTo(0, 0);
+                  }
+
+                  if (classie.has(container, 'notrans')) {
+                      classie.remove(container, 'notrans');
+                      return false;
+                  }
+
+                  if (isAnimating) {
+                      return false;
+                  }
+
+                  if (scrollVal <= 0 && isRevealed) {
+                      toggle(0);
+                  } else if (scrollVal > 0 && !isRevealed) {
+                      toggle(1);
+                  }
+              }
+
+              function toggle(reveal) {
+                  isAnimating = true;
+
+                  if (reveal) {
+                      classie.add(container, 'modify');
+                  } else {
+                      noscroll = true;
+                      disable_scroll();
+                      classie.remove(container, 'modify');
+                  }
+
+                  // simulating the end of the transition:
+                  setTimeout(function () {
+                      isRevealed = !isRevealed;
+                      isAnimating = false;
+                      if (reveal) {
+                          noscroll = false;
+                          enable_scroll();
+                      }
+                  }, 600);
+              }
+
+              // refreshing the page...
+              var pageScroll = scrollY();
+              noscroll = pageScroll === 0;
+
+              disable_scroll();
+
+              if (pageScroll) {
+                  isRevealed = true;
+                  classie.add(container, 'notrans');
+                  classie.add(container, 'modify');
+              }
+
+              window.addEventListener('scroll', scrollPage);
+              trigger.addEventListener('click', function () {
+                  toggle('reveal');
+              });
+          })();
 
       </script>
   {% endblock %}

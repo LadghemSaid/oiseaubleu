@@ -90,7 +90,7 @@
                                         <i class="fa fa-cog"></i>
                                     </a>
 
-                                    <form class="delete-article" id="delete-article-{{ article.id }}"
+                                    <form data-delete="{{ path('admin.article.delete',{id: article.id}) }}" class="delete-article" id="delete-article-{{ article.id }}"
                                           action="{{ path('admin.article.delete',{id: article.id}) }}"
                                           method="POST"
                                           onsubmit="onDeleteArticle(event)"
@@ -151,14 +151,32 @@
         function onDeleteArticle(e) {
             e.preventDefault();
             if (confirm('Confirmation de suppression')) {
-                console.log(this);
 
 
-                let elem = e.target;
+                let elem = e.currentTarget;
+                console.log(elem.children[1].value);
+                let token =  $('input[name="csrfToken"]').attr('value')
+                $.ajax({
+                    url: elem.dataset.delete,
+                    type: 'DELETE',
+                    data: {'crsf':elem.children[1].value},
+                    success: function(result,status) {
+                        if (status === "success") {
+                            let elem = e.target;
+                            while (elem.parentElement !== null) {
+                                if (elem.classList.contains("comment")) {
+                                    elem.classList.add('removed');
+                                    break
+                                }
+                                elem = elem.parentElement;
+                            }
+                        }
+                    }
+                });
                 while (elem.parentElement !== null) {
                     if (elem.classList.contains("card-wrap")) {
-                        console.log();
                         elem.classList.add('removed');
+
                         break
                     }
                     elem = elem.parentElement;
@@ -167,7 +185,6 @@
             ;
 
         }
-
 
         likes = document.getElementsByClassName('c-btn');
         for (var i = 0; i < likes.length; i++) {

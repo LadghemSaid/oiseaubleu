@@ -13,6 +13,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -103,14 +104,24 @@ class AdminArticleController extends AbstractController
      */
     public function deleteArticle(Article $article ,Request $request)
     {
+        $response = new Response();
 
-        if($this->isCsrfTokenValid('delete'.$article->getId(),$request->get('_token'))){
+        if($this->isCsrfTokenValid('delete'.$article->getId(),$request->request->get('crsf'))){
             $this->em->remove($article);
             $this->em->flush();
             $this->addFlash("success","Supprimer avec succés");
+            $response->setStatusCode(200);
+        }else{
+
+            $response->setStatusCode(300);
+
         }
-        $referer = filter_var($request->headers->get('referer'), FILTER_SANITIZE_URL);
-            return $this->redirect($referer);
+
+
+        return $response;
+
+       // $referer = filter_var($request->headers->get('referer'), FILTER_SANITIZE_URL);
+        //    return $this->redirect($referer);
 
 
     }
