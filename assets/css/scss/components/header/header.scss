@@ -1,10 +1,8 @@
-$darkblue:#005293;
-$lightblue:#C5DAEB;
-$white:#f5f5f5;
-$green:#1ABC9C;
+
 
 .navbar{
-  background-color:$primary-color;
+  background: -webkit-linear-gradient(90deg,#ff4b2b,#ff416c);
+  background: $primary-radiant;
   min-width:100%;
   min-height:80px;
   box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.50);

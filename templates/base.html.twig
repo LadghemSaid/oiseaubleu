@@ -30,19 +30,18 @@
           <span class="navbar-toggler-icon"></span>
         </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mr-auto">
 
-                    <li class="nav-item {% if current_menu is defined and current_menu == 'articles' %}active{% endif %}">
+
+
+                <ul class="nav navbar-nav " style="flex-grow: 1;">
+
+                    <li class="nav-item {% if current_menu is defined and current_menu == 'articles' %}active{% endif %}" style="flex-grow: 1">
                         <a class="nav-link" href="{{path('article.index', {"page":1})}}">Articles <span class="sr-only">(current)</span></a>
                     </li>
-                </ul>
-
-
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="nav-item">
+                    <li class="nav-item" style="flex-grow: 1">
                       <form class="form-inline mt-2 mt-md-0" method="post" action="{{ path('article.index') }}">
-                          <input class="form-control mr-sm-2" type="text" name="title" placeholder="Search" aria-label="Search">
-                          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+                          <input class="form-control mr-sm-2" type="text" name="title" placeholder="Recherchez" aria-label="Recherchez" style="    width: 500px;">
+                          <button class="custom_input_half" type="submit">Rechercher</button>
                       </form>
                     </li>
 
@@ -50,7 +49,7 @@
 
                     <li class="nav-item btnright {% if current_menu is defined and current_menu == 'admin' %}active{% endif %}">
                         <div class="dropdown">
-                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="custom_input dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Admin
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -62,10 +61,10 @@
 
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link btnleft{% if current_menu is defined and current_menu == 'login' %}active{% endif %}" href="{{ path('app_login') }}">Se connecter</a>
+                        <a class="nav-link custom_input{% if current_menu is defined and current_menu == 'login' %}active{% endif %}" style="    margin-left: auto;" href="{{ path('app_login') }}">Se connecter</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  btnright {% if current_menu is defined and current_menu == 'register' %}active{% endif %}  " href="{{ path('app_login') }}">S'inscrire</a>
+                        <a class="nav-link  custom_input {% if current_menu is defined and current_menu == 'register' %}active{% endif %}  " href="{{ path('app_login') }}">S'inscrire</a>
                     </li>
                     {%  endif  %}
 

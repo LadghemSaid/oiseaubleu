@@ -51,6 +51,7 @@ h1+p, p+p {
     }
     .card-info p {
       opacity: 1;
+
     }
     .card-info, .card-info p {
       transition: 0.6s $hoverEasing;
@@ -121,8 +122,8 @@ h1+p, p+p {
   pointer-events:none;
   //background-color:black;
   //background: linear-gradient(to bottom, #ff4b2b00, #d7103d);
-  background: linear-gradient(to bottom, #ff4b2b00, #5f10d7);
-  padding: 20px;
+  background: linear-gradient(to bottom, #ff4b2b00, #000000 50%);
+
   position: absolute;
   bottom: 0;
   color: #fff;
@@ -137,13 +138,14 @@ h1+p, p+p {
       font-size: 1rem;
       top: -29px;
       transform: translateX(50%);
-      background: linear-gradient(to bottom, #ff4b2b00, #d7103d91);
+      background: linear-gradient(to bottom, #ff4b2b00, $primary-rose);
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       padding: 5px 20px;
     }
   }
   p {
+    padding: 0 20px;
     opacity: 0;
     text-shadow: rgba(black, 1) 0 2px 3px;
     transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -195,7 +197,6 @@ h1+p, p+p {
 }
 
 .card-info h1 {
-  background: linear-gradient(to top, #ff4b2b00, #d7103d91);
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   text-align: center;
@@ -208,14 +209,14 @@ h1+p, p+p {
 .slick-next {
   right: 33px!important;
   &:before{
-    color:#005293 !important;
+    color:$primary-orange !important;
     font-size: 50px!important;
   }
 }
 .slick-prev {
   left: 0!important;
   &:before{
-    color:#005293 !important;
+    color:$primary-orange !important;
     font-size: 50px!important;
 
   }
