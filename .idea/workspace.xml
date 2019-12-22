@@ -43,7 +43,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/article/show.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
+            <state relative-caret-position="-122">
               <caret line="140" column="23" selection-start-line="140" selection-start-column="23" selection-end-line="140" selection-end-column="23" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#article#0;n#div#1;n#!!top" expanded="true" />
@@ -802,12 +802,12 @@
       <workItem from="1574206438305" duration="1121000" />
       <workItem from="1575734150256" duration="20064000" />
       <workItem from="1576004199047" duration="17382000" />
-      <workItem from="1576402484898" duration="5161000" />
+      <workItem from="1576402484898" duration="5446000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="225832000" />
+    <option name="totallyTimeSpent" value="226117000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -820,7 +820,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="2568" height="1416" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20893142" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1237,7 +1236,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/article/show.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
+        <state relative-caret-position="-122">
           <caret line="140" column="23" selection-start-line="140" selection-start-column="23" selection-end-line="140" selection-end-column="23" />
           <folding>
             <element signature="n#style#0;n#span#0;n#article#0;n#div#1;n#!!top" expanded="true" />
