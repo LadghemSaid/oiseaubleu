@@ -18,95 +18,121 @@
 
 
 
-
-    <div class="mt-md-5 mt-sm-2 mb-md-5 mb-sm-2 text-center">
-        <h1>L'article à la une </h1>
+    <div class="fullpage">
+        <div class="fullpage__center">
+            <h1>L'actu de l'Oiseau Bleu en orange</h1>
+            <span>Sport / Cinema / Culture</span>
+            <a href="#promote" class="custom_input btn-lg">Découvrir</a>
+        </div>
     </div>
-    <div class="container__post-module ">
-        {% for key in articlesByCat|keys %}
-            {% if articlesByCat[key] | length == 0 %}
+    <div class="container">
 
-            {% else %}
-                <div class="row ">
-                    <div class="headings col-md-12">
-                        <h2 class="title">{{ key }}</h2>
-                        <span class="hr"></span>
-                        <a href="#" class="custom_input btn-lg">Voir plus</a>
-                    </div>
+        <div class="mt-md-5 mt-sm-2 mb-md-5 mb-sm-2 text-center" id="promote">
+            <h1>L'article à la une </h1>
+        </div>
+        <div class="promote">
+            <img src="{{ asset(articlePromote[0].image) }}" alt="" class="promote__image">
+            <a href="{{ path('article.show',{slug:articlePromote[0].slug,id: articlePromote[0].id}) }}">
+                <div class="card-custom">
+                    <h1>{{ articlePromote[0].title }}</h1>
+                    <p class="card-custom__content">{{ articlePromote[0].description|length > 100 ? articlePromote[0].description|slice(0, 100) ~ '...' : articlePromote[0].description }}</p>
+                    <span class="card-custom__timestamp">
+                    <i class="fas fa-clock"></i>
+                    <p>{{ articlePromote[0].createdAt| ago }}</p>
+                </span>
+                    <span class="card-custom__comments">
+                    <i class="fa fa-comments"></i>
+                    <p> {{ articlePromote[0].comments | length }} comments</p>
+                </span>
+                </div>
+            </a>
+        </div>
+        <div class="container__post-module ">
+            {% for key in articlesByCat|keys %}
+                {% if articlesByCat[key] | length == 0 %}
 
-                    <div class="slick_cat col-md-12  container_cards app">
+                {% else %}
+                    <div class="row ">
+                        <div class="headings col-md-12">
+                            <h2 class="title">{{ key }}</h2>
+                            <span class="hr"></span>
+                            <a href="#" class="custom_input btn-lg">Voir plus</a>
+                        </div>
 
-                        {% for article in articlesByCat[key] %}
+                        <div class="slick_cat col-md-12  container_cards app">
+
+                            {% for article in articlesByCat[key] %}
 
 
-                            <card data-image="{{ article.image }}"
-                                  data-article="{{ path('article.show',{slug:article.slug,id: article.id}) }}">
-                                <div slot="likes">
-                                    {{ msalsas.shakeIt(article.id) }}
-                                </div>
-                                <div slot="admin">
-                                    {% if is_granted('ROLE_ADMIN') %}
-                                        {#Administrator#}
+                                <card data-image="{{ article.image }}"
+                                      data-article="{{ path('article.show',{slug:article.slug,id: article.id}) }}">
+                                    <div slot="likes">
+                                        {{ msalsas.shakeIt(article.id) }}
+                                    </div>
+                                    <div slot="admin">
+                                        {% if is_granted('ROLE_ADMIN') %}
+                                            {#Administrator#}
 
-                                        <div class="module__admin">
-                                            <a href="{{ path('admin.article.edit',{id: article.id}) }}"
-                                               class="btn btn-secondary btn-circle">
-                                                <i class="fa fa-cog"></i>
-                                            </a>
+                                            <div class="module__admin">
+                                                <a href="{{ path('admin.article.edit',{id: article.id}) }}"
+                                                   class="btn btn-secondary btn-circle">
+                                                    <i class="fa fa-cog"></i>
+                                                </a>
 
-                                            <form data-delete="{{ path('admin.article.delete',{id: article.id}) }}" class="delete-article" id="delete-article-{{ article.id }}"
-                                                  action="{{ path('admin.article.delete',{id: article.id}) }}"
-                                                  method="POST"
-                                                  onsubmit="onDeleteArticle(event)"
-                                                  style="display: inline-block">
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <input type="hidden" name="_token"
-                                                       value="{{ csrf_token('delete' ~ article.id) }}">
-                                                <button  class="btn btn-danger btn-circle">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    {% elseif is_granted('ROLE_USER') %}
-                                        {#User#}
-                                    {% endif %}
-                                </div>
-                                <h1 slot="header">
-                                    {{ article.title }}
+                                                <form data-delete="{{ path('admin.article.delete',{id: article.id}) }}"
+                                                      class="delete-article" id="delete-article-{{ article.id }}"
+                                                      action="{{ path('admin.article.delete',{id: article.id}) }}"
+                                                      method="POST"
+                                                      onsubmit="onDeleteArticle(event)"
+                                                      style="display: inline-block">
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <input type="hidden" name="_token"
+                                                           value="{{ csrf_token('delete' ~ article.id) }}">
+                                                    <button class="btn btn-danger btn-circle">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        {% elseif is_granted('ROLE_USER') %}
+                                            {#User#}
+                                        {% endif %}
+                                    </div>
+                                    <h1 slot="header">
+                                        {{ article.title }}
 
-                                    <span class="header__category">{{ article.categorie.first() }}</span>
-                                </h1>
+                                        <span class="header__category">{{ article.categorie.first() }}</span>
+                                    </h1>
 
-                                <p slot="content">{{ article.description|length > 100 ? article.description|slice(0, 100) ~ '...' : article.description }}</p>
+                                    <p slot="content">{{ article.description|length > 100 ? article.description|slice(0, 100) ~ '...' : article.description }}</p>
 
-                                <span slot="post-module__timestamp">
+                                    <span slot="post-module__timestamp">
                             <i class="fas fa-clock"></i>
                             <p>{{ article.createdAt| ago }}</p>
                         </span>
 
-                                <span slot="post-module__comments">
+                                    <span slot="post-module__comments">
                             <i class="fa fa-comments"></i>
                             <p> {{ article.comments | length }} comments</p>
 
 
                         </span>
 
-                            </card>
+                                </card>
 
 
-                        {% endfor %}
+                            {% endfor %}
 
 
+                        </div>
                     </div>
-                </div>
 
-            {% endif %}
+                {% endif %}
 
 
-        {% endfor %}
+            {% endfor %}
+        </div>
+
     </div>
-
-
 
 {% endblock %}
 
@@ -119,12 +145,12 @@
 
                 let elem = e.currentTarget;
                 console.log(elem.children[1].value);
-                let token =  $('input[name="csrfToken"]').attr('value')
+                let token = $('input[name="csrfToken"]').attr('value')
                 $.ajax({
                     url: elem.dataset.delete,
                     type: 'DELETE',
-                    data: {'crsf':elem.children[1].value},
-                    success: function(result,status) {
+                    data: {'crsf': elem.children[1].value},
+                    success: function (result, status) {
                         if (status === "success") {
                             let elem = e.target;
                             while (elem.parentElement !== null) {
@@ -151,8 +177,6 @@
         }
 
         $(document).ready(function () {
-
-
 
 
             likes = document.getElementsByClassName('c-btn');

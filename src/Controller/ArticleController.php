@@ -44,7 +44,7 @@ class ArticleController extends AbstractController
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function index($page = 1, $filter = '{"":}',Voter $voter)
+    public function index($page = 1, $filter = '{"":}', Voter $voter)
     {
 
         $req = $this->request;
@@ -66,9 +66,9 @@ class ArticleController extends AbstractController
         $author = $this->repository_user->findByLogin($search);
 
 
-        if($author === null || sizeof($author)<1){
+        if ($author === null || sizeof($author) < 1) {
             $author = null;
-        }else{
+        } else {
             $author = $author[0]->getId();
         }
 
@@ -88,7 +88,7 @@ class ArticleController extends AbstractController
             'current_menu' => 'articles',
             'articles' => $articles,
             'pagination' => $pagination,
-          //  'categories' => $catedories,
+            //  'categories' => $catedories,
         ]);
     }
 
@@ -116,9 +116,6 @@ class ArticleController extends AbstractController
         ]);
 
 
-
-
-
         $article = $this->repository->find($article);
         $comments = $commentsRepository->findBy(
             array('article' => $article->getId()),
@@ -142,20 +139,19 @@ class ArticleController extends AbstractController
      * @Route("/" , name="index")
      *
      */
-    public function home(CategorieRepository $categorie_repo )
+    public function home(CategorieRepository $categorie_repo)
     {
 
 
+        $categories = $categorie_repo->findAll();
+        $articlesByCatCached = [];
+        foreach ($categories as $category) {
+            $articlesByCatCached[$category->getName()] = $this->repository->findTreeLatest($category->getId());
+            //$articlesByCat[$category->getName()] = $categorie_repo->findBy(array('articles' => $category->getId()));
 
-            $categories = $categorie_repo->findAll();
-            $articlesByCatCached = [];
-            foreach ($categories as $category){
-                $articlesByCatCached[$category->getName()] = $this->repository->findTreeLatest($category->getId());
-                //$articlesByCat[$category->getName()] = $categorie_repo->findBy(array('articles' => $category->getId()));
-
-            }
-
-           // dd($articlesByCatCached->get('articlesByCategorie'));
+        }
+        $articlePromote = $this->repository->findBy(array(), array('id' => 'DESC'), 1);
+        //dd($articlePromote);
 
         //echo $articlesByCat; // 'foobar'
 
@@ -166,6 +162,7 @@ class ArticleController extends AbstractController
         return $this->render("home/index.html.twig", [
             'current_menu' => 'home',
             'articlesByCat' => $articlesByCatCached,
+            'articlePromote' => $articlePromote,
         ]);
     }
 }

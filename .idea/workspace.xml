@@ -20,38 +20,25 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/packages/routing.yaml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/home/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="106">
-              <caret line="33" column="55" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/packages/security.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-180" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/packages/webpack_encore.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="260">
+              <caret line="25" column="14" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
+              <folding>
+                <element signature="e#1096#1108#0#Twig" expanded="true" />
+                <element signature="e#1422#1434#0#Twig" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/css/scss/components/header/header.scss">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -64,27 +51,55 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
+        <entry file="file://$PROJECT_DIR$/src/Controller/ArticleController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-240">
-              <caret line="42" column="134" selection-start-line="42" selection-start-column="134" selection-end-line="42" selection-end-column="134" />
+            <state relative-caret-position="284">
+              <caret line="152" column="36" selection-start-line="152" selection-start-column="36" selection-end-line="152" selection-end-column="36" />
               <folding>
-                <element signature="n#style#0;n#ul#1;n#div#0;n#nav#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#li#0;n#ul#0;n#div#0;n#nav#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#li#1;n#ul#0;n#div#0;n#nav#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#form#0;n#li#1;n#ul#0;n#div#0;n#nav#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#li#2;n#ul#1;n#div#0;n#nav#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#34#57#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/assets/css/scss/components/cards/cardsArticleVue.scss">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/css/scss/helpers/custom.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="360">
+              <caret line="84" column="31" selection-start-line="84" selection-start-column="31" selection-end-line="84" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/security/login.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="153" column="6" selection-start-line="153" selection-start-column="6" selection-end-line="153" selection-end-column="6" />
+              <folding>
+                <element signature="e#12#26#0#Twig" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/css/scss/imports.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="412">
+              <caret line="33" column="21" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="520">
+              <caret line="88" selection-start-line="88" selection-end-line="88" />
+              <folding>
+                <element signature="n#style#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -92,20 +107,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/css/scss/variables/variables.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="40" selection-start-line="40" selection-end-line="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/css/scss/components/404/404.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#6089#7191#0" />
-                <element signature="e#7212#8261#0" />
-              </folding>
+            <state relative-caret-position="12">
+              <caret line="12" column="16" selection-start-line="12" selection-end-line="12" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -121,7 +124,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>msalsas_voting</find>
       <find>msalsas-voting-a-positive</find>
       <find>$referenceId</find>
       <find>'reference'</find>
@@ -149,8 +151,9 @@
       <find>.navbar</find>
       <find>.slick-prev:before</find>
       <find>.card-info</find>
-      <find>card-info</find>
       <find>.title</find>
+      <find>card-info</find>
+      <find>articlePromote</find>
     </findStrings>
     <replaceStrings>
       <replace>'referenceArticle'</replace>
@@ -159,6 +162,7 @@
       <replace>'referenceComment'</replace>
       <replace>$</replace>
       <replace>container__post-module</replace>
+      <replace>articlePromote[0]</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -169,13 +173,11 @@
       <list>
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/postcss.config.js" />
-        <option value="$PROJECT_DIR$/src/Controller/ArticleController.php" />
         <option value="$PROJECT_DIR$/src/Controller/LoginController.php" />
         <option value="$PROJECT_DIR$/src/Controller/LoginAndRegisterController.php" />
         <option value="$PROJECT_DIR$/src/Security/AppLoginAuthenticator.php" />
         <option value="$PROJECT_DIR$/src/Controller/RegistrationController.php" />
         <option value="$PROJECT_DIR$/assets/css/scss/pages/login/login.scss" />
-        <option value="$PROJECT_DIR$/templates/security/login.html.twig" />
         <option value="$PROJECT_DIR$/assets/css/scss/pages/article/index.scss" />
         <option value="$PROJECT_DIR$/.env.local" />
         <option value="$PROJECT_DIR$/assets/css/scss/components/voting/voting.scss" />
@@ -203,7 +205,6 @@
         <option value="$PROJECT_DIR$/templates/articleCard.html.twig" />
         <option value="$PROJECT_DIR$/templates/article/articleCard.html.twig" />
         <option value="$PROJECT_DIR$/templates/article/comments.html.twig" />
-        <option value="$PROJECT_DIR$/assets/css/scss/helpers/custom.scss" />
         <option value="$PROJECT_DIR$/src/Controller/CommentsController.php" />
         <option value="$PROJECT_DIR$/src/Controller/Admin/AdminArticleController.php" />
         <option value="$PROJECT_DIR$/templates/article/index.html.twig" />
@@ -215,9 +216,12 @@
         <option value="$PROJECT_DIR$/assets/css/scss/components/404/404.scss" />
         <option value="$PROJECT_DIR$/assets/css/scss/variables/variables.scss" />
         <option value="$PROJECT_DIR$/assets/css/scss/components/buttons/buttons.scss" />
+        <option value="$PROJECT_DIR$/assets/css/scss/components/article/article.scss" />
+        <option value="$PROJECT_DIR$/src/Controller/ArticleController.php" />
         <option value="$PROJECT_DIR$/templates/base.html.twig" />
         <option value="$PROJECT_DIR$/templates/home/index.html.twig" />
-        <option value="$PROJECT_DIR$/assets/css/scss/components/article/article.scss" />
+        <option value="$PROJECT_DIR$/assets/css/scss/helpers/custom.scss" />
+        <option value="$PROJECT_DIR$/templates/security/login.html.twig" />
       </list>
     </option>
   </component>
@@ -675,6 +679,15 @@
               <item name="css" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="scss" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="components" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="article" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="SiteOiseauBleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="assets" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="css" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="scss" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="components" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="buttons" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
@@ -685,6 +698,15 @@
               <item name="scss" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="components" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="cards" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="SiteOiseauBleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="assets" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="css" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="scss" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="components" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="header" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="SiteOiseauBleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
@@ -705,6 +727,28 @@
             <path>
               <item name="SiteOiseauBleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="public" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="SiteOiseauBleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="public" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="img" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="SiteOiseauBleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="SiteOiseauBleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Controller" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="SiteOiseauBleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
@@ -712,6 +756,12 @@
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="home" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="SiteOiseauBleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="security" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="SiteOiseauBleu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
@@ -742,19 +792,19 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\wamp64\www\Symfony\SiteOiseauBleu\public\img" />
+      <recent name="E:\wamp64\www\Symfony\SiteOiseauBleu\assets\css\scss\helpers" />
+      <recent name="E:\wamp64\www\Symfony\SiteOiseauBleu\src\Bundles\msalsas" />
+      <recent name="E:\wamp64\www\Symfony\SiteOiseauBleu\assets\css\scss\components\heart" />
+      <recent name="E:\wamp64\www\Symfony\SiteOiseauBleu\public\js" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\wamp64\www\Symfony\SiteOiseauBleu\templates\article" />
       <recent name="E:\wamp64\www\Symfony\SiteOiseauBleu\public\build\css\slick" />
       <recent name="E:\wamp64\www\Symfony\SiteOiseauBleu\public\img" />
       <recent name="E:\wamp64\www\Symfony\SiteAgence\templates\admin\property" />
       <recent name="E:\wamp64\www\Symfony\SiteAgence\src\Controller\Admin" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\wamp64\www\Symfony\SiteOiseauBleu\assets\css\scss\helpers" />
-      <recent name="E:\wamp64\www\Symfony\SiteOiseauBleu\src\Bundles\msalsas" />
-      <recent name="E:\wamp64\www\Symfony\SiteOiseauBleu\assets\css\scss\components\heart" />
-      <recent name="E:\wamp64\www\Symfony\SiteOiseauBleu\public\js" />
-      <recent name="E:\wamp64\www\Symfony\SiteOiseauBleu\public\css\slick" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -806,12 +856,13 @@
       <workItem from="1575734150256" duration="20064000" />
       <workItem from="1576004199047" duration="17382000" />
       <workItem from="1576402484898" duration="5446000" />
-      <workItem from="1577036118331" duration="6752000" />
+      <workItem from="1577036118331" duration="8187000" />
+      <workItem from="1577132493174" duration="4618000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="232869000" />
+    <option name="totallyTimeSpent" value="238922000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -824,8 +875,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="2568" height="1416" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21092504" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21291865" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -840,7 +892,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.2234461" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50079745" side_tool="true" weight="0.3296617" />
       <window_info anchor="bottom" id="CSS Styles" order="11" weight="0.3296617" />
-      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.49920255" visible="true" weight="0.18332022" />
+      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.49920255" visible="true" weight="0.4822974" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -918,9 +970,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/routing/msalsas_voting.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/msalsas/voting-bundle/Resources/config/doctrine/Click.orm.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -1127,23 +1176,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/scss/components/article/article.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8960">
-          <caret line="448" column="20" selection-start-line="448" selection-start-column="20" selection-end-line="448" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/ArticleController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1800">
-          <caret line="103" column="44" selection-start-line="103" selection-start-column="44" selection-end-line="103" selection-end-column="44" />
-          <folding>
-            <element signature="e#34#57#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/Admin/AdminArticleController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1860">
@@ -1155,20 +1187,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1560">
           <caret line="78" column="25" selection-start-line="78" selection-start-column="21" selection-end-line="78" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/scss/imports.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="33" column="21" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/scss/helpers/custom.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
@@ -1202,9 +1220,7 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/config/packages/security.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-180" />
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/config/packages/webpack_encore.yaml">
       <provider selected="true" editor-type-id="text-editor">
@@ -1214,24 +1230,28 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/css/scss/components/404/404.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#6089#7191#0" />
-            <element signature="e#7212#8261#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/scss/variables/variables.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/css/scss/components/header/header.scss">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/scss/components/cards/cardsArticleVue.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="175" column="30" lean-forward="true" selection-start-line="171" selection-start-column="3" selection-end-line="175" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/scss/components/article/article.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-410">
+          <caret line="448" column="20" selection-start-line="448" selection-start-column="20" selection-end-line="448" selection-end-column="20" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/css/scss/components/buttons/buttons.scss">
       <provider selected="true" editor-type-id="text-editor">
@@ -1240,16 +1260,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/ArticleController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="152" column="36" selection-start-line="152" selection-start-column="36" selection-end-line="152" selection-end-column="36" />
+          <folding>
+            <element signature="e#34#57#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/scss/imports.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="33" column="21" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/scss/variables/variables.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12">
+          <caret line="12" column="16" selection-start-line="12" selection-end-line="12" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-240">
-          <caret line="42" column="134" selection-start-line="42" selection-start-column="134" selection-end-line="42" selection-end-column="134" />
+        <state relative-caret-position="520">
+          <caret line="88" selection-start-line="88" selection-end-line="88" />
           <folding>
-            <element signature="n#style#0;n#ul#1;n#div#0;n#nav#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#0;n#ul#0;n#div#0;n#nav#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#1;n#ul#0;n#div#0;n#nav#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#form#0;n#li#1;n#ul#0;n#div#0;n#nav#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#li#2;n#ul#1;n#div#0;n#nav#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
@@ -1257,15 +1296,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/home/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="33" column="55" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="55" />
+        <state relative-caret-position="260">
+          <caret line="25" column="14" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
+          <folding>
+            <element signature="e#1096#1108#0#Twig" expanded="true" />
+            <element signature="e#1422#1434#0#Twig" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/scss/components/cards/cardsArticleVue.scss">
+    <entry file="file://$PROJECT_DIR$/assets/css/scss/helpers/custom.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="360">
+          <caret line="84" column="31" selection-start-line="84" selection-start-column="31" selection-end-line="84" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/security/login.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="153" column="6" selection-start-line="153" selection-start-column="6" selection-end-line="153" selection-end-column="6" />
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
