@@ -22,8 +22,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/home/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="20" column="80" selection-start-line="20" selection-start-column="80" selection-end-line="20" selection-end-column="80" />
+            <state relative-caret-position="400">
+              <caret line="20" column="62" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
               <folding>
                 <element signature="e#1096#1108#0#Twig" expanded="true" />
                 <element signature="e#1422#1434#0#Twig" expanded="true" />
@@ -875,12 +875,12 @@
       <workItem from="1576004199047" duration="17382000" />
       <workItem from="1576402484898" duration="5446000" />
       <workItem from="1577036118331" duration="8187000" />
-      <workItem from="1577132493174" duration="5419000" />
+      <workItem from="1577132493174" duration="5506000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="239723000" />
+    <option name="totallyTimeSpent" value="239810000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1334,8 +1334,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/home/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="20" column="80" selection-start-line="20" selection-start-column="80" selection-end-line="20" selection-end-column="80" />
+        <state relative-caret-position="400">
+          <caret line="20" column="62" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
           <folding>
             <element signature="e#1096#1108#0#Twig" expanded="true" />
             <element signature="e#1422#1434#0#Twig" expanded="true" />
