@@ -163,61 +163,62 @@
             </a>
 
         </section>
+        <section class="comments">
+            {% if app.user %}
+                {{ form_start(formComment,{'attr': {'class': 'commentForm'}}) }}
+                {{ form_row(formComment.textComment,{'attr': {'class': 'commentForm__textarea'}, 'label' : 'Ecrire un commentaire'}) }}
+                {{ form_row(formComment.submit,{'attr': {'class': 'commentForm__submit'},'label':'Envoyer'}) }}
+                {{ form_end(formComment) }}
+            {% else %}
+                <p>
+                    <button class="comments__notConnected"><a href="{{ path('app_login') }}">Connecter vous pour
+                            commenter</a></button>
+                </p>
+            {% endif %}
+            {% for comment in comments %}
+
+                <article class="comment" id="commentId-{{ comment.id }}">
+                    <a class="comment__img" href="#non">
+                        <img src="https://api.adorable.io/avatars/50/{{ comment.user.username }}@adorable.io.png" alt=""
+                             width="50" height="50">
+                    </a>
+                    <div class="comment__body">
+
+
+                        <div class="comment__header">
+                            {% set isComment = true %}
+
+                            <a href="#non" class="comment__author">{{ comment.user.username }}</a>
+                            <span class="comment__createdat">{{ comment.createdAt| ago }}</span>
+                            {% if comment.user == app.user %}
+                                <ul class="comment__actions">
+                                    <li class="comment__edit"><a id="{{ comment.id }}" href="#" onclick="edit(event)"
+                                                                 class="btn btn-primary btn-sm"><i
+                                                    class="fa fa-cog"></i></a></li>
+                                    <li class="comment__edit--validate"><a id="{{ comment.id }}" href="#"
+                                                                           onclick="submitEditComment(event)"
+                                                                           class="btn btn-primary btn-sm"><i
+                                                    class="fas fa-check"></i></a></li>
+                                    <li class="comment__delete"><a onclick="onDeleteComment(event)"
+                                                                   data-delete="{{ path('delete.comment',{'comment' : comment.id}) }}"
+                                                                   href="#" class="btn btn-danger btn-sm"><i
+                                                    class="fa fa-trash"></i></a></li>
+                                </ul>
+                            {% endif %}
+                            {{ msalsas_voting_widget_custom.shakeIt(comment.id,isComment ) }}
+                        </div>
+                        <div class="comment__text">
+                            <p>{{ comment.textComment }}</p>
+                        </div>
+
+                    </div>
+
+                </article>
+            {% endfor %}
+        </section>
     </div><!-- /container -->
 
-    <section class="comments">
-        {% if app.user %}
-            {{ form_start(formComment,{'attr': {'class': 'commentForm'}}) }}
-            {{ form_row(formComment.textComment,{'attr': {'class': 'commentForm__textarea'}, 'label' : 'Ecrire un commentaire'}) }}
-            {{ form_row(formComment.submit,{'attr': {'class': 'commentForm__submit'},'label':'Envoyer'}) }}
-            {{ form_end(formComment) }}
-        {% else %}
-            <p>
-                <button class="comments__notConnected"><a href="{{ path('app_login') }}">Connecter vous pour
-                        commenter</a></button>
-            </p>
-        {% endif %}
-        {% for comment in comments %}
 
-            <article class="comment" id="commentId-{{ comment.id }}">
-                <a class="comment__img" href="#non">
-                    <img src="https://api.adorable.io/avatars/50/{{ comment.user.username }}@adorable.io.png" alt=""
-                         width="50" height="50">
-                </a>
-                <div class="comment__body">
-
-
-                    <div class="comment__header">
-                        {% set isComment = true %}
-
-                        <a href="#non" class="comment__author">{{ comment.user.username }}</a>
-                        <span class="comment__createdat">{{ comment.createdAt| ago }}</span>
-                        {% if comment.user == app.user %}
-                            <ul class="comment__actions">
-                                <li class="comment__edit"><a id="{{ comment.id }}" href="#" onclick="edit(event)"
-                                                             class="btn btn-primary btn-sm"><i
-                                                class="fa fa-cog"></i></a></li>
-                                <li class="comment__edit--validate"><a id="{{ comment.id }}" href="#"
-                                                                       onclick="submitEditComment(event)"
-                                                                       class="btn btn-primary btn-sm"><i
-                                                class="fas fa-check"></i></a></li>
-                                <li class="comment__delete"><a onclick="onDeleteComment(event)"
-                                                               data-delete="{{ path('delete.comment',{'comment' : comment.id}) }}"
-                                                               href="#" class="btn btn-danger btn-sm"><i
-                                                class="fa fa-trash"></i></a></li>
-                            </ul>
-                        {% endif %}
-                        {{ msalsas_voting_widget_custom.shakeIt(comment.id,isComment ) }}
-                    </div>
-                    <div class="comment__text">
-                        <p>{{ comment.textComment }}</p>
-                    </div>
-
-                </div>
-
-            </article>
-        {% endfor %}
-    </section>
 
 
 
