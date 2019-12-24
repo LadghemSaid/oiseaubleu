@@ -19,13 +19,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/home/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="24" column="72" lean-forward="true" selection-start-line="24" selection-start-column="72" selection-end-line="24" selection-end-column="72" />
+            <state relative-caret-position="206">
+              <caret line="20" column="80" selection-start-line="20" selection-start-column="80" selection-end-line="20" selection-end-column="80" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="e#1096#1108#0#Twig" expanded="true" />
                 <element signature="e#1422#1434#0#Twig" expanded="true" />
               </folding>
@@ -33,11 +32,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/article/show.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="562">
-              <caret line="217" column="18" selection-start-line="217" selection-start-column="18" selection-end-line="217" selection-end-column="18" />
+            <state relative-caret-position="882">
+              <caret line="163" selection-start-line="163" selection-end-line="163" />
               <folding>
                 <element signature="n#section#1;n#div#1;n#!!top" />
               </folding>
@@ -137,7 +136,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>msalsas-voting-a-positive</find>
       <find>$referenceId</find>
       <find>'reference'</find>
       <find>ReferenceVotes</find>
@@ -167,6 +165,7 @@
       <find>.title</find>
       <find>card-info</find>
       <find>articlePromote</find>
+      <find>asset</find>
     </findStrings>
     <replaceStrings>
       <replace>'referenceArticle'</replace>
@@ -233,8 +232,8 @@
         <option value="$PROJECT_DIR$/templates/base.html.twig" />
         <option value="$PROJECT_DIR$/templates/security/login.html.twig" />
         <option value="$PROJECT_DIR$/assets/css/scss/helpers/custom.scss" />
-        <option value="$PROJECT_DIR$/templates/home/index.html.twig" />
         <option value="$PROJECT_DIR$/templates/article/show.html.twig" />
+        <option value="$PROJECT_DIR$/templates/home/index.html.twig" />
       </list>
     </option>
   </component>
@@ -876,12 +875,12 @@
       <workItem from="1576004199047" duration="17382000" />
       <workItem from="1576402484898" duration="5446000" />
       <workItem from="1577036118331" duration="8187000" />
-      <workItem from="1577132493174" duration="5071000" />
+      <workItem from="1577132493174" duration="5419000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="239375000" />
+    <option name="totallyTimeSpent" value="239723000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -896,7 +895,7 @@
     <frame x="-4" y="-4" width="2568" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21291865" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21291865" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -911,7 +910,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.2234461" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50079745" side_tool="true" weight="0.3296617" />
       <window_info anchor="bottom" id="CSS Styles" order="11" weight="0.3296617" />
-      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.49920255" visible="true" weight="0.4822974" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="12" sideWeight="0.49920255" visible="true" weight="0.4822974" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -1323,24 +1322,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/home/index.html.twig">
+    <entry file="file://$PROJECT_DIR$/templates/article/show.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="24" column="72" lean-forward="true" selection-start-line="24" selection-start-column="72" selection-end-line="24" selection-end-column="72" />
+        <state relative-caret-position="882">
+          <caret line="163" selection-start-line="163" selection-end-line="163" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#1096#1108#0#Twig" expanded="true" />
-            <element signature="e#1422#1434#0#Twig" expanded="true" />
+            <element signature="n#section#1;n#div#1;n#!!top" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/article/show.html.twig">
+    <entry file="file://$PROJECT_DIR$/templates/home/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="562">
-          <caret line="217" column="18" selection-start-line="217" selection-start-column="18" selection-end-line="217" selection-end-column="18" />
+        <state relative-caret-position="206">
+          <caret line="20" column="80" selection-start-line="20" selection-start-column="80" selection-end-line="20" selection-end-column="80" />
           <folding>
-            <element signature="n#section#1;n#div#1;n#!!top" />
+            <element signature="e#1096#1108#0#Twig" expanded="true" />
+            <element signature="e#1422#1434#0#Twig" expanded="true" />
           </folding>
         </state>
       </provider>
